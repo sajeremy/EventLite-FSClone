@@ -6,6 +6,7 @@ class Api::UsersController < ApplicationController
     debugger
     @user = User.new(user_params)
     if @user.save
+      debugger
       login!(@user)
       # render template: 'api/users/show'
       render :show
@@ -17,6 +18,6 @@ class Api::UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:email, :password, :first_name, :last_name, :street_address, :city, :state, :country, :zipcode)
+    params.require(:user).permit(:email, :password, :first_name, :last_name)
   end
 end
