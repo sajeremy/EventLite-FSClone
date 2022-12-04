@@ -15,14 +15,25 @@ class Api::SessionsController < ApplicationController
   
     def create
       # debugger
+
+      if !URI::MailTo::EMAIL_REGEXP.match?(params[:email])
+        render json: { errors: ['Not a valid email address.'] }, status: :unauthorized
+        return
+      end
+
+      @email = User.find_by(email: params[:email])
+      if !@email 
+        render json: { errors: ['There is no account associated with that email.'] }, status: :unauthorized
+        return
+      end
+
       @user = User.find_by_credentials(params[:email],params[:password])
-      
       if @user
         login!(@user)
         # render template: 'api/users/show'
         render 'api/users/show'
       else
-        render json: { errors: ['The provided credentials were invalid.'] }, status: :unauthorized
+        render json: { errors: ['Password is not correct'] }, status: :unauthorized
       end
     end
   

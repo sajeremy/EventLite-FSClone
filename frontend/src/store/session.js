@@ -28,7 +28,9 @@ export const login =
       method: "POST",
       body: JSON.stringify({ email, password }),
     });
+    debugger;
     const data = await response.json();
+    debugger;
     storeCurrentUser(data.user);
     dispatch(setCurrentUser(data.user));
     return response;

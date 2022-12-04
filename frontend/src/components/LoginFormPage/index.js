@@ -18,15 +18,19 @@ function LoginFormPage() {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors([]);
+    debugger;
     return dispatch(sessionActions.login({ email, password })).catch(
       async (res) => {
         let data;
         try {
+          debugger;
           // .clone() essentially allows you to read the response body twice
           data = await res.clone().json();
         } catch {
+          debugger;
           data = await res.text(); // Will hit this case if the server is down
         }
+        debugger;
         if (data?.errors) setErrors(data.errors);
         else if (data) setErrors([data]);
         else setErrors([res.statusText]);
@@ -36,11 +40,6 @@ function LoginFormPage() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <ul>
-        {errors.map((error) => (
-          <li key={error}>{error}</li>
-        ))}
-      </ul>
       <label>
         Email
         <input
@@ -50,6 +49,12 @@ function LoginFormPage() {
           required
         />
       </label>
+      <br></br>
+      <ul>
+        {errors.map((error) => (
+          <li key={error}>{error}</li>
+        ))}
+      </ul>
       <br></br>
       <label>
         Password
