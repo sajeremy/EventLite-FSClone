@@ -130,12 +130,17 @@ function SignupFormPage() {
       </div>
 
       <div className="right-container">
-        <div className="centered">
-          <img
-            src="https://www.salserosenclave.com/wp-content/uploads/2017/08/fbevent_214045662456930.jpg"
-            alt=""
-          ></img>
-        </div>
+        {/* <div className="centered"> */}
+        <img
+          src="https://www.salserosenclave.com/wp-content/uploads/2017/08/fbevent_214045662456930.jpg"
+          alt=""
+        ></img>
+
+        {/* <div className="img-text-container">
+          <div className="top-img-text-container">SalsaMania Social</div>
+          <div className="bottom-img-test-container">New York, NY</div>
+        </div> */}
+        {/* </div> */}
       </div>
 
       {/* <div className="right-container">

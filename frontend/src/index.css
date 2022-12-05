@@ -76,3 +76,7 @@ select {
   }
 }
 
+#root {
+  height:100%;
+}
+
