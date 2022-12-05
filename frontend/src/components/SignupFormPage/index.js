@@ -38,8 +38,8 @@ function SignupFormPage() {
   };
 
   return (
-    <>
-      <div className="split left">
+    <div className="container">
+      <div className="left-container">
         <div className="centered">
           <form onSubmit={handleSubmit}>
             <div>
@@ -129,21 +129,21 @@ function SignupFormPage() {
         </div>
       </div>
 
-      {/* <div className="split right">
+      <div className="right-container">
         <div className="centered">
           <img
             src="https://www.salserosenclave.com/wp-content/uploads/2017/08/fbevent_214045662456930.jpg"
             alt=""
           ></img>
         </div>
-      </div> */}
+      </div>
 
-      <div className="split right">
+      {/* <div className="right-container">
         <div className="centered">
           <div className="bg"></div>
         </div>
-      </div>
-    </>
+      </div> */}
+    </div>
   );
 }
 

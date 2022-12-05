@@ -24,22 +24,57 @@
     transform: translate(-50%, -50%);
     text-align: center;
   } */
+  
+  /* img {
+    border: 2px solid blue;
+  } */
 
-  body, html {
+/* body, html {
     height: 95%;
-  }
-
-  .bg {
+} */
+    
+/* .bg {
     background-image: 
     url("https://www.salserosenclave.com/wp-content/uploads/2017/08/fbevent_214045662456930.jpg");
+    border: 2px solid blue;
+
     background-size: "cover";
     height: 100vh;
+    width: 100vh;
     margin-top: 0px;
     font-size:50px;
     background-repeat:no-repeat; 
-  }
 
-  img {
-    border: 2px solid blue;
-  }
+} */
 
+
+.container {
+    display: flex;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+}
+
+.left-container {
+    height: 90%;
+    width: 50%;
+    flex: 1;
+    border: 10px solid black;
+    position: start;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+}
+.right-container {
+    max-height: 100%;
+    width: 50%;
+    flex: 1;
+    border: 5px solid black;
+    display: flex;
+    position:end;
+    align-items: center;
+    justify-content: center;
+    border: 10px solid black;
+} 
