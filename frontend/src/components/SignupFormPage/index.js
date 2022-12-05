@@ -129,12 +129,18 @@ function SignupFormPage() {
         </div>
       </div>
 
-      <div className="split right">
+      {/* <div className="split right">
         <div className="centered">
           <img
             src="https://www.salserosenclave.com/wp-content/uploads/2017/08/fbevent_214045662456930.jpg"
             alt=""
           ></img>
+        </div>
+      </div> */}
+
+      <div className="split right">
+        <div className="centered">
+          <div className="bg"></div>
         </div>
       </div>
     </>

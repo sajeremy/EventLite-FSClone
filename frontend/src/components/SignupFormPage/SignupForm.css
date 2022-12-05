@@ -25,9 +25,19 @@
     text-align: center;
   } */
 
-  /* .bg {
-    background-image: url("./fbevent_214045662456930.jpg");
-  } */
+  body, html {
+    height: 95%;
+  }
+
+  .bg {
+    background-image: 
+    url("https://www.salserosenclave.com/wp-content/uploads/2017/08/fbevent_214045662456930.jpg");
+    background-size: "cover";
+    height: 100vh;
+    margin-top: 0px;
+    font-size:50px;
+    background-repeat:no-repeat; 
+  }
 
   img {
     border: 2px solid blue;
