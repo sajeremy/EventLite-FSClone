@@ -39,98 +39,105 @@ function SignupFormPage() {
 
   return (
     <>
-      <div>
-        <form onSubmit={handleSubmit}>
-          <div>
+      <div className="split left">
+        <div className="centered">
+          <form onSubmit={handleSubmit}>
             <div>
-              <label>Email address</label>
+              <div>
+                <label>Email address</label>
+              </div>
+
+              <input
+                type="text"
+                placeholder="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
             </div>
 
-            <input
-              type="text"
-              placeholder="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </div>
+            <br></br>
 
-          <br></br>
-
-          <div>
             <div>
-              <label>Confirm email</label>
+              <div>
+                <label>Confirm email</label>
+              </div>
+              <input
+                type="text"
+                placeholder="confirm email"
+                value={confirmEmail}
+                onChange={(e) => setConfirmEmail(e.target.value)}
+                required
+              />
             </div>
-            <input
-              type="text"
-              placeholder="confirm email"
-              value={confirmEmail}
-              onChange={(e) => setConfirmEmail(e.target.value)}
-              required
-            />
-          </div>
 
-          <br></br>
+            <br></br>
 
-          <ul>
-            {errors.map((error) => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
+            <ul>
+              {errors.map((error) => (
+                <li key={error}>{error}</li>
+              ))}
+            </ul>
 
-          <div>
             <div>
-              <label>First Name</label>
+              <div>
+                <label>First Name</label>
+              </div>
+              <input
+                type="text"
+                placeholder="First Name"
+                value={first_name}
+                onChange={(e) => setFirst_name(e.target.value)}
+                required
+              />
             </div>
-            <input
-              type="text"
-              placeholder="First Name"
-              value={first_name}
-              onChange={(e) => setFirst_name(e.target.value)}
-              required
-            />
-          </div>
 
-          <br></br>
+            <br></br>
 
-          <div>
             <div>
-              <label>Last Name</label>
+              <div>
+                <label>Last Name</label>
+              </div>
+              <input
+                type="text"
+                placeholder="Last Name"
+                value={last_name}
+                onChange={(e) => setLast_name(e.target.value)}
+                required
+              />
             </div>
-            <input
-              type="text"
-              placeholder="Last Name"
-              value={last_name}
-              onChange={(e) => setLast_name(e.target.value)}
-              required
-            />
-          </div>
 
-          <br></br>
+            <br></br>
 
-          <div>
             <div>
-              <label>Password</label>
+              <div>
+                <label>Password</label>
+              </div>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
             </div>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
 
-          <br></br>
+            <br></br>
 
-          <button type="submit">Sign Up</button>
-        </form>
+            <button type="submit">Sign Up</button>
+          </form>
+        </div>
       </div>
-      <img
-        src="https://www.salserosenclave.com/wp-content/uploads/2017/08/fbevent_214045662456930.jpg"
-        alt=""
-      ></img>
-      <div></div>
+
+      <div className="split right">
+        <div className="centered">
+          <img
+            src="https://www.salserosenclave.com/wp-content/uploads/2017/08/fbevent_214045662456930.jpg"
+            alt=""
+          ></img>
+          {/* <div className="bg"></div> */}
+        </div>
+      </div>
     </>
   );
 }
