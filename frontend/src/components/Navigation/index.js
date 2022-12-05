@@ -1,7 +1,8 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Navigation.css";
 
 const Navigation = () => {
@@ -13,19 +14,26 @@ const Navigation = () => {
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/">EventLite</NavLink>
-        <NavLink to="/signup">Sign Up</NavLink>
-        <NavLink to="/login">Log In</NavLink>
-        <NavLink to="#">Create an event</NavLink>
-        <NavLink
-          to="https://www.linkedin.com/in/jeremy-santiago-11b05367"
-          target="_blank"
-        >
-          <i className="fa-brands fa-linkedin fa-xl"></i>
-        </NavLink>
-        <NavLink to="https://github.com/sajeremy" target="_blank">
-          <i className="fa-brands fa-github fa-xl"></i>
-        </NavLink>
+        <div>
+          <NavLink to="/">EventLite</NavLink>
+          <NavLink to="/signup">Sign Up</NavLink>
+          <NavLink to="/login">Log In</NavLink>
+          <NavLink to="#">Create an event</NavLink>
+          <Link
+            to={{
+              pathname: "https://www.linkedin.com/in/jeremy-santiago-11b05367",
+            }}
+            target="_blank"
+          >
+            LinkedIn
+          </Link>
+          <Link
+            to={{ pathname: "https://github.com/sajeremy" }}
+            target="_blank"
+          >
+            github
+          </Link>
+        </div>
       </>
     );
   }
