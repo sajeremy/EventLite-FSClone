@@ -13,20 +13,26 @@ const Navigation = () => {
   } else {
     sessionLinks = (
       <>
-        <NavLink to="/login">Log In</NavLink>
+        <NavLink to="/">EventLite</NavLink>
         <NavLink to="/signup">Sign Up</NavLink>
+        <NavLink to="/login">Log In</NavLink>
+        <NavLink to="#">Create an event</NavLink>
+        <NavLink
+          to="https://www.linkedin.com/in/jeremy-santiago-11b05367"
+          target="_blank"
+        >
+          <i className="fa-brands fa-linkedin fa-xl"></i>
+        </NavLink>
+        <NavLink to="https://github.com/sajeremy" target="_blank">
+          <i className="fa-brands fa-github fa-xl"></i>
+        </NavLink>
       </>
     );
   }
 
   return (
     <ul>
-      <li>
-        <NavLink exact to="/">
-          Home
-        </NavLink>
-        {sessionLinks}
-      </li>
+      <li>{sessionLinks}</li>
     </ul>
   );
 };

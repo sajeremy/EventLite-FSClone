@@ -135,7 +135,6 @@ function SignupFormPage() {
             src="https://www.salserosenclave.com/wp-content/uploads/2017/08/fbevent_214045662456930.jpg"
             alt=""
           ></img>
-          {/* <div className="bg"></div> */}
         </div>
       </div>
     </>

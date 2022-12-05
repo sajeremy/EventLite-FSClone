@@ -3,10 +3,10 @@ class Api::UsersController < ApplicationController
   # before_action :require_logged_out, only: [:create]
   
   def create
-    debugger
+    # debugger
     @user = User.new(user_params)
     if @user.save
-      debugger
+      # debugger
       login!(@user)
       # render template: 'api/users/show'
       render :show
