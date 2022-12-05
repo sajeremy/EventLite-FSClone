@@ -29,3 +29,7 @@
     background-image: url("./fbevent_214045662456930.jpg");
   } */
 
+  img {
+    border: 2px solid blue;
+  }
+

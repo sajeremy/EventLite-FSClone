@@ -38,10 +38,6 @@ const Navigation = () => {
     );
   }
 
-  return (
-    <ul>
-      <li>{sessionLinks}</li>
-    </ul>
-  );
+  return <div>{sessionLinks}</div>;
 };
 export default Navigation;
