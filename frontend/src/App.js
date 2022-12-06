@@ -18,10 +18,7 @@ function App() {
           <Navigation />
         </Route>
         <Route path="/login">
-          <>
-            <h1>Login Page</h1>
-            <LoginFormPage />
-          </>
+          <LoginFormPage />
         </Route>
         <Route path="/signup">
           <SignupFormPage />

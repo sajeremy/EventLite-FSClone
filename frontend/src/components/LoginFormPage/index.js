@@ -75,7 +75,86 @@ function LoginFormPage() {
 
   return (
     <>
-      <div>
+      <div className="login-container">
+        <div className="login-left-container">
+          <div className="login-header">
+            <NavLink to={"/"}>
+              <span className="login-logo">eventlite</span>
+            </NavLink>
+            <h1>Log in</h1>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="login-email-container">
+              <div>
+                <label>Email address</label>
+              </div>
+
+              <input
+                type="text"
+                placeholder="Email Address"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <ul>
+              {errors.map((error) => (
+                <li key={error}>{error}</li>
+              ))}
+            </ul>
+
+            <div className="login-password-container">
+              <div>
+                <label>Password</label>
+              </div>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+
+            <br></br>
+
+            <button type="submit" className="login-button">
+              Login
+            </button>
+
+            <div className="or-separator">
+              <div className="login-rail"></div>
+              <div className="login-or-text">
+                <span> or </span>
+              </div>
+            </div>
+
+            <button onClick={handleDemoLogin} className="demo-login-button">
+              Demo Login
+            </button>
+          </form>
+
+          <div className="login-link-container">
+            <NavLink to={"/signup"}>
+              <span className="signup-link">Sign Up</span>
+            </NavLink>
+          </div>
+        </div>
+
+        <div className="login-right-container">
+          <img
+            src="https://res.cloudinary.com/unlimited-biking/images/w_2560,h_1707/v1609146007/Highlights-of-Brooklyn-Bridge-Bike-Tour-2-min-1/Highlights-of-Brooklyn-Bridge-Bike-Tour-2-min-1.jpg?_i=AA"
+            alt=""
+          ></img>
+          <div className="img-text-container">
+            <div className="top-img-text-container">Brooklyn Bike Tour</div>
+            <div className="bottom-img-test-container">New York, NY</div>
+          </div>
+        </div>
+      </div>
+
+      {/* <div>
         <form onSubmit={handleSubmit}>
           <label>
             Email
@@ -116,7 +195,7 @@ function LoginFormPage() {
             alt=""
           ></img>
         </div>
-      </div>
+      </div> */}
     </>
   );
 }
