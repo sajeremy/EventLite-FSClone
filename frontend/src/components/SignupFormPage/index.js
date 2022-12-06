@@ -38,121 +38,127 @@ function SignupFormPage() {
   };
 
   return (
-    <div className="container">
-      <div className="left-container">
-        {/* <div className="centered"> */}
-        <div className="signup-header">
-          <NavLink to={"/"}>EventLite</NavLink>
-          <h1>Create an account</h1>
+    <>
+      <div className="container">
+        <div className="left-container">
+          <div className="signup-header">
+            <NavLink to={"/"}>
+              <span className="logo">eventlite</span>
+            </NavLink>
+            <h1>Create an account</h1>
+          </div>
+          <form onSubmit={handleSubmit}>
+            <div className="email-container">
+              <div>
+                <label>Email address</label>
+              </div>
+
+              <input
+                type="text"
+                placeholder="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <br></br>
+
+            <div className="confirm-email-container">
+              <div>
+                <label>Confirm email</label>
+              </div>
+              <input
+                type="text"
+                placeholder="Confirm email"
+                value={confirmEmail}
+                onChange={(e) => setConfirmEmail(e.target.value)}
+                required
+              />
+            </div>
+
+            <br></br>
+
+            <ul>
+              {errors.map((error) => (
+                <li key={error}>{error}</li>
+              ))}
+            </ul>
+
+            <div className="full-name-line">
+              <div className="first-name-container">
+                <div>
+                  <label>First Name</label>
+                </div>
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  value={first_name}
+                  onChange={(e) => setFirst_name(e.target.value)}
+                  required
+                />
+              </div>
+
+              <div className="last-name-container">
+                <div>
+                  <label>Surname</label>
+                </div>
+                <input
+                  type="text"
+                  placeholder="Surname"
+                  value={last_name}
+                  onChange={(e) => setLast_name(e.target.value)}
+                  required
+                />
+              </div>
+            </div>
+
+            <br></br>
+
+            <div className="password-container">
+              <div>
+                <label>Password</label>
+              </div>
+              <input
+                type="password"
+                placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required
+              />
+            </div>
+
+            <div className="rail"></div>
+            <div className="password-text">
+              <span>Your password must be at least 8 characters</span>
+            </div>
+
+            <br></br>
+
+            <button type="submit" className="create-account-button">
+              Create account
+            </button>
+          </form>
+
+          <div className="login-link-container">
+            <NavLink to={"/login"}>
+              <span className="login-link">Login</span>
+            </NavLink>
+          </div>
         </div>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <div>
-              <label>Email address</label>
-            </div>
 
-            <input
-              type="text"
-              placeholder="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+        <div className="right-container">
+          <img
+            src="https://www.salserosenclave.com/wp-content/uploads/2017/08/fbevent_214045662456930.jpg"
+            alt=""
+          ></img>
+          <div className="img-text-container">
+            <div className="top-img-text-container">SalsaMania Social</div>
+            <div className="bottom-img-test-container">New York, NY</div>
           </div>
-
-          <br></br>
-
-          <div>
-            <div>
-              <label>Confirm email</label>
-            </div>
-            <input
-              type="text"
-              placeholder="confirm email"
-              value={confirmEmail}
-              onChange={(e) => setConfirmEmail(e.target.value)}
-              required
-            />
-          </div>
-
-          <br></br>
-
-          <ul>
-            {errors.map((error) => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
-
-          <div>
-            <div>
-              <label>First Name</label>
-            </div>
-            <input
-              type="text"
-              placeholder="First Name"
-              value={first_name}
-              onChange={(e) => setFirst_name(e.target.value)}
-              required
-            />
-          </div>
-
-          <br></br>
-
-          <div>
-            <div>
-              <label>Last Name</label>
-            </div>
-            <input
-              type="text"
-              placeholder="Last Name"
-              value={last_name}
-              onChange={(e) => setLast_name(e.target.value)}
-              required
-            />
-          </div>
-
-          <br></br>
-
-          <div>
-            <div>
-              <label>Password</label>
-            </div>
-            <input
-              type="password"
-              placeholder="Password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </div>
-
-          <br></br>
-
-          <button type="submit">Sign Up</button>
-        </form>
-        {/* </div> */}
+        </div>
       </div>
-
-      <div className="right-container">
-        {/* <div className="centered"> */}
-        <img
-          src="https://www.salserosenclave.com/wp-content/uploads/2017/08/fbevent_214045662456930.jpg"
-          alt=""
-        ></img>
-
-        <div className="img-text-container">
-          <div className="top-img-text-container">SalsaMania Social</div>
-          <div className="bottom-img-test-container">New York, NY</div>
-        </div>
-        {/* </div> */}
-      </div>
-
-      {/* <div className="right-container">
-        <div className="centered">
-          <div className="bg"></div>
-        </div>
-      </div> */}
-    </div>
+    </>
   );
 }
 

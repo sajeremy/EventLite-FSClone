@@ -1,96 +1,165 @@
-
-/* .split {
-    height: 100%;
-    width: 50%;
-    position: fixed;
-    z-index: 1;
-    top: 0;
-    overflow-x: hidden;
-    padding-top: 20px;
-  }
-  
-  .left {
-    left: 0;
-  }
-  
-  .right {
-    right: 0;
-  }
-  
-  .centered {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-  } */
-  
-  img {
-    border: 2px solid blue;
+  .right-container > img {
+    /* border: 2px solid blue; */
     height:100%;
     width:100%;
     object-fit: cover;
   }
 
   .img-text-container {
-    color: #fff;
-    position: absolute;
+    position:absolute;
     right: 50px;
     bottom: 150px;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-weight: 400;
-    font-size: 14px;;
+    font-size: 14px;
+    text-align: right;
+    color:  #fff;
   }
 
   .top-img-text-container {
     font-weight: 800;
-  }
-
-/* body, html {
-    height: 95%;
-} */
     
-/* .bg {
-    background-image: 
-    url("https://www.salserosenclave.com/wp-content/uploads/2017/08/fbevent_214045662456930.jpg");
-    border: 2px solid blue;
-    background-repeat: no-repeat;
-    background-size: "cover";
-    height: 100vh;
-    width: 100vh;
-    margin-top: 0px;
-    font-size:50px;
-} */
-
+  }
 
 .container {
     display: flex;
     height: 720px;
     width: 100%;
     justify-content: center;
+    min-height: 100vh;
+    /* background-color: #f8f7fa; */
+   
 }
 
 .left-container {
     height: 100%;
     width: 50%;
     flex: 1;
-    border: 10px solid black;
+    flex-direction: column;
+    /* border: 10px solid black; */
     position: start;
     z-index: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: white;
+    /* background-color:  #f8f7fa; */
+    background-color:  #fff;
+
+    
 }
 .right-container {
     max-height: 100%;
     width: 50%;
     flex: 1;
-    border: 5px solid black;
+    /* border: 5px solid black; */
     display: flex;
     position:end;
     align-items: center;
     justify-content: center;
-    border: 10px solid black;
+    /* border: 10px solid black; */
 
 } 
+ span.logo {
+  font-size: 28px;
+  /* font-family: Geneva, Verdana, sans-serif; */
+  font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+  letter-spacing:0.5px;
+  font-weight:550;
+  margin-left: -35px;
+  color:#f05537;
+
+}
+
+.signup-header > h1 {
+  font-size: 3.25rem;
+  font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+  margin-left: -40px;
+  max-width:300px;
+}
+
+.signup-header > a {
+  text-decoration: none;
+}
+
+.full-name-line {
+  display: flex;
+}
+
+.first-name-container {
+  margin-right: 7.5px;
+}
+.last-name-container {
+  margin-left: 7.5px;
+}
+
+.email-container > input, 
+.confirm-email-container > input, 
+.first-name-container > input, 
+.last-name-container > input,
+.password-container > input {
+  font-size: 14px;
+  line-height: 22px;
+  min-height: 22px;
+  padding: 8px;
+  border-radius: 2px;
+  border-color: rgb(238, 237, 242);
+  border-style: solid;
+  border-width: 1.75px;
+  width:100%;
+}
+
+input:hover {
+
+  border-color: rgb(190, 189, 193);
+  border-width: 1.75px;
+
+}
+
+input:focus {
+
+  border-color: rgb(73, 76, 247);
+
+}
+
+.rail {
+  background-color: rgb(238, 237, 242);
+  width: 100%;
+  height:4px;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  margin-top: 15px;
+  margin-bottom: 5px;
+
+}
+
+.password-text {
+  font-size: .8rem;
+  line-height: 1.25rem;
+  font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+  font-weight: 400;
+  color: #39364f;
+  /* -webkit-text-size-adjust: 100%; */
+}
+
+ .create-account-button {
+  background-color: #ee340f;
+  border-color: #ee340f;
+  border-style: solid;
+  color: #fff;
+  height: 44px;
+  /* background-color: #d1410c; */
+  border-radius: 4px;
+  width: 100%;
+  display: block;
+}
+
+.create-account-button:hover {
+  background-color: #f05537;
+  border-color:  #f05537;
+}
+
+.login-link-container > a {
+  text-decoration: none;
+  margin-top: -200px;
+}

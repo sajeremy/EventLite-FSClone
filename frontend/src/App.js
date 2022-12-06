@@ -13,8 +13,10 @@ import Navigation from "./components/Navigation/index";
 function App() {
   return (
     <>
-      <Navigation />
       <Switch>
+        <Route exact path="/">
+          <Navigation />
+        </Route>
         <Route path="/login">
           <>
             <h1>Login Page</h1>
@@ -22,10 +24,7 @@ function App() {
           </>
         </Route>
         <Route path="/signup">
-          <>
-            <h1>Signup Page</h1>
-            <SignupFormPage />
-          </>
+          <SignupFormPage />
         </Route>
       </Switch>
     </>
