@@ -33,6 +33,7 @@ function ProfileButton(props) {
     <>
       <button onClick={openMenu}>
         <i className="fas fa-user"></i>
+        {user.email}
       </button>
       {showMenu && (
         <ul className="profile-dropdown">

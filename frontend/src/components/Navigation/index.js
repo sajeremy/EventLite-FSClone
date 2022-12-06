@@ -2,16 +2,16 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Navigation.css";
 import { BsSearch } from "react-icons/bs";
+import LoggedInNav from "./LoggedInNav";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
 
   let sessionLinks;
   if (sessionUser) {
-    sessionLinks = <ProfileButton user={sessionUser} />;
+    sessionLinks = <LoggedInNav />;
   } else {
     sessionLinks = (
       <>
