@@ -90,6 +90,7 @@ function LoginFormPage() {
               </div>
 
               <input
+                className="login-input"
                 type="text"
                 placeholder="Email Address"
                 value={email}
@@ -109,6 +110,7 @@ function LoginFormPage() {
                 <label>Password</label>
               </div>
               <input
+                className="login-input"
                 type="password"
                 placeholder="Password"
                 value={password}

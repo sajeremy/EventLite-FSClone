@@ -23,8 +23,10 @@ class User < ApplicationRecord
     validates :email, 
         uniqueness: true,
         length: {in: 3..255}, 
-        format: { with: URI::MailTo::EMAIL_REGEXP, message: "Please enter a valid email address" }
-    validates :password, length: {in: 6..255, allow_nil: true}
+        format: { with: URI::MailTo::EMAIL_REGEXP, message: "address must be valid" }
+    validates :password, length: {in: 8..255, allow_nil: true}
+    validates :first_name, length: {in: 1..255, message: "can't be blank"}
+    validates :last_name,  length: {in: 1..255, message: "can't be blank"}
     validates :session_token, presence: true, uniqueness: true
 
     def self.find_by_credentials(email, password)

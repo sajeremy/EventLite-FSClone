@@ -81,6 +81,18 @@
   text-decoration: none;
 }
 
+.error-handling-text {
+  color: #c5162e;
+  font-size: .8rem;
+  line-height: 1rem;
+  margin-top: 5px;
+}
+
+#confirm-email-input {
+  /* border: 1px solid #c5162e; */
+  border-color: rgb(238, 237, 242);
+}
+
 .full-name-line {
   display: flex;
 }
@@ -108,18 +120,23 @@
   width:100%;
 }
 
-input:hover {
+.signup-input:hover {
 
   border-color: rgb(190, 189, 193);
   border-width: 1.75px;
 
 }
 
-input:focus {
+#confirm-email-input:hover {
+  border-color: rgb(190, 189, 193);
+  border-width: 1.75px;
+}
+
+/* input:focus {
 
   border-color: rgb(73, 76, 247);
 
-}
+} */
 
 .rail {
   background-color: rgb(238, 237, 242);

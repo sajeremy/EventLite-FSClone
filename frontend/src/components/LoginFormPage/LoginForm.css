@@ -97,16 +97,18 @@
   width:300px;
 }
 
-input:hover {
+.login-input:hover {
 
   border-color: rgb(190, 189, 193);
   border-width: 1.75px;
 
 }
 
-input:focus {
+.login-input:focus {
 
+  outline: none;
   border-color: rgb(73, 76, 247);
+  border-width: 2px;
 
 }
 

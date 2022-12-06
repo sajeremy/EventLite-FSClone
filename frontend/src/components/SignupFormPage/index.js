@@ -37,6 +37,87 @@ function SignupFormPage() {
     return setErrors(["Emails must match"]);
   };
 
+  const handleEmail = () => {
+    let result;
+    const elem = document.getElementById("email-input");
+    if (errors.includes("Email address must be valid")) {
+      result = "Email address must be valid";
+      elem.style = "border-color:#c5162e";
+      return result;
+    } else {
+      if (elem) {
+        elem.style = "border-color:rgb(238, 237, 242)";
+      }
+    }
+  };
+  const handleConfirmEmail = () => {
+    let result;
+    const elem = document.getElementById("confirm-email-input");
+    if (errors.includes("Emails must match")) {
+      result = "Emails must match";
+      elem.style = "border-color:#c5162e";
+      return result;
+    } else {
+      if (elem) {
+        elem.style = "border-color:rgb(238, 237, 242)";
+        console.log(elem.style);
+      }
+    }
+  };
+  const handleFirstName = () => {
+    let result;
+    const elem = document.getElementById("first-name-input");
+    if (errors.includes("First name can't be blank")) {
+      result = "First name can't be blank";
+      elem.style = "border-color:#c5162e";
+      return result;
+    } else {
+      if (elem) {
+        elem.style = "border-color:rgb(238, 237, 242)";
+      }
+    }
+  };
+  const handleLastName = () => {
+    let result;
+    const elem = document.getElementById("last-name-input");
+    if (errors.includes("Last name can't be blank")) {
+      result = "Surname can't be blank";
+      elem.style = "border-color:#c5162e";
+      return result;
+    } else {
+      if (elem) {
+        elem.style = "border-color:rgb(238, 237, 242)";
+      }
+    }
+  };
+  const handlePassword = () => {
+    let result;
+    const elem = document.getElementById("password-input");
+    if (
+      errors.includes("Password is too short (minimum is 8 characters)") ||
+      errors.includes("Password can't be blank")
+    ) {
+      password.length === 0
+        ? (result = "Password can't be blank")
+        : (result = "Password is too short (minimum is 8 characters)");
+      elem.style = "border-color:#c5162e";
+      return result;
+    } else {
+      if (elem) {
+        elem.style = "border-color:rgb(238, 237, 242)";
+      }
+    }
+  };
+
+  // const focusConfirmEmail = () => {
+  //   const elem = document.getElementById("confirm-email-input");
+  //   if (errors.includes("Emails must match")) {
+  //     elem.style = "border-color: #c5162e";
+  //   } else {
+  //     elem.style = "border-color: rgb(73, 76, 247)";
+  //   }
+  // };
+
   return (
     <>
       <div className="container">
@@ -54,12 +135,15 @@ function SignupFormPage() {
               </div>
 
               <input
+                className="signup-input"
+                id="email-input"
                 type="text"
                 placeholder="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
+                // required
               />
+              <div className="error-handling-text">{handleEmail()}</div>
             </div>
 
             <br></br>
@@ -69,21 +153,25 @@ function SignupFormPage() {
                 <label>Confirm email</label>
               </div>
               <input
+                className="signup-input"
+                id="confirm-email-input"
                 type="text"
                 placeholder="Confirm email"
                 value={confirmEmail}
                 onChange={(e) => setConfirmEmail(e.target.value)}
-                required
+                // onFocus={focusConfirmEmail}
+                // required
               />
+              <div className="error-handling-text">{handleConfirmEmail()}</div>
             </div>
 
             <br></br>
 
-            <ul>
+            {/* <ul>
               {errors.map((error) => (
                 <li key={error}>{error}</li>
               ))}
-            </ul>
+            </ul> */}
 
             <div className="full-name-line">
               <div className="first-name-container">
@@ -91,12 +179,15 @@ function SignupFormPage() {
                   <label>First Name</label>
                 </div>
                 <input
+                  className="signup-input"
+                  id="first-name-input"
                   type="text"
                   placeholder="First Name"
                   value={first_name}
                   onChange={(e) => setFirst_name(e.target.value)}
-                  required
+                  // required
                 />
+                <div className="error-handling-text">{handleFirstName()}</div>
               </div>
 
               <div className="last-name-container">
@@ -104,12 +195,15 @@ function SignupFormPage() {
                   <label>Surname</label>
                 </div>
                 <input
+                  className="signup-input"
+                  id="last-name-input"
                   type="text"
                   placeholder="Surname"
                   value={last_name}
                   onChange={(e) => setLast_name(e.target.value)}
-                  required
+                  // required
                 />
+                <div className="error-handling-text">{handleLastName()}</div>
               </div>
             </div>
 
@@ -120,12 +214,15 @@ function SignupFormPage() {
                 <label>Password</label>
               </div>
               <input
+                className="signup-input"
+                id="password-input"
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
+                // required
               />
+              <div className="error-handling-text">{handlePassword()}</div>
             </div>
 
             <div className="rail"></div>
