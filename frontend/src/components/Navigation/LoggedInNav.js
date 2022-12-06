@@ -47,27 +47,27 @@ const LoggedInNav = () => {
             placeholder="search events"
           />
         </div>
-        <button onClick={openMenu}>
+        <button className="user-drop-down" onClick={openMenu}>
           <BiUserCircle />
           {sessionUser.email}
         </button>
-        <NavLink to="#">
+        <NavLink className="ticket-button" to="#">
           <div>
             <TbTicket />
           </div>
-          <div>Tickets</div>
+          <p>Tickets</p>
         </NavLink>
-        <NavLink to="#">
+        <NavLink className="likes-button" to="#">
           <div>
             <BsSuitHeart />
           </div>
-          <div>Likes</div>
+          <p>Likes</p>
         </NavLink>
-        <NavLink to="#" className="create-event-button">
+        <NavLink className="login-create-event-button" to="#">
           <div>
             <AiOutlinePlus />
           </div>
-          <div>Create an event</div>
+          <p>Create an event</p>
         </NavLink>
         {showMenu && (
           <ul className="profile-dropdown">

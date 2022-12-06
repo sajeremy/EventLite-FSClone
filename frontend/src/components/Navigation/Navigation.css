@@ -26,25 +26,45 @@ div.navbar>* {
     
 }
 
-div.navbar a {
-  font-size: 13px;
-  font-weight: 600;
+
+/* div.navbar > .user-drop-down,
+div.navbar > .ticket-button,
+div.navbar > .likes-button,
+div.navbar > .create-event-button {
+  float: right;
   text-align: center;
+  padding: 14px 16px;
   text-decoration: none;
-  margin-left: 5px;
-  
+  font-size:large;
+  font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
 }
+
+div.navbar > .evenbrite-button,
+div.navbar > .search-bar {
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size:large;
+  font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+} */
+
  
 div.navbar a:nth-child(1),
 div.navbar a:nth-child(2),
 div.navbar a:nth-child(3),
 div.navbar a:nth-child(4), 
-div.navbar a:nth-child(5),
-div.navbar a:nth-child(7) { 
+div.navbar a:nth-child(7),
+div.navbar > .linkedin-link,
+div.navbar > .likes-button { 
   color:  #39364f;
 }
 
-div.navbar a:nth-child(6) {
+/* div.navbar a:nth-child(5) {
+  color: rgb(61, 100, 255);
+} */
+
+div.navbar > .logout-create-event-button,
+div.navbar > .login-create-event-button {
   color: rgb(61, 100, 255);
 }
 

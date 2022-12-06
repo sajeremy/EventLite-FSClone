@@ -29,12 +29,15 @@ const Navigation = () => {
           </div>
           <NavLink to="/signup">Sign Up</NavLink>
           <NavLink to="/login">Log In</NavLink>
-          <NavLink to="#">Create an event</NavLink>
+          <NavLink to="#" className="logout-create-event-button">
+            Create an event
+          </NavLink>
           <Link
             to={{
               pathname: "https://www.linkedin.com/in/jeremy-santiago-11b05367",
             }}
             target="_blank"
+            className="linkedin-link"
           >
             LinkedIn
           </Link>
