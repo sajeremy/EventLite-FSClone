@@ -40,10 +40,49 @@ function LoginFormPage() {
     );
   };
 
+  const handleEmail = () => {
+    let result;
+    const elem = document.getElementById("login-email-input");
+    if (errors.includes("Not a valid email address.")) {
+      result = "Email address must be valid";
+      elem.style = "border-color:#c5162e";
+      return result;
+    } else if (
+      errors.includes("There is no account associated with that email.")
+    ) {
+      result = "There is no account associated with that email";
+      elem.style = "border-color:#c5162e";
+      return result;
+    } else {
+      if (elem) {
+        elem.style = "border-color:rgb(238, 237, 242)";
+        // elem.style = "background-color:#E8F0FE";
+      }
+    }
+  };
+
+  const handlePassword = () => {
+    let result;
+    const elem = document.getElementById("login-password-input");
+    if (errors.includes("Password is not correct")) {
+      result = "Password is not correct";
+      elem.style = "border-color:#c5162e";
+      return result;
+    } else {
+      if (elem) {
+        elem.style = "border-color:rgb(238, 237, 242)";
+      }
+    }
+  };
+
   const handleDemoLogin = (e) => {
     e.preventDefault();
     setEmail("");
     setPassword("");
+    document.getElementById("login-email-input").style =
+      "border-color:rgb(238, 237, 242)";
+    document.getElementById("login-password-input").style =
+      "border-color:rgb(238, 237, 242)";
     // debugger;
     setTimeout(typeEmail, 50);
     // debugger;
@@ -91,12 +130,14 @@ function LoginFormPage() {
 
               <input
                 className="login-input"
+                id="login-email-input"
                 type="text"
                 placeholder="Email Address"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                required
+                // required
               />
+              <div className="error-handling-text">{handleEmail()}</div>
             </div>
 
             <ul>
@@ -111,12 +152,14 @@ function LoginFormPage() {
               </div>
               <input
                 className="login-input"
+                id="login-password-input"
                 type="password"
                 placeholder="Password"
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                required
+                // required
               />
+              <div className="error-handling-text">{handlePassword()}</div>
             </div>
 
             <br></br>

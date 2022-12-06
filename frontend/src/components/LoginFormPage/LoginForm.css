@@ -83,6 +83,13 @@
   margin-left: -150px;
 }
 
+.error-handling-text {
+  color: #c5162e;
+  font-size: .8rem;
+  line-height: 1rem;
+  margin-top: 5px;
+}
+
 
 .login-email-container > input, 
 .login-password-container > input {
@@ -104,13 +111,13 @@
 
 }
 
-.login-input:focus {
+/* .login-input:focus {
 
   outline: none;
   border-color: rgb(73, 76, 247);
   border-width: 2px;
 
-}
+} */
 
 .or-separator {
     display:flex;
