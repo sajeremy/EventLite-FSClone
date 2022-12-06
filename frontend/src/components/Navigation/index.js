@@ -2,8 +2,9 @@ import React from "react";
 import { useSelector } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import "./Navigation.css";
+import { BsSearch } from "react-icons/bs";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -14,8 +15,18 @@ const Navigation = () => {
   } else {
     sessionLinks = (
       <>
-        <div>
-          <NavLink to="/">EventLite</NavLink>
+        <div className="navbar">
+          <NavLink className="eventbrite-button" to={"/"}>
+            <span className="navbar-logo">eventlite</span>
+          </NavLink>
+          <div className="search-bar">
+            <BsSearch className="icon" />
+            <input
+              className="search-input"
+              type="text"
+              placeholder="search events"
+            />
+          </div>
           <NavLink to="/signup">Sign Up</NavLink>
           <NavLink to="/login">Log In</NavLink>
           <NavLink to="#">Create an event</NavLink>

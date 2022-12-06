@@ -124,7 +124,7 @@ function LoginFormPage() {
             </button>
 
             <div className="or-separator">
-              <div className="login-rail"></div>
+              {/* <div className="login-rail"></div> */}
               <div className="login-or-text">
                 <span> or </span>
               </div>
