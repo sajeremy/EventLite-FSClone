@@ -1,7 +1,5 @@
 .navbar {
     overflow: hidden;
-    /* margin-left: 5px;
-    margin-right: 15px; */
 }
 
 .navbar a:first-child,
@@ -41,15 +39,13 @@ div.navbar a:nth-child(1),
 div.navbar a:nth-child(2),
 div.navbar a:nth-child(3),
 div.navbar a:nth-child(4), 
-div.navbar a:nth-child(6),
+div.navbar a:nth-child(5),
 div.navbar a:nth-child(7) { 
   color:  #39364f;
-  margin-top: 10px;
 }
 
-div.navbar a:nth-child(5) {
+div.navbar a:nth-child(6) {
   color: rgb(61, 100, 255);
-  margin-top: 10px;
 }
 
 .icon{
@@ -71,9 +67,12 @@ div.navbar a:nth-child(5) {
     width: 300px;
 }
 
+.search-input:focus {
+  outline: none;
+}
+
 .search-bar {
    background-color: #f8f7fa;
-   margin-top: 5px;
    border-radius: 3px;
   
 }

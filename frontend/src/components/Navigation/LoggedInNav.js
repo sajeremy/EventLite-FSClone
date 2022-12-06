@@ -2,7 +2,10 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import "./Navigation.css";
-import { BsSearch } from "react-icons/bs";
+import { BsSearch, BsSuitHeart } from "react-icons/bs";
+import { TbTicket } from "react-icons/tb";
+import { BiUserCircle } from "react-icons/bi";
+import { AiOutlinePlus } from "react-icons/ai";
 import * as sessionActions from "../../store/session";
 
 const LoggedInNav = () => {
@@ -45,12 +48,27 @@ const LoggedInNav = () => {
           />
         </div>
         <button onClick={openMenu}>
-          <i className="fas fa-user"></i>
+          <BiUserCircle />
           {sessionUser.email}
         </button>
-        <NavLink to="#">Tickets</NavLink>
-        <NavLink to="#">Likes</NavLink>
-        <NavLink to="#">Create an event</NavLink>
+        <NavLink to="#">
+          <div>
+            <TbTicket />
+          </div>
+          <div>Tickets</div>
+        </NavLink>
+        <NavLink to="#">
+          <div>
+            <BsSuitHeart />
+          </div>
+          <div>Likes</div>
+        </NavLink>
+        <NavLink to="#" className="create-event-button">
+          <div>
+            <AiOutlinePlus />
+          </div>
+          <div>Create an event</div>
+        </NavLink>
         {showMenu && (
           <ul className="profile-dropdown">
             <li>{sessionUser.email}</li>
