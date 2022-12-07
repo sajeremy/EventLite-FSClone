@@ -140,11 +140,11 @@ function LoginFormPage() {
               <div className="error-handling-text">{handleEmail()}</div>
             </div>
 
-            <ul>
+            {/* <ul>
               {errors.map((error) => (
                 <li key={error}>{error}</li>
               ))}
-            </ul>
+            </ul> */}
 
             <div className="login-password-container">
               <div>
