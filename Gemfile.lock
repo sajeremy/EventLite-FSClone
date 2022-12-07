@@ -118,6 +118,8 @@ GEM
     nio4r (2.5.8)
     nokogiri (1.13.9-arm64-darwin)
       racc (~> 1.4)
+    nokogiri (1.13.9-x86_64-linux)
+      racc (~> 1.4)
     pg (1.4.5)
     pry (0.14.1)
       coderay (~> 1.1)
@@ -168,6 +170,7 @@ GEM
 
 PLATFORMS
   arm64-darwin-21
+  x86_64-linux
 
 DEPENDENCIES
   annotate
@@ -175,9 +178,11 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap
+  
   byebug
   faker
   jbuilder
+
   pg (~> 1.1)
   pry-rails
   puma (~> 5.0)
