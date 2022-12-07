@@ -3,7 +3,7 @@ import { useSelector } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
-import { BsSearch } from "react-icons/bs";
+import { BsSearch, BsGithub, BsLinkedin } from "react-icons/bs";
 import LoggedInNav from "./LoggedInNav";
 
 const Navigation = () => {
@@ -39,13 +39,13 @@ const Navigation = () => {
             target="_blank"
             className="linkedin-link"
           >
-            LinkedIn
+            <BsLinkedin />
           </Link>
           <Link
             to={{ pathname: "https://github.com/sajeremy" }}
             target="_blank"
           >
-            github
+            <BsGithub />
           </Link>
         </div>
       </>
