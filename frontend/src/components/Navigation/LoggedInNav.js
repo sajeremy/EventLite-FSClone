@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
 import "./Navigation.css";
-import { BsSearch, BsSuitHeart } from "react-icons/bs";
+import { BsSearch, BsSuitHeart, BsChevronDown } from "react-icons/bs";
 import { TbTicket } from "react-icons/tb";
 import { BiUserCircle } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
@@ -48,8 +48,13 @@ const LoggedInNav = () => {
           />
         </div>
         <button id="user-drop-down" onClick={openMenu}>
-          <BiUserCircle />
-          {sessionUser.email}
+          <span>
+            <BiUserCircle className="user-icon" />
+          </span>
+          <span>{sessionUser.email}</span>
+          <span>
+            <BsChevronDown className="down-arrow" />
+          </span>
         </button>
         <NavLink className="ticket-button" to="#">
           <div>
@@ -73,7 +78,9 @@ const LoggedInNav = () => {
           <div id="profile-dropdown-container">
             <ul className="profile-dropdown">
               <li>
-                <button onClick={logout}>Log Out</button>
+                <button className="log-out-button" onClick={logout}>
+                  Log Out
+                </button>
               </li>
             </ul>
           </div>

@@ -27,9 +27,13 @@ const Navigation = () => {
               placeholder="search events"
             />
           </div>
-          <NavLink to="/signup">Sign Up</NavLink>
-          <NavLink to="/login">Log In</NavLink>
-          <NavLink to="#" className="logout-create-event-button">
+          <NavLink className="logged-out-signup-button" to="/signup">
+            Sign Up
+          </NavLink>
+          <NavLink className="logged-out-login-button" to="/login">
+            Log In
+          </NavLink>
+          <NavLink to="#" className="logged-create-event-button">
             Create an event
           </NavLink>
           <Link
@@ -44,6 +48,7 @@ const Navigation = () => {
           <Link
             to={{ pathname: "https://github.com/sajeremy" }}
             target="_blank"
+            className="github-link"
           >
             <BsGithub />
           </Link>
