@@ -60,7 +60,6 @@ function SignupFormPage() {
     } else {
       if (elem) {
         elem.style = "border-color:rgb(238, 237, 242)";
-        console.log(elem.style);
       }
     }
   };

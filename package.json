@@ -2,9 +2,6 @@
   "name": "eventlite",
   "version": "1.0.0",
   "description": "This README would normally document whatever steps are necessary to get the application up and running.",
-  "engines": {
-    "node": "16.x"
-  },
   "directories": {
     "lib": "lib"
   },
@@ -21,5 +18,8 @@
   "bugs": {
     "url": "https://github.com/sajeremy/EventLite-FSClone/issues"
   },
-  "homepage": "https://github.com/sajeremy/EventLite-FSClone#readme"
+  "homepage": "https://github.com/sajeremy/EventLite-FSClone#readme",
+  "engines": {
+    "node": "16.x"
+  }
 }
