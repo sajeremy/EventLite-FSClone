@@ -47,7 +47,7 @@ const LoggedInNav = () => {
             placeholder="search events"
           />
         </div>
-        <button className="user-drop-down" onClick={openMenu}>
+        <button id="user-drop-down" onClick={openMenu}>
           <BiUserCircle />
           {sessionUser.email}
         </button>
@@ -70,12 +70,13 @@ const LoggedInNav = () => {
           <p>Create an event</p>
         </NavLink>
         {showMenu && (
-          <ul className="profile-dropdown">
-            <li>{sessionUser.email}</li>
-            <li>
-              <button onClick={logout}>Log Out</button>
-            </li>
-          </ul>
+          <div id="profile-dropdown-container">
+            <ul className="profile-dropdown">
+              <li>
+                <button onClick={logout}>Log Out</button>
+              </li>
+            </ul>
+          </div>
         )}
       </div>
     </>

@@ -106,4 +106,16 @@ div.navbar > .login-create-event-button {
   margin-left: 10px;
 }
 
+#profile-dropdown-container {
+  float:right;
+}
+
+.profile-dropdown {
+  list-style-type: none;
+}
+
+button#user-drop-down {
+  outline: none;
+}
+
 
