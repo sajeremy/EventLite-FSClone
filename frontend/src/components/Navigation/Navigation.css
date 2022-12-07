@@ -1,0 +1,121 @@
+.navbar {
+    overflow: hidden;
+}
+
+.navbar a:first-child,
+.navbar div:nth-child(2) {
+    float: left;
+}
+
+.navbar a:nth-child(2):hover, 
+.navbar a:nth-child(3):hover, 
+.navbar a:nth-child(4):hover,
+.navbar a:nth-child(5):hover,
+.navbar a:nth-child(6):hover,
+.navbar a:nth-child(7):hover {
+    background-color: #f5f5f5f1;
+}
+
+div.navbar>* {
+    float: right;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size:large;
+    font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+    
+}
+
+
+/* div.navbar > .user-drop-down,
+div.navbar > .ticket-button,
+div.navbar > .likes-button,
+div.navbar > .create-event-button {
+  float: right;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size:large;
+  font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+}
+
+div.navbar > .evenbrite-button,
+div.navbar > .search-bar {
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size:large;
+  font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+} */
+
+ 
+div.navbar a:nth-child(1),
+div.navbar a:nth-child(2),
+div.navbar a:nth-child(3),
+div.navbar a:nth-child(4), 
+div.navbar a:nth-child(7),
+div.navbar > .linkedin-link,
+div.navbar > .likes-button { 
+  color:  #39364f;
+}
+
+/* div.navbar a:nth-child(5) {
+  color: rgb(61, 100, 255);
+} */
+
+div.navbar > .logout-create-event-button,
+div.navbar > .login-create-event-button {
+  color: rgb(61, 100, 255);
+}
+
+.icon{
+    color: #a9a8b3;
+    width: 14px;
+    height: 14px;
+    margin-right: 5px;
+}
+
+.search-input {
+    color:  #39364f;
+    font-size: 14px;
+    text-decoration: none;
+    background-color: #f8f7fa;
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: hidden;
+    width: 300px;
+}
+
+.search-input:focus {
+  outline: none;
+}
+
+.search-bar {
+   background-color: #f8f7fa;
+   border-radius: 3px;
+  
+}
+
+.navbar-logo {
+  font-size: 24px;
+  font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+  letter-spacing:0.5px;
+  font-weight:550;
+  color:#f05537;
+  margin-left: 10px;
+}
+
+#profile-dropdown-container {
+  float:right;
+}
+
+.profile-dropdown {
+  list-style-type: none;
+}
+
+button#user-drop-down {
+  outline: none;
+}
+
+
