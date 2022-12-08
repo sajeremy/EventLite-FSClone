@@ -17,7 +17,7 @@ const Navigation = () => {
       <>
         <div className="navbar">
           <NavLink className="eventbrite-button" to={"/"}>
-            <span className="navbar-logo">eventlite</span>
+            <h3 className="navbar-logo">eventlite</h3>
           </NavLink>
           <div className="search-bar">
             <BsSearch className="icon" />
@@ -43,14 +43,14 @@ const Navigation = () => {
             target="_blank"
             className="linkedin-link"
           >
-            <BsLinkedin />
+            <BsLinkedin style={{ fontSize: "25px" }} />
           </Link>
           <Link
             to={{ pathname: "https://github.com/sajeremy" }}
             target="_blank"
             className="github-link"
           >
-            <BsGithub />
+            <BsGithub style={{ fontSize: "25px" }} />
           </Link>
         </div>
       </>

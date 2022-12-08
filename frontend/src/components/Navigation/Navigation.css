@@ -1,5 +1,6 @@
 .navbar {
     overflow: hidden;
+    height: 72px;
 }
 
 .navbar a:first-child,
@@ -7,36 +8,43 @@
     float: left;
 }
 
-.navbar a:nth-child(2):hover, 
-.navbar a:nth-child(3):hover, 
-.navbar a:nth-child(4):hover,
-.navbar a:nth-child(5):hover,
-.navbar a:nth-child(6):hover,
-.navbar a:nth-child(7):hover {
-    background-color: #f5f5f5f1;
+div.navbar > .linkedin-link,
+div.navbar > .likes-button { 
+  color:  #39364f;
 }
 
-/* div.navbar>* {
+div.navbar .logged-out-signup-button,
+div.navbar .logged-out-login-button,
+div.navbar .logged-create-event-button,
+div.navbar .login-create-event-button,
+div.navbar .linkedin-link,
+div.navbar .github-link,
+div.navbar .likes-button,
+div.navbar .ticket-button {
     float: right;
     text-align: center;
-    padding: 14px 16px;
+    padding: 20px 16px;
+    /* margin-top: 5px; */
     text-decoration: none;
-    font-size:large;
-    font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
-    
-} */
-div.navbar > .logged-out-signup-button,
-div.navbar > .logged-out-login-button,
-div.navbar > .logged-create-event-button,
-div.navbar > .linkedin-link,
-div.navbar > .github-link {
-    float: right;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
+    height: 72px;
     font-size:large;
     color:  #39364f;
     font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+}
+
+div.navbar .logged-out-signup-button:hover,
+div.navbar .logged-out-login-button:hover,
+div.navbar .logged-create-event-button:hover,
+div.navbar .linkedin-link:hover,
+div.navbar .github-link:hover,
+div.navbar #user-drop-down:hover, 
+div.navbar .ticket-button:hover,
+div.navbar .likes-button:hover,
+div.navbar .login-create-event-button:hover,
+a.log-out-button:hover,
+a.likes-dropdown-button:hover,
+a.tickets-dropdown-button:hover {
+  background-color: #f5f5f5f1 !important;
 }
 
 
@@ -52,55 +60,25 @@ div.navbar > .login-create-event-button {
     font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
 } 
 
-div.navbar > #eventbrite-button,
-div.navbar > .search-bar {
+div.navbar  #eventbrite-button,
+div.navbar .search-bar {
   text-align: center;
     padding: 14px 16px;
+    height: 48px;
+    /* margin-top: 15px; */
     text-decoration: none;
     font-size:large;
     font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
 }
 
 
-
-/* div.navbar > .user-drop-down,
-div.navbar > .ticket-button,
-div.navbar > .likes-button,
-div.navbar > .create-event-button {
-  float: right;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size:large;
-  font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
-}
-
-div.navbar > .evenbrite-button,
-div.navbar > .search-bar {
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
-  font-size:large;
-  font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
-} */
-
- 
-div.navbar a:nth-child(1),
-div.navbar a:nth-child(2),
-div.navbar a:nth-child(3),
-div.navbar a:nth-child(4), 
-
 div.navbar > .linkedin-link,
 div.navbar > .likes-button { 
   color:  #39364f;
 }
 
-/* div.navbar a:nth-child(5) {
-  color: rgb(61, 100, 255);
-} */
-
-div.navbar > .logout-create-event-button,
-div.navbar > .login-create-event-button {
+div.navbar .logged-create-event-button,
+div.navbar .login-create-event-button {
   color: rgb(61, 100, 255);
 }
 
@@ -113,14 +91,16 @@ div.navbar > .login-create-event-button {
 
 .search-input {
     color:  #39364f;
-    font-size: 14px;
+    font-size: 16px;
     text-decoration: none;
     background-color: #f8f7fa;
     border-top-style: hidden;
     border-right-style: hidden;
     border-left-style: hidden;
     border-bottom-style: hidden;
-    width: 300px;
+    width: 400px;
+    position: relative;
+    transform: translateY(-15%);
 }
 
 .search-input:focus {
@@ -130,50 +110,81 @@ div.navbar > .login-create-event-button {
 .search-bar {
    background-color: #f8f7fa;
    border-radius: 3px;
+   margin-top: 15px;
   
 }
 
-span.navbar-logo {
+.navbar-logo {
   font-size: 24px;
   font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
   letter-spacing:0.5px;
   font-weight:550;
   color:#f05537;
   margin-left: 10px;
+  margin-right: 15px;
+  margin-top: 15px;
 }
 
-#profile-dropdown-container {
-  /* float:right; */
+.eventbrite-button {
+  margin-top: 5px;
+  text-decoration: none;
+}
+
+ #profile-dropdown-container {
   position: absolute;
   right: 0;
   top: 42px;
 
 }
 
-.profile-dropdown {
-  list-style-type: none;
-}
-
-button#user-drop-down {
-  outline: none;
+.user-icon {
+  margin-right: 10px;
+  margin-top: 5px;
 }
 
 #user-drop-down {
+  outline: none;
   display: flex;
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
   border: none;
-  height: 82px;
+  height: 72px;
+  /* margin-top: 5px; */
 }
 
-.log-out-button {
-  width:169.03px;
+.log-out-button,
+.tickets-dropdown-button,
+.likes-dropdown-button {
+  height: 40px;
+  width: 200px;
+  color:  #39364f;
+  font-size: 14px;
+  font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+  text-align:center;
+  text-decoration: none;
+  /* border: red 1px solid; */
   background-color: transparent;
+  padding-top: 10px;
+  border-left:rgba(57, 54, 79, 0.1) solid 0.5px;
+  /* border: none;  */
+} 
+
+.log-out-button {
+  border-bottom:rgba(57, 54, 79, 0.1) solid 0.5px;
+}
+
+.tickets-dropdown-button {
+  margin-top: 14px;
 }
 
 .down-arrow {
   padding-left: 5px;
+} 
+
+.profile-dropdown {
+  display: inline-grid;
+  list-style-type: none;
 }
 
 

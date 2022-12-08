@@ -6,6 +6,7 @@ import { BsSearch, BsSuitHeart, BsChevronDown } from "react-icons/bs";
 import { TbTicket } from "react-icons/tb";
 import { BiUserCircle } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
+import { HiOutlineUserCircle } from "react-icons/hi";
 import * as sessionActions from "../../store/session";
 
 const LoggedInNav = () => {
@@ -16,12 +17,16 @@ const LoggedInNav = () => {
   const openMenu = () => {
     if (showMenu) return;
     setShowMenu(true);
+    document.getElementById("user-drop-down").style.backgroundColor =
+      "#f5f5f5f1";
   };
 
   useEffect(() => {
     if (!showMenu) return;
     const closeMenu = () => {
       setShowMenu(false);
+      document.getElementById("user-drop-down").style.backgroundColor =
+        "transparent";
     };
 
     document.addEventListener("click", closeMenu);
@@ -37,7 +42,7 @@ const LoggedInNav = () => {
     <>
       <div className="navbar">
         <NavLink className="eventbrite-button" to={"/"}>
-          <span className="navbar-logo">eventlite</span>
+          <h3 className="navbar-logo">eventlite</h3>
         </NavLink>
         <div className="search-bar">
           <BsSearch className="icon" />
@@ -48,13 +53,13 @@ const LoggedInNav = () => {
           />
         </div>
         <button id="user-drop-down" onClick={openMenu}>
-          <span>
-            <BiUserCircle className="user-icon" />
-          </span>
-          <span>{sessionUser.email}</span>
-          <span>
+          <div>
+            <BiUserCircle className="user-icon" style={{ fontSize: "25px" }} />
+          </div>
+          <div>{sessionUser.email}</div>
+          <div>
             <BsChevronDown className="down-arrow" />
-          </span>
+          </div>
         </button>
         <NavLink className="ticket-button" to="#">
           <div>
@@ -78,9 +83,19 @@ const LoggedInNav = () => {
           <div id="profile-dropdown-container">
             <ul className="profile-dropdown">
               <li>
-                <button className="log-out-button" onClick={logout}>
+                <Link className="tickets-dropdown-button" to="#">
+                  Tickets (4)
+                </Link>
+              </li>
+              <li>
+                <Link className="likes-dropdown-button" to="#">
+                  Liked
+                </Link>
+              </li>
+              <li>
+                <Link className="log-out-button" to="#" onClick={logout}>
                   Log Out
-                </button>
+                </Link>
               </li>
             </ul>
           </div>
