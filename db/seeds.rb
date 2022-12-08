@@ -1,3 +1,9 @@
+# require 'open-uri'
+# event = Event.create(params)
+# file = URI.open('link')
+# event.photo.attach(io: file, filename: 'jpg_image.png')
+
+
 ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
