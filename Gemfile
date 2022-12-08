@@ -25,6 +25,7 @@ gem "faker"
 #Misc
 gem "bcrypt"
 gem "jbuilder"
+ gem "aws-sdk-s3"
 
 
 group :development, :test do
