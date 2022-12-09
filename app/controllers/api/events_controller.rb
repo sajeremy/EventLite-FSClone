@@ -1,10 +1,6 @@
 class Api::EventsController < ApplicationController
     # wrap_parameters include: Event.attribute_names
     before_action :require_logged_in, only: [:create, :update, :destroy]
-    
-    def new
-
-    end
 
     def index
         @events = Event.all
@@ -25,16 +21,20 @@ class Api::EventsController < ApplicationController
     end
     
     def create
+        # debugger
         @event = Event.new(event_params)
         @event.organizer_id = @current_user.id
-        if @Event.save
-        render :show
-        else
-        render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity
-        end
+        @event.start_datetime = @event.start_datetime ? @event.start_datetime.to_datetime : nil
+        @event.end_datetime = @event.start_datetime ? @event.end_datetime.to_datetime : nil
+        @event.ticket_price = @event.ticket_price.to_f
+        @event.capacity = @event.capacity.to_i
 
-        # @event = Event.find_by(title: event_params.title)
-        # render :show
+        # debugger
+        if @event.save
+            render :show
+        else
+            render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity
+        end
 
     end
 

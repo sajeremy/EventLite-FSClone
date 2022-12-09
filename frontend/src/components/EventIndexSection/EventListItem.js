@@ -1,14 +1,26 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const EventListItem = (props) => {
   const { event } = props;
 
   return (
     <li>
-      <div>{event.title}</div>
-      <div>{event.body}</div>
-      <div>{event.address}</div>
-      <div>{event.category}</div>
+      <NavLink to={`/events/${event.id}`}>
+        <div>
+          <strong>Title:</strong> {event.title}
+        </div>
+        <div>
+          <strong>Body:</strong> {event.body}
+        </div>
+        <div>
+          <strong>Address:</strong> {event.address}
+        </div>
+        <div>
+          <strong>Category: </strong>
+          {event.category}
+        </div>
+      </NavLink>
     </li>
   );
 };
