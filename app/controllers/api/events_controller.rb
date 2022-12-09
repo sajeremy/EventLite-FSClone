@@ -7,7 +7,7 @@ class Api::EventsController < ApplicationController
         if @events
             render :index
         else
-            render json: ['no events found'], status:404
+            render json: {errors: ['no events found']}, status:404
         end
     end
 
@@ -16,12 +16,11 @@ class Api::EventsController < ApplicationController
         if @event 
             render :show
         else
-            render json: ['event not found'], status:404
+            render json: {errors: ['event not found']}, status:404
         end
     end
     
     def create
-        # debugger
         @event = Event.new(event_params)
         @event.organizer_id = @current_user.id
         @event.start_datetime = @event.start_datetime ? @event.start_datetime.to_datetime : nil
@@ -29,7 +28,6 @@ class Api::EventsController < ApplicationController
         @event.ticket_price = @event.ticket_price.to_f
         @event.capacity = @event.capacity.to_i
 
-        # debugger
         if @event.save
             render :show
         else
@@ -39,10 +37,30 @@ class Api::EventsController < ApplicationController
     end
 
     def update
+        @event = Event.find_by(id: params[:id])
+        @event.start_datetime = @event.start_datetime ? @event.start_datetime.to_datetime : nil
+        @event.end_datetime = @event.start_datetime ? @event.end_datetime.to_datetime : nil
+        @event.ticket_price = @event.ticket_price.to_f
+        @event.capacity = @event.capacity.to_i
+
+        if @event.update(event_params)
+            render :show
+        else
+            render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity
+        end
 
     end
 
     def destroy
+        @event = Event.find_by(id: params[:id])
+        @events = Event.all
+
+        if @event
+            @event.destroy
+            render :index
+        else 
+            render json: {errors: ['No event was found to delete']}, status:404
+        end
 
     end
 
