@@ -10,6 +10,8 @@ import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation/index";
 import EventIndexSection from "./components/EventIndexSection/index.js";
+import EventListItem from "./components/EventIndexSection/EventListItem";
+import EventShowPage from "./components/EventShowPage/index";
 
 function App() {
   return (
@@ -18,6 +20,10 @@ function App() {
         <Route exact path="/">
           <Navigation />
           <EventIndexSection />
+        </Route>
+        <Route path="/events/:eventId">
+          <Navigation />
+          <EventShowPage />
         </Route>
         <Route path="/login">
           <LoginFormPage />

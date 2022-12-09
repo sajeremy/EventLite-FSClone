@@ -21,25 +21,27 @@ const removeEvent = (eventId) => ({
 
 //Selectors
 export const getEvent = (eventId) => (state) => {
-  return state.events.events ? state.events.events[eventId] : null;
+  return state.events ? state.events[eventId] : null;
 };
 export const getEvents = (state) => {
-  return state.events.events ? Object.values(state.events.events) : [];
+  return state.events ? Object.values(state.events) : [];
 };
 
 //Thunk Action Creators
 export const fetchEvents = () => async (dispatch) => {
   const res = await fetch(`/api/events`);
   if (res.ok) {
-    const events = await res.json();
-    dispatch(receiveEvents(events));
+    const eventsObj = await res.json();
+    // debugger;
+    dispatch(receiveEvents(eventsObj.events));
   }
 };
 export const fetchEvent = (eventId) => async (dispatch) => {
   const res = await fetch(`/api/events/${eventId}`);
   if (res.ok) {
-    const event = await res.json();
-    dispatch(receiveEvent(event));
+    const eventObj = await res.json();
+    // debugger;
+    dispatch(receiveEvent(eventObj.event));
   }
 };
 export const createEvent = (event) => async (dispatch) => {
@@ -78,8 +80,7 @@ const eventsReducer = (state = {}, action) => {
     case RECEIVE_EVENTS:
       return { ...action.events };
     case RECEIVE_EVENT:
-      newState[action.event.id] = action.event;
-      return newState;
+      return { [action.event.id]: action.event };
     case REMOVE_EVENT:
       delete newState[action.eventId];
       return newState;

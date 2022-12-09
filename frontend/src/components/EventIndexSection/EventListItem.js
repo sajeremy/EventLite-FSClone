@@ -7,6 +7,7 @@ const EventListItem = (props) => {
   return (
     <li>
       <NavLink to={`/events/${event.id}`}>
+        <img src={event.photoUrl} alt=""></img>
         <div>
           <strong>Title:</strong> {event.title}
         </div>
