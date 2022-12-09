@@ -164,7 +164,8 @@ div.navbar .login-create-event-button {
   text-align:center;
   text-decoration: none;
   /* border: red 1px solid; */
-  background-color: transparent;
+  /* background-color: transparent; */
+  background-color: white;
   padding-top: 10px;
   border-left:rgba(57, 54, 79, 0.1) solid 0.5px;
   /* border: none;  */
