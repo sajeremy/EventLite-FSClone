@@ -9,6 +9,7 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation/index";
+import EventIndexSection from "./components/EventIndexSection/index.js";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Navigation />
+          <EventIndexSection />
         </Route>
         <Route path="/login">
           <LoginFormPage />

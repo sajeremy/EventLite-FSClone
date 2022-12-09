@@ -1,5 +1,6 @@
 class Api::EventsController < ApplicationController
     # wrap_parameters include: Event.attribute_names
+    before_action :require_logged_in, only: [:create, :update, :destroy]
     
     def new
 
@@ -25,11 +26,16 @@ class Api::EventsController < ApplicationController
     
     def create
         @event = Event.new(event_params)
+        @event.organizer_id = @current_user.id
         if @Event.save
         render :show
         else
         render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity
         end
+
+        # @event = Event.find_by(title: event_params.title)
+        # render :show
+
     end
 
     def update
