@@ -5,4 +5,5 @@ json.event do
     :start_datetime, :end_datetime, :capacity, :ticket_price, 
     :category, :created_at, :updated_at
   end
+json.photoUrl @event.photo.url
   
