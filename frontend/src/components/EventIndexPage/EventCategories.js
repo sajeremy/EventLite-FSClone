@@ -5,6 +5,7 @@ import { FaTheaterMasks, FaRunning, FaRegHeart } from "react-icons/fa";
 import { TbDeviceGamepad } from "react-icons/tb";
 import { RiSuitcaseLine } from "react-icons/ri";
 import { GiMartini } from "react-icons/gi";
+import "./EventIndexPage.css";
 
 const EventCategories = () => {
   return (
@@ -48,7 +49,7 @@ const EventCategories = () => {
         <Link to="#">
           <div className="title">
             <aside className="tile-icon">
-              <RiSuitcaseLine className="orange-icon" />
+              <TbDeviceGamepad className="orange-icon" />
             </aside>
             <div className="tile-name">Hobbies</div>
           </div>
@@ -56,7 +57,7 @@ const EventCategories = () => {
         <Link to="#">
           <div className="title">
             <aside className="tile-icon">
-              <TbDeviceGamepad className="orange-icon" />
+              <RiSuitcaseLine className="orange-icon" />
             </aside>
             <div className="tile-name">Business</div>
           </div>

@@ -1,0 +1,66 @@
+body {
+    font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+    font-weight: 400;
+}
+
+.home-cateogry-tiles {
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-weight: 400;
+}
+
+.home-category-tiles-title {
+    font-size: 1.5rem;
+    line-height: 2rem;
+    letter-spacing: .25px;
+    margin-right: -0.25px;
+    font-weight: 700;
+    padding-bottom: 1rem;
+}
+
+.tile-group {
+    display: grid;
+    grid-template-columns: repeat(4,1.2fr);
+    grid-column-gap: 12px;
+    grid-row-gap: 12px;
+
+}
+
+.tile-group a {
+    color: #39364f;
+    text-decoration: none; 
+}
+
+a {
+    background-color: transparent; 
+}
+
+.tile {
+    display: inline-flex;
+    flex-direction: row;
+    height: 54px;
+    width: 100%;
+    border: 1px solid #eeedf2;
+    border-radius: 2px;
+}
+
+.tile-icon {
+    display: flex;
+    align-items: center;
+    width: 54px;
+    background: #fdf7f5;
+    justify-content: center;
+    border-radius: 2px;
+}
+
+.orange-icon {
+    display: inline-block;
+    margin: 0 auto;
+    vertical-align: middle;
+    background-size: contain;
+    line-height: 0; 
+    width: 24px;
+    height: 24px;
+    /* font-style: italic; */
+}
