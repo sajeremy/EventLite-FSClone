@@ -2,6 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getEvents, fetchEvents } from "../../store/event.js";
 import EventListItem from "./EventListItem.js";
+import EventCategories from "./EventCategories";
 
 const EventIndexPage = () => {
   const dispatch = useDispatch();
@@ -15,7 +16,12 @@ const EventIndexPage = () => {
     return <EventListItem key={event.id} event={event} />;
   });
 
-  return <ol>{eventsList}</ol>;
+  return (
+    <>
+      <EventCategories />
+      <ol>{eventsList}</ol>
+    </>
+  );
 };
 
 export default EventIndexPage;
