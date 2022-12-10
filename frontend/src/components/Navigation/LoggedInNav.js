@@ -52,12 +52,12 @@ const LoggedInNav = () => {
             placeholder="search events"
           />
         </div>
-
         <button id="user-drop-down" onClick={openMenu}>
           <div>
-            <BiUserCircle className="user-icon" style={{ fontSize: "25px" }} />
+            {/* style={{ fontSize: "25px" }}  */}
+            <BiUserCircle className="user-icon" />
           </div>
-          <div>{sessionUser.email}</div>
+          <div className="session-email">{sessionUser.email}</div>
           <div>
             <BsChevronDown className="down-arrow" />
           </div>
@@ -83,7 +83,6 @@ const LoggedInNav = () => {
             </ul>
           </div>
         )}
-
         <NavLink className="ticket-button" to="#">
           <div>
             <TbTicket />

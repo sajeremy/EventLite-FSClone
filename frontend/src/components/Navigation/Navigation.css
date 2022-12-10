@@ -138,18 +138,21 @@ a.tickets-dropdown-button:hover {
 }
 
 .user-icon {
-  margin-right: 10px;
+  margin-right: 5px;
   margin-top: 5px;
 }
 
 #user-drop-down {
   outline: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: space-between;
   background-color: transparent;
   border: none;
   height: 72px;
+  width: 180px;
+  /* margin-right: 5px; */
+  /* font-size: 1.5vmin; */
   /* margin-top: 5px; */
 }
 
@@ -157,7 +160,7 @@ a.tickets-dropdown-button:hover {
 .tickets-dropdown-button,
 .likes-dropdown-button {
   height: 40px;
-  width: 200px;
+  width: 180px;
   color:  #39364f;
   font-size: 14px;
   font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
@@ -184,10 +187,25 @@ a.tickets-dropdown-button:hover {
 } 
 
 .profile-dropdown {
-  /* display: inline-grid; */
-  display: grid;
   list-style-type: none;
 }
+
+.session-email {
+  margin-left: -5px;
+}
+
+/* .session-email,
+.down-arrow {
+  font-size: 1.1vmax;
+} */
+
+.user-icon {
+  font-size: 24px;
+  margin-left: -10px;
+
+} 
+
+
 
 .img-banner {
   height: auto;
