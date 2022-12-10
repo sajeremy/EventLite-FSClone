@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   namespace :api, defaults: { format: :json } do
     resources :users, only: :create
     resource :session, only: [:show, :create, :destroy]
-    resources :events, only: [:create, :update, :destroy]
+    resources :events, only: [:index, :create, :update, :destroy]
     resources :events, only: [:show]
     
 

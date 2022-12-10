@@ -245,7 +245,7 @@ function SignupFormPage() {
 
         <div className="right-container">
           <img
-            src="https://www.salserosenclave.com/wp-content/uploads/2017/08/fbevent_214045662456930.jpg"
+            src="https://eventlite-22-seeds.s3.amazonaws.com/signupForm.jpg"
             alt=""
           ></img>
           <div className="img-text-container">

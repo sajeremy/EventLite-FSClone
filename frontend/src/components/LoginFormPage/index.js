@@ -189,7 +189,7 @@ function LoginFormPage() {
 
         <div className="login-right-container">
           <img
-            src="https://res.cloudinary.com/unlimited-biking/images/w_2560,h_1707/v1609146007/Highlights-of-Brooklyn-Bridge-Bike-Tour-2-min-1/Highlights-of-Brooklyn-Bridge-Bike-Tour-2-min-1.jpg?_i=AA"
+            src="https://eventlite-22-seeds.s3.amazonaws.com/loginForm.jpeg"
             alt=""
           ></img>
           <div className="img-text-container">
@@ -198,49 +198,6 @@ function LoginFormPage() {
           </div>
         </div>
       </div>
-
-      {/* <div>
-        <form onSubmit={handleSubmit}>
-          <label>
-            Email
-            <input
-              type="text"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-          </label>
-          <br></br>
-          <ul>
-            {errors.map((error) => (
-              <li key={error}>{error}</li>
-            ))}
-          </ul>
-          <br></br>
-          <label>
-            Password
-            <input
-              type="password"
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
-          </label>
-          <br></br>
-          <button onClick={handleDemoLogin}>Demo Log In</button>
-          <br></br>
-          <button type="submit">Log In</button>
-        </form>
-        <NavLink to="/signup">Sign Up</NavLink>
-      </div>
-      <div className="split right">
-        <div className="centered">
-          <img
-            src="https://res.cloudinary.com/unlimited-biking/images/w_2560,h_1707/v1609146007/Highlights-of-Brooklyn-Bridge-Bike-Tour-2-min-1/Highlights-of-Brooklyn-Bridge-Bike-Tour-2-min-1.jpg?_i=AA"
-            alt=""
-          ></img>
-        </div>
-      </div> */}
     </>
   );
 }

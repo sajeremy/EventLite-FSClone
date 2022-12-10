@@ -9,6 +9,9 @@ import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
 import SignupFormPage from "./components/SignupFormPage";
 import Navigation from "./components/Navigation/index";
+import EventIndexPage from "./components/EventIndexPage/index.js";
+import EventShowPage from "./components/EventShowPage/index";
+import HomePageBanner from "./components/HomePageBanner";
 
 function App() {
   return (
@@ -16,6 +19,12 @@ function App() {
       <Switch>
         <Route exact path="/">
           <Navigation />
+          <HomePageBanner />
+          <EventIndexPage />
+        </Route>
+        <Route path="/events/:eventId">
+          <Navigation />
+          <EventShowPage />
         </Route>
         <Route path="/login">
           <LoginFormPage />

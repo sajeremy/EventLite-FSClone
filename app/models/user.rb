@@ -32,6 +32,7 @@ class User < ApplicationRecord
     has_many :events,
     primary_key: :id,
     foreign_key: :organizer_id,
+    inverse_of: :organizer,
     dependent: :destroy
 
 
