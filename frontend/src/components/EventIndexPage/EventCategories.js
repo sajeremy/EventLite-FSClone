@@ -16,65 +16,65 @@ const EventCategories = () => {
       <div className="tile-group">
         <Link to="#">
           <div className="title">
-            <aside className="tile-icon">
+            <div className="tile-icon">
               <CiMusicNote1 className="orange-icon" />
-            </aside>
+            </div>
             <div className="tile-name">Music</div>
           </div>
         </Link>
         <Link to="#">
           <div className="title">
-            <aside className="tile-icon">
+            <div className="tile-icon">
               <FaTheaterMasks className="orange-icon" />
-            </aside>
+            </div>
             <div className="tile-name">Performing & Visual Arts</div>
           </div>
         </Link>
         <Link to="#">
           <div className="title">
-            <aside className="tile-icon">
+            <div className="tile-icon">
               <BiImages className="orange-icon" />
-            </aside>
+            </div>
             <div className="tile-name">Holiday</div>
           </div>
         </Link>
         <Link to="#">
           <div className="title">
-            <aside className="tile-icon">
+            <div className="tile-icon">
               <FaRegHeart className="orange-icon" />
-            </aside>
+            </div>
             <div className="tile-name">Health</div>
           </div>
         </Link>
         <Link to="#">
           <div className="title">
-            <aside className="tile-icon">
+            <div className="tile-icon">
               <TbDeviceGamepad className="orange-icon" />
-            </aside>
+            </div>
             <div className="tile-name">Hobbies</div>
           </div>
         </Link>
         <Link to="#">
           <div className="title">
-            <aside className="tile-icon">
+            <div className="tile-icon">
               <RiSuitcaseLine className="orange-icon" />
-            </aside>
+            </div>
             <div className="tile-name">Business</div>
           </div>
         </Link>
         <Link to="#">
           <div className="title">
-            <aside className="tile-icon">
+            <div className="tile-icon">
               <GiMartini className="orange-icon" />
-            </aside>
+            </div>
             <div className="tile-name">Food & Drink</div>
           </div>
         </Link>
         <Link to="#">
           <div className="title">
-            <aside className="tile-icon">
+            <div className="tile-icon">
               <FaRunning className="orange-icon" />
-            </aside>
+            </div>
             <div className="tile-name">Sports & Fitness</div>
           </div>
         </Link>

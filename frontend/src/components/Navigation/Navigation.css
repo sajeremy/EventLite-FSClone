@@ -27,7 +27,8 @@
     /* margin-top: 5px; */
     text-decoration: none;
     height: 72px;
-    font-size:large;
+    font-size:14px;
+    margin-top: 2px;
     color:  #39364f;
     font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
 }
@@ -54,9 +55,9 @@ a.tickets-dropdown-button:hover {
  .login-create-event-button {
     float: right;
     text-align: center;
-    padding: 14px 16px;
+    padding: 14px 20px;
     text-decoration: none;
-    font-size:medium;
+    font-size:14px;
     font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
 } 
 

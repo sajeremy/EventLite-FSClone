@@ -18,8 +18,12 @@ const EventIndexPage = () => {
 
   return (
     <>
-      <EventCategories />
-      <ol>{eventsList}</ol>
+      <section className="event-index-layout">
+        <div className="index-layout-border">
+          <EventCategories />
+          <ol>{eventsList}</ol>
+        </div>
+      </section>
     </>
   );
 };
