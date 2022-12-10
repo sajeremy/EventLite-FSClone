@@ -8,19 +8,19 @@
     float: left;
 }
 
-div.navbar > .linkedin-link,
-div.navbar > .likes-button { 
+ .linkedin-link,
+ .likes-button { 
   color:  #39364f;
 }
 
-div.navbar .logged-out-signup-button,
-div.navbar .logged-out-login-button,
-div.navbar .logged-create-event-button,
-div.navbar .login-create-event-button,
-div.navbar .linkedin-link,
-div.navbar .github-link,
-div.navbar .likes-button,
-div.navbar .ticket-button {
+ .logged-out-signup-button,
+ .logged-out-login-button,
+ .logged-create-event-button,
+ .login-create-event-button,
+ .linkedin-link,
+ .github-link,
+ .likes-button,
+ .ticket-button {
     float: right;
     text-align: center;
     padding: 20px 16px;
@@ -32,15 +32,15 @@ div.navbar .ticket-button {
     font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
 }
 
-div.navbar .logged-out-signup-button:hover,
-div.navbar .logged-out-login-button:hover,
-div.navbar .logged-create-event-button:hover,
-div.navbar .linkedin-link:hover,
-div.navbar .github-link:hover,
-div.navbar #user-drop-down:hover, 
-div.navbar .ticket-button:hover,
-div.navbar .likes-button:hover,
-div.navbar .login-create-event-button:hover,
+ .logged-out-signup-button:hover,
+ .logged-out-login-button:hover,
+ .logged-create-event-button:hover,
+ .linkedin-link:hover,
+ .github-link:hover,
+ #user-drop-down:hover, 
+ .ticket-button:hover,
+ .likes-button:hover,
+ .login-create-event-button:hover,
 a.log-out-button:hover,
 a.likes-dropdown-button:hover,
 a.tickets-dropdown-button:hover {
@@ -48,37 +48,37 @@ a.tickets-dropdown-button:hover {
 }
 
 
-div.navbar > #user-drop-down,
-div.navbar > .ticket-button,
-div.navbar > .likes-button,
-div.navbar > .login-create-event-button {
+ #user-drop-down,
+ .ticket-button,
+ .likes-button,
+ .login-create-event-button {
     float: right;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-    font-size:large;
+    font-size:medium;
     font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
 } 
 
-div.navbar  #eventbrite-button,
-div.navbar .search-bar {
+ #eventbrite-button,
+ .search-bar {
   text-align: center;
     padding: 14px 16px;
     height: 48px;
     /* margin-top: 15px; */
     text-decoration: none;
-    font-size:large;
+    font-size:medium;
     font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
 }
 
 
-div.navbar > .linkedin-link,
-div.navbar > .likes-button { 
+ .linkedin-link,
+ .likes-button { 
   color:  #39364f;
 }
 
-div.navbar .logged-create-event-button,
-div.navbar .login-create-event-button {
+.logged-create-event-button,
+.login-create-event-button {
   color: rgb(61, 100, 255);
 }
 
@@ -184,8 +184,15 @@ div.navbar .login-create-event-button {
 } 
 
 .profile-dropdown {
-  display: inline-grid;
+  /* display: inline-grid; */
+  display: grid;
   list-style-type: none;
+}
+
+.img-banner {
+  height: auto;
+  top: 0;
+  width: 100%;
 }
 
 

@@ -52,6 +52,7 @@ const LoggedInNav = () => {
             placeholder="search events"
           />
         </div>
+
         <button id="user-drop-down" onClick={openMenu}>
           <div>
             <BiUserCircle className="user-icon" style={{ fontSize: "25px" }} />
@@ -61,24 +62,6 @@ const LoggedInNav = () => {
             <BsChevronDown className="down-arrow" />
           </div>
         </button>
-        <NavLink className="ticket-button" to="#">
-          <div>
-            <TbTicket />
-          </div>
-          <p>Tickets</p>
-        </NavLink>
-        <NavLink className="likes-button" to="#">
-          <div>
-            <BsSuitHeart />
-          </div>
-          <p>Likes</p>
-        </NavLink>
-        <NavLink className="login-create-event-button" to="#">
-          <div>
-            <AiOutlinePlus />
-          </div>
-          <p>Create an event</p>
-        </NavLink>
         {showMenu && (
           <div id="profile-dropdown-container">
             <ul className="profile-dropdown">
@@ -100,6 +83,46 @@ const LoggedInNav = () => {
             </ul>
           </div>
         )}
+
+        <NavLink className="ticket-button" to="#">
+          <div>
+            <TbTicket />
+          </div>
+          <p>Tickets</p>
+        </NavLink>
+        <NavLink className="likes-button" to="#">
+          <div>
+            <BsSuitHeart />
+          </div>
+          <p>Likes</p>
+        </NavLink>
+        <NavLink className="login-create-event-button" to="#">
+          <div>
+            <AiOutlinePlus />
+          </div>
+          <p>Create an event</p>
+        </NavLink>
+        {/* {showMenu && (
+          <div id="profile-dropdown-container">
+            <ul className="profile-dropdown">
+              <li>
+                <Link className="tickets-dropdown-button" to="#">
+                  Tickets (4)
+                </Link>
+              </li>
+              <li>
+                <Link className="likes-dropdown-button" to="#">
+                  Liked
+                </Link>
+              </li>
+              <li>
+                <Link className="log-out-button" to="#" onClick={logout}>
+                  Log Out
+                </Link>
+              </li>
+            </ul>
+          </div>
+        )} */}
       </div>
     </>
   );

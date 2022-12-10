@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getEvents, fetchEvents } from "../../store/event.js";
 import EventListItem from "./EventListItem.js";
 
-const EventIndexSection = () => {
+const EventIndexPage = () => {
   const dispatch = useDispatch();
   const events = useSelector(getEvents);
 
@@ -18,4 +18,4 @@ const EventIndexSection = () => {
   return <ol>{eventsList}</ol>;
 };
 
-export default EventIndexSection;
+export default EventIndexPage;
