@@ -65,6 +65,18 @@ const EventListItem = (props) => {
     return parsedDateObj;
   };
 
+  const formatTicketPrice = () => {
+    const numSplit = event.ticketPrice.split(".");
+    let formattedPrice;
+    if (numSplit[1].length === 1) {
+      formattedPrice = event.ticketPrice + "0";
+    } else {
+      formattedPrice = event.ticketPrice;
+    }
+
+    return formattedPrice;
+  };
+
   return (
     <div>
       <NavLink to={`/events/${event.id}`}>
@@ -76,14 +88,18 @@ const EventListItem = (props) => {
           <strong>{parseDate()}</strong>
         </div>
         <div>
-          <strong>Body:</strong> {event.body}
+          <strong>{event.address.slice(0, 20) + "..."}</strong>
         </div>
         <div>
-          <strong>Address:</strong> {event.address}
+          <strong>{"Starts at $" + formatTicketPrice()}</strong>
         </div>
         <div>
-          <strong>Category: </strong>
-          {event.category}
+          <strong>
+            {"Organized by " +
+              event.organizerFirstName +
+              " " +
+              event.organizerLastName}
+          </strong>
         </div>
       </NavLink>
     </div>
