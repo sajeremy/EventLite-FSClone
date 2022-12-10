@@ -21,7 +21,12 @@ const EventIndexPage = () => {
       <section className="event-index-layout">
         <div className="index-layout-border">
           <EventCategories />
-          <ol>{eventsList}</ol>
+          <div className="index-section-container">
+            <div className="index-card-header">
+              <h3>Events Nearby</h3>
+            </div>
+            <div className="index-feed-container">{eventsList}</div>
+          </div>
         </div>
       </section>
     </>
