@@ -85,13 +85,11 @@ const EventListItem = (props) => {
     );
     if (likeStatus) {
       setLikeStatus(false);
-      document.getElementById(
-        `event-card-like-button-icons-${event.id}`
-      ).style.color = "#39364f";
+      icon.style.color = "#39364f";
     } else {
       setLikeStatus(true);
       if (icon) {
-        icon.style.color = "red";
+        icon.style.color = "#d1410c";
       }
     }
   };
@@ -100,7 +98,7 @@ const EventListItem = (props) => {
     if (likeStatus) {
       return <BsSuitHeartFill />;
     } else {
-      return <BsSuitHeart />;
+      return <BsSuitHeart id="like-icon-thickness" />;
     }
   };
 

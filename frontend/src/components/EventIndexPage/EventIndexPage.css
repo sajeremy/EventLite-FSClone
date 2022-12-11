@@ -96,7 +96,6 @@ section.event-index-layout {
 
 .event-card-container-outer-edge {
     padding: 16px;
-    /* overflow: visible; */
     width: 25%;
     min-width: 250px;
 
@@ -180,15 +179,14 @@ section.event-index-layout {
     
 }
 
-
 .event-card-like-button {
     border: none;
     background-color: transparent;
     cursor: pointer;
 }
 
-#event-card-like-button-icons {
+#like-icon-thickness {
     stroke-width:.05rem;
-    /* color: red; */
-    color: #39364f;
 }
+
+
