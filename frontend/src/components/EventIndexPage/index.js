@@ -24,7 +24,7 @@ const EventIndexPage = () => {
           <EventCategories />
           <div className="index-section-container">
             <div className="index-card-header">
-              <h3>Events Nearby</h3>
+              <h3 className="events-index-title">Events Nearby</h3>
             </div>
             <div className="index-feed-container">{eventsList}</div>
           </div>

@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 
 const EventListItem = (props) => {
   const { event } = props;
+  const [likeStatus, setLikeStatus] = useState(false);
   const startDate = event.startDatetime;
   const dateObj = new Date(startDate);
   const nowObj = new Date();
@@ -77,35 +79,68 @@ const EventListItem = (props) => {
     return formattedPrice;
   };
 
+  const handleLikeClick = () => {
+    let icon = document.getElementById(
+      `event-card-like-button-icons-${event.id}`
+    );
+    if (likeStatus) {
+      setLikeStatus(false);
+      document.getElementById(
+        `event-card-like-button-icons-${event.id}`
+      ).style.color = "#39364f";
+    } else {
+      setLikeStatus(true);
+      if (icon) {
+        icon.style.color = "red";
+      }
+    }
+  };
+
+  const likeIcon = () => {
+    if (likeStatus) {
+      return <BsSuitHeartFill />;
+    } else {
+      return <BsSuitHeart />;
+    }
+  };
+
   return (
     <div className="event-card-container-outer-edge">
       <div className="event-card-container">
-        <NavLink to={`/events/${event.id}`}>
-          <img src={event.photoUrl} alt=""></img>
-          <div>
-            <strong>{event.title}</strong>
-          </div>
-          <div>
-            <strong>{parseDate()}</strong>
-          </div>
-          <div>
-            <strong>{event.address.slice(0, 20) + "..."}</strong>
-          </div>
-          <div>
-            <strong>{"Starts at $" + formatTicketPrice()}</strong>
-          </div>
-          <div>
-            <strong>
+        <div className="event-card-img-container">
+          <NavLink to={`/events/${event.id}`}>
+            <img src={event.photoUrl} alt=""></img>
+          </NavLink>
+        </div>
+        <div className="event-card-info-container">
+          <h3 className="event-card-info-title">{event.title}</h3>
+          <p className="event-card-info-date">{parseDate()}</p>
+          <p className="event-card-info-address">
+            {event.address.slice(0, 19) + "..."}
+          </p>
+          <p className="event-card-info-ticket">
+            {"Starts at $" + formatTicketPrice()}
+          </p>
+          <div className="event-card-info-organizer-likes">
+            <p>
               {"Organized by " +
                 event.organizerFirstName +
                 " " +
                 event.organizerLastName}
-            </strong>
+            </p>
+            <p># of Likes</p>
           </div>
-          <div>
-            <strong># of Likes</strong>
+          <div className="event-card-like-button-container">
+            <button
+              onClick={() => handleLikeClick()}
+              className="event-card-like-button"
+            >
+              <div id={`event-card-like-button-icons-${event.id}`}>
+                {likeIcon()}
+              </div>
+            </button>
           </div>
-        </NavLink>
+        </div>
       </div>
     </div>
   );
