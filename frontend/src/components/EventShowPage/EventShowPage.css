@@ -64,6 +64,7 @@
     width: 70%;
     margin-left:15%;
     margin-right: 15%;
+    padding: 48px 0 0;
 }
 
 .show-page-title {
@@ -76,5 +77,10 @@
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     max-width: 720px;
+    
+}
+
+.show-page-start-date {
+    margin-bottom: -10px;
 }
 

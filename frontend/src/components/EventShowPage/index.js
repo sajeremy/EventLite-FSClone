@@ -8,6 +8,7 @@ import { FaRulerCombined } from "react-icons/fa";
 const EventShowPage = () => {
   const { eventId } = useParams();
   const dispatch = useDispatch();
+  let startDateObj, endDateObj;
 
   useEffect(() => {
     dispatch(fetchEvent(eventId));
@@ -18,6 +19,13 @@ const EventShowPage = () => {
   if (!event) {
     return null;
   }
+
+  startDateObj = new Date(event.startDatetime);
+  endDateObj = new Date(event.endDatetime);
+  const startDateString = startDateObj.toLocaleString("en-US", {
+    month: "short",
+    day: "numeric",
+  });
 
   const renderBlurImg = async () => {
     await event;
@@ -36,6 +44,9 @@ const EventShowPage = () => {
         <img className="img-test" src={event.photoUrl} alt=""></img>
       </div>
       <div className="show-page-details-container">
+        <div className="show-page-start-date">
+          <p>{startDateString}</p>
+        </div>
         <div className="show-page-title">
           <h1>{event.title}</h1>
         </div>
