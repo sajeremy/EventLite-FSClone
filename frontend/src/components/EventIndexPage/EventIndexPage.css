@@ -87,3 +87,20 @@ section.event-index-layout {
     margin: 0 auto;
     padding: 0 50px !important
 }
+
+.index-section-container {
+    margin-top: 20px;
+}
+
+.event-card-container-outer-edge {
+    padding: 16px;
+    overflow: visible;
+    width: 25%;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    box-sizing: border-box;
+    display: inline-block;
+    vertical-align: top;
+
+}

@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getEvents, fetchEvents } from "../../store/event.js";
 import EventListItem from "./EventListItem.js";
 import EventCategories from "./EventCategories";
+import "./EventIndexPage.css";
 
 const EventIndexPage = () => {
   const dispatch = useDispatch();

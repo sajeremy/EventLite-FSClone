@@ -78,30 +78,35 @@ const EventListItem = (props) => {
   };
 
   return (
-    <div>
-      <NavLink to={`/events/${event.id}`}>
-        <img src={event.photoUrl} alt=""></img>
-        <div>
-          <strong>{event.title}</strong>
-        </div>
-        <div>
-          <strong>{parseDate()}</strong>
-        </div>
-        <div>
-          <strong>{event.address.slice(0, 20) + "..."}</strong>
-        </div>
-        <div>
-          <strong>{"Starts at $" + formatTicketPrice()}</strong>
-        </div>
-        <div>
-          <strong>
-            {"Organized by " +
-              event.organizerFirstName +
-              " " +
-              event.organizerLastName}
-          </strong>
-        </div>
-      </NavLink>
+    <div className="event-card-container-outer-edge">
+      <div className="event-card-container">
+        <NavLink to={`/events/${event.id}`}>
+          <img src={event.photoUrl} alt=""></img>
+          <div>
+            <strong>{event.title}</strong>
+          </div>
+          <div>
+            <strong>{parseDate()}</strong>
+          </div>
+          <div>
+            <strong>{event.address.slice(0, 20) + "..."}</strong>
+          </div>
+          <div>
+            <strong>{"Starts at $" + formatTicketPrice()}</strong>
+          </div>
+          <div>
+            <strong>
+              {"Organized by " +
+                event.organizerFirstName +
+                " " +
+                event.organizerLastName}
+            </strong>
+          </div>
+          <div>
+            <strong># of Likes</strong>
+          </div>
+        </NavLink>
+      </div>
     </div>
   );
 };
