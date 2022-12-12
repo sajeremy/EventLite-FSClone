@@ -18,7 +18,6 @@ const EventShowPage = () => {
   }, [eventId, dispatch]);
 
   const event = useSelector(getEvent(eventId));
-
   if (!event) {
     return null;
   }
@@ -29,7 +28,7 @@ const EventShowPage = () => {
   const timeDuration = () => {
     const timeLength = (endDateObj.getTime() - startDateObj.getTime()) / 1000;
     if (timeLength > 86400) {
-      let numDays = Math.floor(timeLength / 86400);
+      let numDays = Math.round(timeLength / 86400);
       return `${numDays} Days`;
     } else {
       let numHours = Math.floor(timeLength / 3600);

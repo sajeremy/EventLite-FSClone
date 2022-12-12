@@ -124,7 +124,13 @@ section.event-index-layout {
     font-weight: 650;
     font-size: 1.125rem;
     line-height: 1.5rem;
-    text-rendering: optimizeLegibility;   
+    /* text-rendering: optimizeLegibility;    */
+    
+}
+
+.event-card-info-title-link {
+    text-decoration: none;
+    color: #39364f;
 }
 
 .event-card-info-date {

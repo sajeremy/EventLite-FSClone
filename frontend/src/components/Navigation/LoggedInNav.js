@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, Redirect } from "react-router-dom";
 import "./Navigation.css";
 import { BsSearch, BsSuitHeart, BsChevronDown } from "react-icons/bs";
 import { TbTicket } from "react-icons/tb";
@@ -36,6 +36,7 @@ const LoggedInNav = () => {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    // <Redirect to="/login" />;
   };
 
   return (
@@ -100,7 +101,7 @@ const LoggedInNav = () => {
           </div>
           <p>Likes</p>
         </NavLink>
-        <NavLink className="login-create-event-button" to="#">
+        <NavLink className="login-create-event-button" to="/events">
           <div>
             <AiOutlinePlus />
           </div>

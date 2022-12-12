@@ -77,8 +77,8 @@ ApplicationRecord.transaction do
         ticket_price: 22.89,
         category: 'Hobbies',
         organizer_id: 1,
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/image1.jpg",
-        filename: "image1.jpg"
+        # file: "https://eventlite-22-seeds.s3.amazonaws.com/image1.jpg",
+        # filename: "image1.jpg"
       },
       {
         title:'2023 New York International Salsa Congress',
@@ -91,8 +91,8 @@ ApplicationRecord.transaction do
         ticket_price: 200.00,
         category: 'Hobbies',
         organizer_id: 1,
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/image7.jpg",
-        filename: "image7.jpg"
+        # file: "https://eventlite-22-seeds.s3.amazonaws.com/image8.jpg",
+        # filename: "image7.jpg"
       },
       {
         title:'Japanese Taiko "Thunder Drum" Workshop, Demo, & Jam Session',
@@ -111,8 +111,9 @@ ApplicationRecord.transaction do
         ticket_price: 43.69,
         category: 'Performing & Visual Arts',
         organizer_id: 2,
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/image2.jpg",
-        filename: "image2.jpg"
+        # file: "https://eventlite-22-seeds.s3.amazonaws.com/image2.jpg",
+        # file: "https://www.sidehustlenation.com/wp-content/uploads/2022/05/no-money-memes-4.jpg",
+        # filename: "image2.jpg"
       },
       {
         title:'I FEEL: Neon Utopia',
@@ -130,8 +131,9 @@ ApplicationRecord.transaction do
         ticket_price: 28.79,
         category: 'Music',
         organizer_id: 3,
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/Image3.jpg",
-        filename: "image3.jpg"
+        # file: "https://eventlite-22-seeds.s3.amazonaws.com/Image3.jpg",
+        # file: "https://www.sidehustlenation.com/wp-content/uploads/2022/05/no-money-memes-4.jpg",
+        # filename: "image3.jpg"
       },
       {
         title:'Tech and Startup Networking Mixer',
@@ -159,8 +161,9 @@ ApplicationRecord.transaction do
         ticket_price: 0.00,
         category: 'Business',
         organizer_id: 4,
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/image4.jpg",
-        filename: "image4.jpg"
+        # file: "https://eventlite-22-seeds.s3.amazonaws.com/image4.jpg",
+        # file: "https://www.sidehustlenation.com/wp-content/uploads/2022/05/no-money-memes-4.jpg",
+        # filename: "image4.jpg"
       },
       {
         title:'NYC Blockchain Network Meetup - at The Hugh',
@@ -175,8 +178,9 @@ ApplicationRecord.transaction do
         ticket_price: 0.00,
         category: 'Business',
         organizer_id: 5,
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/image5.jpg",
-        filename: "image5.jpg"
+        # file: "https://eventlite-22-seeds.s3.amazonaws.com/image5.jpg",
+        # file: "https://www.sidehustlenation.com/wp-content/uploads/2022/05/no-money-memes-4.jpg",
+        # filename: "image5.jpg"
       },
       {
         title:'SAN SEBASTIAN STREET FESTIVAL 2023',
@@ -189,8 +193,9 @@ ApplicationRecord.transaction do
         ticket_price: 20.50,
         category: 'Holiday',
         organizer_id: 6,
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/image6.jpg",
-        filename: "image6.jpg"
+        # file: "https://eventlite-22-seeds.s3.amazonaws.com/image6.jpg",
+        # file: "https://www.sidehustlenation.com/wp-content/uploads/2022/05/no-money-memes-4.jpg",
+        # filename: "image6.jpg"
       },
       {
         title:'Mambo Mayhem: South Side Salsa',
@@ -226,8 +231,9 @@ ApplicationRecord.transaction do
         ticket_price: 20.50,
         category: 'Performing & Visual Arts',
         organizer_id: 7,
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/image7.jpg",
-        filename: "image7.jpg"
+        # file: "https://eventlite-22-seeds.s3.amazonaws.com/image7.jpg",
+        # file: "https://www.sidehustlenation.com/wp-content/uploads/2022/05/no-money-memes-4.jpg",
+        # filename: "image7.jpg"
       },
       {
         title:'Dance Event',
@@ -239,8 +245,9 @@ ApplicationRecord.transaction do
         ticket_price: 20.50,
         category: 'dance',
         organizer_id: 8,
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/image1.jpg",
-        filename: "image1.jpg"
+        # file: "https://eventlite-22-seeds.s3.amazonaws.com/image1.jpg",
+        # file: "https://www.sidehustlenation.com/wp-content/uploads/2022/05/no-money-memes-4.jpg",
+        # filename: "image1.jpg"
       },
       {
         title:'Dance Event',
@@ -252,8 +259,9 @@ ApplicationRecord.transaction do
         ticket_price: 20.50,
         category: 'dance',
         organizer_id: 2,
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/image1.jpg",
-        filename: "image1.jpg"
+        # file: "https://eventlite-22-seeds.s3.amazonaws.com/image1.jpg",
+        # file: "https://www.sidehustlenation.com/wp-content/uploads/2022/05/no-money-memes-4.jpg",
+        # filename: "image1.jpg"
       },
       {
         title:'Dance Event',
@@ -265,8 +273,9 @@ ApplicationRecord.transaction do
         ticket_price: 20.50,
         category: 'dance',
         organizer_id: 2,
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/image1.jpg",
-        filename: "image1.jpg"
+        # file: "https://eventlite-22-seeds.s3.amazonaws.com/image1.jpg",
+        # file: "https://www.sidehustlenation.com/wp-content/uploads/2022/05/no-money-memes-4.jpg",
+        # filename: "image1.jpg"
       },
       {
         title:'Dance Event',
@@ -278,8 +287,9 @@ ApplicationRecord.transaction do
         ticket_price: 20.50,
         category: 'dance',
         organizer_id: 2,
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/image1.jpg",
-        filename: "image1.jpg"
+        # file: "https://eventlite-22-seeds.s3.amazonaws.com/image1.jpg",
+        # file: "https://www.sidehustlenation.com/wp-content/uploads/2022/05/no-money-memes-4.jpg",
+        # filename: "image1.jpg"
       },
 
     ]
@@ -293,8 +303,8 @@ ApplicationRecord.transaction do
       end
       
       new_event = Event.create!(event_hash)
-      file = URI.open(event[:file])
-      new_event.photo.attach(io: file, filename: event[:filename])
+      # file = URI.open(event[:file])
+      # new_event.photo.attach(io: file, filename: event[:filename])
 
     end
 

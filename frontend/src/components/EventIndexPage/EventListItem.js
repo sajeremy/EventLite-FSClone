@@ -111,7 +111,12 @@ const EventListItem = (props) => {
           </NavLink>
         </div>
         <div className="event-card-info-container">
-          <h3 className="event-card-info-title">{event.title}</h3>
+          <NavLink
+            className="event-card-info-title-link"
+            to={`/events/${event.id}`}
+          >
+            <h3 className="event-card-info-title">{event.title}</h3>
+          </NavLink>
           <p className="event-card-info-date">{parseDate()}</p>
           <p className="event-card-info-address">
             {event.address.slice(0, 19) + "..."}
