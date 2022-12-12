@@ -65,6 +65,8 @@
     margin-left:15%;
     margin-right: 15%;
     padding: 48px 0 0;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .show-page-title {
@@ -82,5 +84,104 @@
 
 .show-page-start-date {
     margin-bottom: -10px;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
 }
+
+.show-page-organizer-likes-container {
+    /* height: 100%; */
+   /* font-size: .875rem; */
+   /* line-height: 1.25rem; */
+   display: flex;
+   align-items: flex-start;
+   flex-wrap: wrap;
+   font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+
+}
+
+.show-page-organizer {
+    display: flex;
+    align-items: center;
+}
+
+.show-page-likes-text {
+    margin-right: 15px;
+    color: #6f7287;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.show-page-likes {
+    margin-block: auto;
+    display: flex;
+    align-items: center;
+    margin-left: 3rem;
+}
+
+.show-page-likes-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.show-page-when-and-where {
+    color:#1e0a3c;
+    font-size: 18px;
+    margin-top: 10px;
+}
+
+.show-page-details-left {
+    display: block;
+}
+.show-page-details-right {
+   max-width: 360px;
+   flex: 1;
+   margin-top: 50px;
+   margin-left: 100px;
+
+}
+
+.show-page-ticket-container {
+    border: .05rem rgba(57, 54, 79, .1) solid;
+    border-radius: 15px;
+    max-height: 140px;
+    width: 100%;
+    height: 140px;
+    position: sticky;
+    top: 24px;
+    bottom: auto;
+    z-index: 900;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.show-page-ticket-price {
+    text-align: center;
+    margin-bottom: 25px;
+    font-weight: 500;
+    text-overflow: ellipsis;
+    font-size: 1.1rem;
+    line-height: 1.3rem;
+
+}
+
+.show-page-ticket-button {
+    font-size: .875rem;
+    line-height: 1.5rem;
+    width: 312px;
+    height: 44px;
+    color: white;
+    background-color: #d1410c;
+    border: transparent;
+    border-radius: 5px;
+    margin-left: 5%;
+    cursor: pointer;
+}
+
+.show-page-ticket-button:hover {
+   background-color: #f05537; 
+}
+
 
