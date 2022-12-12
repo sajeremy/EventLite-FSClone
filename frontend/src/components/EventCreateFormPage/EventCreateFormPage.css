@@ -1,0 +1,91 @@
+.event-form-container {
+    border: red 3px solid;
+    width: 75vw;
+    display: block;
+    position: absolute;
+    right: 12.5%;
+    /* min-width: 60vw; */
+
+}
+
+.created-events-index-button-container {
+    border: blue 3px solid;
+    display: block;
+    margin: 0;
+    padding: 0;
+    font-size: 14px;
+    font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;
+    font-weight: 400;
+    color: #39364f;
+}
+
+.created-events-index-button {
+    text-decoration: none;
+    background: none;
+    border: none;
+    text-align: left;
+    color: #3659e3;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;;
+}
+
+.created-events-index-button-icon {
+    font-size: 18px;
+    stroke-width: 1;
+}
+
+.created-events-index-button-text {
+    font-size: 14px;
+}
+
+.create-event-form-container {
+    border: green 3px solid;
+    margin-bottom: 48px;
+    margin-top: 20px;
+    padding-bottom: 48px;
+    padding-top: 20px;
+    margin-left: 160px;
+    margin-right: 80px;
+    min-width: 453px;
+    max-width: 680px;
+    /* overflow-wrap: break-word; */
+}
+
+.create-event-form {
+    display: block;
+    overflow-wrap: break-word;
+    
+}
+
+.create-event-form-basic-info-section {
+    /* min-width: 453px; */
+    max-width: 640px;
+    /* overflow-wrap: break-word; */
+}
+
+.basic-info-header-container h1,
+.location-header-container h1,
+.date-time-header-container h1 {
+    color: #1e0a3c;
+    font-size: 1.875rem;
+    line-height: 2.5rem;
+    font-weight: 550;
+    letter-spacing: .5px;
+    margin-right: -0.5px;
+    /* overflow-wrap: break-word; */
+
+}
+
+.basic-info-header-container p,
+.location-header-container p,
+.date-time-header-container p {
+    color: #39364f;
+    font-size: .855rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: .5px;
+    margin-right: -0.5px;
+    /* overflow-wrap: break-word; */
+
+}
