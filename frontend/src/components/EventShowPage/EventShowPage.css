@@ -67,6 +67,7 @@
     padding: 48px 0 0;
     display: flex;
     flex-wrap: wrap;
+    margin-bottom: 100px;
 }
 
 .show-page-title {
@@ -125,14 +126,15 @@
     font-size: 20px;
 }
 
-.show-page-when-and-where {
+.show-page-when-and-where,
+.show-page-about-event-header {
     color:#1e0a3c;
     font-size: 18px;
     margin-top: 10px;
 }
 
 .show-page-details-left {
-    display: block;
+   max-width:60%;
 }
 .show-page-details-right {
    max-width: 360px;

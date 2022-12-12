@@ -3,7 +3,7 @@ import { NavLink, useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { fetchEvent, getEvent } from "../../store/event";
 import "./EventShowPage.css";
-import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
+import { BsSuitHeart, BsSuitHeartFill, BsClockHistory } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
 import { AiTwotoneCalendar } from "react-icons/ai";
 
@@ -25,6 +25,43 @@ const EventShowPage = () => {
 
   startDateObj = new Date(event.startDatetime);
   endDateObj = new Date(event.endDatetime);
+
+  const timeDuration = () => {
+    const timeLength = (endDateObj.getTime() - startDateObj.getTime()) / 1000;
+    if (timeLength > 86400) {
+      let numDays = Math.floor(timeLength / 86400);
+      return `${numDays} Days`;
+    } else {
+      let numHours = Math.floor(timeLength / 3600);
+      let numMinutes = (timeLength % 3600) / 60;
+
+      if (numMinutes === 0) {
+        return `${numHours} Hours`;
+      } else {
+        return `${numHours} Hours and ${numMinutes} Minutes`;
+      }
+    }
+  };
+
+  const fullDateDuration = () => {
+    const parsedStartDateObj = startDateObj.toLocaleString("en-US", {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    });
+    const parsedEndDateObj = endDateObj.toLocaleString("en-US", {
+      weekday: "short",
+      month: "short",
+      day: "numeric",
+      hour: "numeric",
+      minute: "numeric",
+      hour12: true,
+    });
+    return parsedStartDateObj + " - " + parsedEndDateObj;
+  };
 
   const startDateString = startDateObj.toLocaleString("en-US", {
     month: "short",
@@ -123,6 +160,7 @@ const EventShowPage = () => {
               </div>
               <div className="show-page-date-text">
                 <h3>Date and time</h3>
+                <p>{fullDateDuration()}</p>
               </div>
             </div>
             <div className="show-page-location-container">
@@ -133,6 +171,20 @@ const EventShowPage = () => {
                 <h3>Location</h3>
                 <p>{event.address}</p>
               </div>
+            </div>
+          </div>
+          <div className="show-page-about-event-container">
+            <div className="show-page-about-event-header">
+              <h2>About this event</h2>
+            </div>
+            <div className="show-page-time-duration">
+              <div className="show-page-duration-icon">
+                <BsClockHistory />
+              </div>
+              <div>{timeDuration()}</div>
+            </div>
+            <div className="show-page-event-description">
+              <p>{event.body}</p>
             </div>
           </div>
         </div>

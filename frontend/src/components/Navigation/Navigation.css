@@ -135,6 +135,7 @@ a.tickets-dropdown-button:hover {
   position: absolute;
   right: 0;
   top: 42px;
+  z-index: 999;
 
 }
 
