@@ -72,7 +72,12 @@ const LoggedInNav = () => {
               </li>
               <li>
                 <Link className="likes-dropdown-button" to="#">
-                  Liked
+                  Liked (5)
+                </Link>
+              </li>
+              <li>
+                <Link className="likes-dropdown-button" to="#">
+                  Created Events (2)
                 </Link>
               </li>
               <li>
