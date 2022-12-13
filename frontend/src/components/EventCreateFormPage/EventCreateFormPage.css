@@ -45,8 +45,10 @@
     margin-top: 20px;
     padding-bottom: 48px;
     padding-top: 20px;
-    margin-left: 160px;
-    margin-right: 80px;
+    /* margin-left: 160px;
+    margin-right: 80px; */
+    margin-left: 10vw;
+    margin-right: 10vw;
     min-width: 453px;
     max-width: 680px;
     /* overflow-wrap: break-word; */

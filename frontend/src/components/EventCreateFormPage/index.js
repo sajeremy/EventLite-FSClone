@@ -1,54 +1,76 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Redirect } from "react-router-dom";
-import { createEvent } from "../../store/event";
+import { createFormEvent } from "../../store/event";
+// import csrfFetch from "../../store/csrf";
 import { BiChevronLeft } from "react-icons/bi";
 import "./EventCreateFormPage.css";
 
 const EventCreateFormPage = () => {
   const dispatch = useDispatch();
-  const organizerId = useSelector((state) =>
-    state.session ? state.session.id : null
-  );
+  // const organizerId = useSelector((state) =>
+  //   state.session ? state.session.id : null
+  // );
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [address, setAddress] = useState("");
-  const [startDateTime, setStartDateTime] = useState("");
-  const [endDateTime, setEndDateTime] = useState("");
-  const [eventPhoto, setEventPhoto] = useState("");
+  const [startDatetime, setstartDatetime] = useState("");
+  const [endDatetime, setendDatetime] = useState("");
   const [body, setBody] = useState("");
-  // const [startTime, setStartTime] = useState("");
-  // const [endTime, setEndTime] = useState("");
-  // const [organizerName, setOrganizerName] = useState("");
-  // const [city, setCity] = useState("");
-  // const [usState, setUsState] = useState("");
+  const [capacity, setCapacity] = useState("");
+  const [ticketPrice, setTicketPrice] = useState("");
   const [errors, setErrors] = useState([]);
 
-  const handleSubmit = (e) => {
+  // const [uploaded, setUploaded] = useState("");
+  // const [redirect, setRedirect] = useState(false);
+  // const [loading, setLoading] = useState(false);
+  const [photoFile, setPhotoFile] = useState(null);
+  // const [photoUrl, setPhotoUrl] = useState(null);
+
+  const handleFile = (e) => {
+    const file = e.currentTarget.files[0];
+    setPhotoFile(file);
+
+    // const reader = new FileReader();
+    // reader.addEventListener("load", () => {
+    //   setPhotoUrl(reader.result);
+    // });
+    // reader.readAsDataURL(e.target.files[0]);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-    return dispatch(
-      createEvent({
-        title,
-        body,
-        category,
-        address,
-        startDateTime,
-        endDateTime,
-      })
-    ).catch(async (res) => {
-      let data;
-      try {
-        data = await res.clone().json();
-      } catch {
-        data = await res.text();
-      }
-      if (data?.errors) setErrors(data.errors);
-      else if (data) setErrors([data]);
-      else setErrors([res.statusText]);
-    });
+    // setLoading(true);
 
-    // return setErrors(["Emails must match"]);
+    const formData = new FormData();
+    formData.append("event[title]", title);
+    formData.append("event[category]", category);
+    formData.append("event[address]", address);
+    formData.append("event[start_datetime]", startDatetime);
+    formData.append("event[end_datetime]", endDatetime);
+    formData.append("event[body]", body);
+    formData.append("event[capacity]", capacity);
+    formData.append("event[ticket_price]", ticketPrice);
+
+    if (photoFile) {
+      formData.append("event[photo]", photoFile);
+    }
+
+    return dispatch(createFormEvent(formData, setPhotoFile)).catch(
+      async (res) => {
+        let data;
+        try {
+          // .clone() essentially allows you to read the response body twice
+          data = await res.clone().json();
+        } catch {
+          data = await res.text(); // Will hit this case if the server is down
+        }
+        if (data?.errors) setErrors(data.errors);
+        else if (data) setErrors([data]);
+        else setErrors([res.statusText]);
+      }
+    );
   };
   const handleTitle = () => {
     let result;
@@ -89,7 +111,7 @@ const EventCreateFormPage = () => {
       }
     }
   };
-  const handleStartDateTime = () => {
+  const handleStartDatetime = () => {
     let result;
     const elem = document.getElementById("create-event-start-datetime-input");
     if (errors.includes("Can't be blank")) {
@@ -102,7 +124,7 @@ const EventCreateFormPage = () => {
       }
     }
   };
-  const handleEndDateTime = () => {
+  const handleEndDatetime = () => {
     let result;
     const elem = document.getElementById("create-event-end-datetime-input");
     if (errors.includes("Can't be blank")) {
@@ -128,7 +150,38 @@ const EventCreateFormPage = () => {
       }
     }
   };
+  const handleCapacity = () => {
+    let result;
+    const elem = document.getElementById("create-event-capacity-input");
+    if (errors.includes("Can't be blank")) {
+      result = "Must enter capacity";
+      elem.style = "border-color:#c5162e";
+      return result;
+    } else {
+      if (elem) {
+        elem.style = "border-color:rgb(238, 237, 242)";
+      }
+    }
+  };
+  const handleTicketPrice = () => {
+    let result;
+    const elem = document.getElementById("create-event-ticket-price-input");
+    if (errors.includes("Can't be blank")) {
+      result = "Must enter ticket price";
+      elem.style = "border-color:#c5162e";
+      return result;
+    } else {
+      if (elem) {
+        elem.style = "border-color:rgb(238, 237, 242)";
+      }
+    }
+  };
+  // const handleFile = (e) => {
+  //   const file = e.currentTarget.files[0];
+  //   setEventPhoto(file);
 
+  // console.log(eventPhoto);
+  console.log(photoFile);
   return (
     <div className="event-form-container">
       <div className="created-events-index-button-container">
@@ -167,11 +220,12 @@ const EventCreateFormPage = () => {
             </div>
             <div className="category-container">
               <select
+                defaultValue={"Category"}
                 className="create-event-input"
                 id="create-event-category-input"
                 onChange={(e) => setCategory(e.target.value)}
               >
-                <option value="Category" selected="true" disabled>
+                <option value="Category" disabled>
                   Category
                 </option>
                 <option value="Music">Music</option>
@@ -232,11 +286,11 @@ const EventCreateFormPage = () => {
                 id="create-event-start-datetime-input"
                 type="datetime-local"
                 // placeholder="Specify address for event."
-                value={startDateTime}
-                onChange={(e) => setStartDateTime(e.target.value)}
+                value={startDatetime}
+                onChange={(e) => setstartDatetime(e.target.value)}
               />
               <div className="create-event-error-handling-text">
-                {handleStartDateTime()}
+                {handleStartDatetime()}
               </div>
             </div>
             <div className="end-date-time-container">
@@ -247,11 +301,11 @@ const EventCreateFormPage = () => {
                 id="create-event-end-datetime-input"
                 type="datetime-local"
                 // placeholder="Specify address for event."
-                value={endDateTime}
-                onChange={(e) => setEndDateTime(e.target.value)}
+                value={endDatetime}
+                onChange={(e) => setendDatetime(e.target.value)}
               />
               <div className="create-event-error-handling-text">
-                {handleEndDateTime()}
+                {handleEndDatetime()}
               </div>
             </div>
           </div>
@@ -278,6 +332,62 @@ const EventCreateFormPage = () => {
               </div>
             </div>
           </div>
+          <div className="image-section">
+            <div className="image-header-container">
+              <h1>Main Event Image</h1>
+              <p>
+                This is the first image attendees will see at the top of your
+                listing.
+              </p>
+            </div>
+            <div className="image-input-container">
+              <input
+                type="file"
+                className="create-event-input"
+                id="create-event-image-input"
+                onChange={handleFile}
+              ></input>
+              {/* <div className="create-event-error-handling-text">
+                {handleImage()}
+              </div> */}
+            </div>
+          </div>
+          <div className="ticket-section">
+            <div className="image-header-container">
+              <h1>Tickets</h1>
+            </div>
+            <div className="ticket-input-container">
+              <div>
+                <label>Capacity</label>
+              </div>
+              <input
+                className="create-event-input"
+                id="create-event-capacity-input"
+                type="number"
+                placeholder="(i.e. 1, 10, 100)"
+                value={capacity}
+                onChange={(e) => setCapacity(e.target.value)}
+              />
+              <div className="create-event-error-handling-text">
+                {handleCapacity()}
+              </div>
+              <div>
+                <label>Ticket Price</label>
+              </div>
+              <input
+                className="create-event-input"
+                id="create-event-ticket-price-input"
+                type="number"
+                placeholder="(i.e. 0, 2.50, 30.99)"
+                value={ticketPrice}
+                onChange={(e) => setTicketPrice(e.target.value)}
+              />
+              <div className="create-event-error-handling-text">
+                {handleTicketPrice()}
+              </div>
+            </div>
+          </div>
+          <button type="submit">Create Event</button>
         </form>
       </div>
     </div>

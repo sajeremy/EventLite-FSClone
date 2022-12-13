@@ -101,7 +101,7 @@ const LoggedInNav = () => {
           </div>
           <p>Likes</p>
         </NavLink>
-        <NavLink className="login-create-event-button" to="/events">
+        <NavLink className="login-create-event-button" to="/events/create">
           <div>
             <AiOutlinePlus />
           </div>

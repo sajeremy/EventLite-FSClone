@@ -55,6 +55,18 @@ export const createEvent = (event) => async (dispatch) => {
     dispatch(receiveEvent(newEvent));
   }
 };
+export const createFormEvent = (formData, setPhotoFile) => async (dispatch) => {
+  const res = await csrfFetch(`/api/events`, {
+    method: "POST",
+    body: formData,
+  });
+  if (res.ok) {
+    const newEvent = await res.json();
+    dispatch(receiveEvent(newEvent));
+    setPhotoFile(null);
+  }
+};
+
 export const updateEvent = (event) => async (dispatch) => {
   const res = await csrfFetch(`/api/events/${event.id}`, {
     method: "PUT",

@@ -23,7 +23,7 @@ function App() {
           <HomePageBanner />
           <EventIndexPage />
         </Route>
-        <Route exact path="/events">
+        <Route exact path="/events/create">
           <Navigation />
           <EventCreateFormPage />
         </Route>
