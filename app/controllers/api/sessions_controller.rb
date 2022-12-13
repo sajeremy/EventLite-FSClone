@@ -6,6 +6,7 @@ class Api::SessionsController < ApplicationController
       
       if current_user
         @user = current_user
+        # debugger;
         # render template: 'api/users/show'
         render 'api/users/show'
       else
@@ -31,6 +32,7 @@ class Api::SessionsController < ApplicationController
       if @user
         login!(@user)
         # render template: 'api/users/show'
+        # debugger
         render 'api/users/show'
       else
         render json: { errors: ['Password is not correct'] }, status: :unauthorized

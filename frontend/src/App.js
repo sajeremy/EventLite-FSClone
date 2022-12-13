@@ -27,7 +27,7 @@ function App() {
           <Navigation />
           <EventCreateFormPage />
         </Route>
-        <Route exact path="/events/:eventId">
+        <Route path="/events/:eventId">
           <Navigation />
           <EventShowPage />
         </Route>

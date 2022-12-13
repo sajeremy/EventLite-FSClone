@@ -29,7 +29,6 @@ const EventCreateFormPage = () => {
   // const [photoUrl, setPhotoUrl] = useState(null);
 
   const createFormEvent = (formData) => async (dispatch) => {
-    debugger;
     const res = await csrfFetch(`/api/events`, {
       method: "POST",
       body: formData,
@@ -64,10 +63,10 @@ const EventCreateFormPage = () => {
         // .clone() essentially allows you to read the response body twice
         data = await res.clone().json();
       } catch {
-        debugger;
+        // debugger;
         data = await res.text(); // Will hit this case if the server is down
       }
-      debugger;
+      // debugger;
       if (data?.errors) setErrors(data.errors);
       else if (data) setErrors([data]);
       else setErrors([res.statusText]);
@@ -201,6 +200,11 @@ const EventCreateFormPage = () => {
       </div>
       <div className="create-event-form-container">
         <form className="create-event-form" onSubmit={handleSubmit}>
+          <ul>
+            {errors.map((error) => (
+              <li key={error}>{error}</li>
+            ))}
+          </ul>
           <div className="basic-info-section">
             <div className="basic-info-header-container">
               <h1>Basic Info</h1>

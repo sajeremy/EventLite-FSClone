@@ -38,7 +38,7 @@ const LoggedInNav = () => {
     dispatch(sessionActions.logout());
     // <Redirect to="/login" />;
   };
-
+  // debugger;
   return (
     <>
       <div className="navbar">

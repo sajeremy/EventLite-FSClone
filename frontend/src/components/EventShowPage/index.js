@@ -67,10 +67,23 @@ const EventShowPage = () => {
     day: "numeric",
   });
 
+  const currentImg = async () => {
+    await event;
+    // debugger;
+    const defaultImg =
+      "https://i.etsystatic.com/25240952/r/il/fda1fb/2891680367/il_fullxfull.2891680367_d1e4.jpg";
+    if (!event.photoUrl) {
+      return defaultImg;
+    } else {
+      return event.photoUrl;
+    }
+  };
+
   const renderBlurImg = async () => {
     await event;
     const blurredImage = document.getElementById("show-page-blurred-img");
     blurredImage.style.backgroundImage = `url(${event.photoUrl})`;
+    // blurredImage.style.backgroundImage = `url(${currentImg()})`;
   };
   renderBlurImg();
 
@@ -119,6 +132,8 @@ const EventShowPage = () => {
           <div id="show-page-blurred-img"></div>
         </div>
         <img className="img-test" src={event.photoUrl} alt=""></img>
+        {/* <img className="img-test" src={currentImg()} alt=""></img> */}
+        {/* <img className="img-test" src={currentImg()} alt=""></img> */}
       </div>
 
       <div className="show-page-details-container">

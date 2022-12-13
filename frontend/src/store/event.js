@@ -32,7 +32,6 @@ export const getEvents = (state) => {
 
 //Thunk Action Creators
 export const fetchEvents = () => async (dispatch) => {
-  debugger;
   const res = await fetch(`/api/events`);
   if (res.ok) {
     const eventsObj = await res.json();
@@ -60,7 +59,6 @@ export const createEvent = (event) => async (dispatch) => {
   }
 };
 export const createFormEvent = (formData, setPhotoFile) => async (dispatch) => {
-  debugger;
   const history = useHistory();
   const res = await csrfFetch(`/api/events`, {
     method: "POST",
