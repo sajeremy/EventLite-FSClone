@@ -115,6 +115,19 @@ const EventCreateFormPage = () => {
       }
     }
   };
+  const handleBody = () => {
+    let result;
+    const elem = document.getElementById("create-event-body-input");
+    if (errors.includes("Can't be blank")) {
+      result = "Must include a description";
+      elem.style = "border-color:#c5162e";
+      return result;
+    } else {
+      if (elem) {
+        elem.style = "border-color:rgb(238, 237, 242)";
+      }
+    }
+  };
 
   return (
     <div className="event-form-container">
@@ -239,6 +252,29 @@ const EventCreateFormPage = () => {
               />
               <div className="create-event-error-handling-text">
                 {handleEndDateTime()}
+              </div>
+            </div>
+          </div>
+          <div className="body-section">
+            <div className="body-header-container">
+              <h1>Description</h1>
+              <p>
+                Grab people's attention with a description about your event. Add
+                more details to your event like your schedule, sponsors, or
+                featured guests
+              </p>
+            </div>
+            <div className="body-input-container">
+              <textarea
+                className="create-event-input"
+                id="create-event-body-input"
+                rows="5"
+                cols="50"
+                value={body}
+                onChange={(e) => setBody(e.target.value)}
+              ></textarea>
+              <div className="create-event-error-handling-text">
+                {handleBody()}
               </div>
             </div>
           </div>
