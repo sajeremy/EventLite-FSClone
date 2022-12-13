@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Redirect } from "react-router-dom";
+import { NavLink, useHistory } from "react-router-dom";
 import { createFormEvent } from "../../store/event";
-// import csrfFetch from "../../store/csrf";
+import csrfFetch from "../../store/csrf";
 import { BiChevronLeft } from "react-icons/bi";
 import "./EventCreateFormPage.css";
 
 const EventCreateFormPage = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
   // const organizerId = useSelector((state) =>
   //   state.session ? state.session.id : null
   // );
@@ -27,15 +28,15 @@ const EventCreateFormPage = () => {
   const [photoFile, setPhotoFile] = useState(null);
   // const [photoUrl, setPhotoUrl] = useState(null);
 
-  const handleFile = (e) => {
-    const file = e.currentTarget.files[0];
-    setPhotoFile(file);
-
-    // const reader = new FileReader();
-    // reader.addEventListener("load", () => {
-    //   setPhotoUrl(reader.result);
-    // });
-    // reader.readAsDataURL(e.target.files[0]);
+  const createFormEvent = (formData) => async (dispatch) => {
+    debugger;
+    const res = await csrfFetch(`/api/events`, {
+      method: "POST",
+      body: formData,
+    });
+    if (res.ok) {
+      history.push("/");
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -57,20 +58,22 @@ const EventCreateFormPage = () => {
       formData.append("event[photo]", photoFile);
     }
 
-    return dispatch(createFormEvent(formData, setPhotoFile)).catch(
-      async (res) => {
-        let data;
-        try {
-          // .clone() essentially allows you to read the response body twice
-          data = await res.clone().json();
-        } catch {
-          data = await res.text(); // Will hit this case if the server is down
-        }
-        if (data?.errors) setErrors(data.errors);
-        else if (data) setErrors([data]);
-        else setErrors([res.statusText]);
+    dispatch(createFormEvent(formData, setPhotoFile)).catch(async (res) => {
+      let data;
+      try {
+        // .clone() essentially allows you to read the response body twice
+        data = await res.clone().json();
+      } catch {
+        debugger;
+        data = await res.text(); // Will hit this case if the server is down
       }
-    );
+      debugger;
+      if (data?.errors) setErrors(data.errors);
+      else if (data) setErrors([data]);
+      else setErrors([res.statusText]);
+    });
+
+    // .then(history.push("/"));
   };
   const handleTitle = () => {
     let result;
@@ -175,6 +178,10 @@ const EventCreateFormPage = () => {
         elem.style = "border-color:rgb(238, 237, 242)";
       }
     }
+  };
+  const handleFile = (e) => {
+    const file = e.currentTarget.files[0];
+    setPhotoFile(file);
   };
   // const handleFile = (e) => {
   //   const file = e.currentTarget.files[0];

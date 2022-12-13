@@ -22,16 +22,16 @@ class Api::EventsController < ApplicationController
     end
     
     def create
-        debugger
+        # debugger
         @event = Event.new(event_params)
         @event.organizer_id = @current_user.id
         @event.start_datetime = @event.start_datetime ? @event.start_datetime.to_datetime : nil
         @event.end_datetime = @event.start_datetime ? @event.end_datetime.to_datetime : nil
         @event.ticket_price = @event.ticket_price.to_f
         @event.capacity = @event.capacity.to_i
-        debugger
+        # debugger
         if @event.save
-            render :show
+            # render :show
         else
             render json: { errors: @event.errors.full_messages }, status: :unprocessable_entity
         end

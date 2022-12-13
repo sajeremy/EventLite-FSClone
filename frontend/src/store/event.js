@@ -1,4 +1,7 @@
 import csrfFetch, { storeCSRFToken } from "./csrf";
+import { useHistory } from "react-router-dom";
+
+//
 
 //Action constants
 export const RECEIVE_EVENTS = "events/RECEIVE_EVENTS";
@@ -29,6 +32,7 @@ export const getEvents = (state) => {
 
 //Thunk Action Creators
 export const fetchEvents = () => async (dispatch) => {
+  debugger;
   const res = await fetch(`/api/events`);
   if (res.ok) {
     const eventsObj = await res.json();
@@ -56,15 +60,22 @@ export const createEvent = (event) => async (dispatch) => {
   }
 };
 export const createFormEvent = (formData, setPhotoFile) => async (dispatch) => {
+  debugger;
+  const history = useHistory();
   const res = await csrfFetch(`/api/events`, {
     method: "POST",
     body: formData,
   });
   if (res.ok) {
-    const newEvent = await res.json();
-    dispatch(receiveEvent(newEvent));
-    setPhotoFile(null);
+    history.push("/");
   }
+  // if (res.ok) {
+  //   debugger;
+  //   const newEvent = await res.json();
+  //   dispatch(receiveEvent(newEvent));
+  //   setPhotoFile(null);
+  //   history.push("/");
+  // }
 };
 
 export const updateEvent = (event) => async (dispatch) => {

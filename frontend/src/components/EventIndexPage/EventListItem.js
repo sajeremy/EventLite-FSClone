@@ -68,6 +68,7 @@ const EventListItem = (props) => {
   };
 
   const formatTicketPrice = () => {
+    // debugger;
     const numSplit = event.ticketPrice.split(".");
     let formattedPrice;
     if (numSplit[1].length === 1) {
