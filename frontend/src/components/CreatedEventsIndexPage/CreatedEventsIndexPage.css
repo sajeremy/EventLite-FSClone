@@ -7,12 +7,11 @@
     margin-top: 20px;
 }
 
-.created-events-list-header,
-.event-list-item-container {
+.created-events-list-header {
     border: 3px red solid;
     background-color: #f8f7fa;
     display: flex;
-    height: 50px;
+    height: 100%;
     font-size: .75rem;
     line-height: 1rem;
     flex: 1 1 auto;
@@ -38,12 +37,75 @@
 }
 
 .header-ticket-col {
-    width: 20%;
+    width: 10%;
     border: 3px purple solid;
 }
 
 .header-sales-col {
-    width: 20%;
+    width: 10%;
     border: 3px teal solid;
 }
+
+.event-list-item-container {
+    border: 3px purple solid;
+    display: flex;
+    flex: 1 1 auto;
+}
+
+.ul-event-list {
+    padding: 0;
+    list-style-type: none;
+}
+
+.event-list-item-info-container {
+    width: 60%;
+    margin-left: 1vw;
+    border: 3px purple solid;
+
+}
+
+.event-list-item-info-container a  {
+    text-decoration: none;
+    border: 3px red solid;
+    background-color: #f8f7fa;
+    height: 100%;
+    width: 100%;
+    font-size: .75rem;
+    line-height: 1rem;
+}
+
+.event-list-image img {
+    object-fit: cover;
+    height: 25%;
+    width: 25%;
+    border: blue 1px solid;
+}
+
+/* .event-list-info {
+    width: 100%;
+} */
+
+.event-list-item-tickets-container {
+    width: 10%;
+}
+
+.event-list-item-sales-container {
+    width: 10%;
+}
+
+.event-list-item-button-container {
+    display: flex;
+    align-items: center;
+    justify-content:space-evenly;
+    flex-direction: column;
+    border: blue 1px solid;
+    width:20%;
+}
+
+.event-list-item-button-container button {
+    width: 150px;
+    height: 50px;
+}
+
+
 

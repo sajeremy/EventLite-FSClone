@@ -35,7 +35,7 @@ const CreatedEventsIndexPage = () => {
             <span>Gross</span>
           </div>
         </div>
-        <ul>{createdEventsList}</ul>
+        <ul className="ul-event-list">{createdEventsList}</ul>
       </div>
     </>
   );
