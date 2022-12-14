@@ -178,12 +178,13 @@ const EventCreateFormPage = () => {
     const file = e.currentTarget.files[0];
     setPhotoFile(file);
   };
+
   // const handleFile = (e) => {
   //   const file = e.currentTarget.files[0];
   //   setEventPhoto(file);
 
   // console.log(eventPhoto);
-  console.log(photoFile);
+  // console.log(photoFile);
   return (
     <div className="event-form-container">
       <div className="created-events-index-button-container">

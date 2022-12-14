@@ -137,18 +137,25 @@ const EventEditFormPage = () => {
       minute: "2-digit",
       hour12: false,
     });
+    let newDay;
     let newMo;
     if (mo + 1 < 10) {
-      newMo = `0${mo}`;
+      newMo = `0${mo + 1}`;
     } else {
-      newMo = mo;
+      newMo = mo + 1;
+    }
+
+    if (day < 10) {
+      newDay = `0${day}`;
+    } else {
+      newDay = day;
     }
     //Too many re-renders error
     // setEvent({ ...event, startDatetime: `${yr}-${newMo}-${day}T${time}` });
     // setEndDatetime(`${yr}-${mo}-${day}T${time}`);
     // setEndDatetime(`${yr}-${mo}-${day}T${time}`);
     // debugger;
-    return `${yr}-${mo}-${day}T${time}`;
+    return `${yr}-${newMo}-${newDay}T${time}`;
   };
   const handleStartDatetime = () => {
     let result;
@@ -215,17 +222,18 @@ const EventEditFormPage = () => {
       }
     }
   };
+  const handleImgPreview = () => {
+    return currEvent.photoUrl ? currEvent.photoUrl : "";
+  };
+
   if (!currEvent) {
     return null;
   }
 
-  // const handleFile = (e) => {
-  //   const file = e.currentTarget.files[0];
-  //   setPhotoFile(file);
-  // };
-  // const handleFile = (e) => {
-  //   const file = e.currentTarget.files[0];
-  //   setEventPhoto(file);
+  const handleFile = (e) => {
+    const file = e.currentTarget.files[0];
+    setPhotoFile(file);
+  };
 
   // console.log(eventPhoto);
   // debugger;
@@ -344,7 +352,7 @@ const EventEditFormPage = () => {
                     id="create-event-start-datetime-input"
                     type="datetime-local"
                     // value={event.startDatetime}
-                    value="2022-09-15T11:51"
+                    value={formatedDate(startDatetime)}
                     onChange={(e) => setStartDatetime(e.target.value)}
                   />
                   <div className="create-event-error-handling-text">
@@ -359,7 +367,7 @@ const EventEditFormPage = () => {
                     id="create-event-end-datetime-input"
                     type="datetime-local"
                     // value={event.endDatetime}
-                    value="2022-12-28T10:10"
+                    value={formatedDate(endDatetime)}
                     onChange={(e) => setEndDatetime(e.target.value)}
                   />
                   <div className="create-event-error-handling-text">
@@ -403,8 +411,12 @@ const EventEditFormPage = () => {
                     type="file"
                     className="create-event-input"
                     id="create-event-image-input"
-                    onChange={(e) => setPhotoUrl(e.target.value)}
+                    // onChange={(e) => setPhotoUrl(e.target.value)}
+                    onChange={handleFile}
                   ></input>
+                  <div className="image-input-preview">
+                    <img src={handleImgPreview()} alt="" />
+                  </div>
                   {/* <div className="create-event-error-handling-text">
                 {handleImage()}
               </div> */}

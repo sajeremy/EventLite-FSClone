@@ -45,7 +45,7 @@ class Api::EventsController < ApplicationController
         @event.end_datetime = @event.start_datetime ? @event.end_datetime.to_datetime : nil
         @event.ticket_price = @event.ticket_price.to_f
         @event.capacity = @event.capacity.to_i
-
+        
         if @event.update(event_params)
             render :show
         else
