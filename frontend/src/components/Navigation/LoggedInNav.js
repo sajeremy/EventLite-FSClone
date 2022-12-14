@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Link, useHistory, Redirect } from "react-router-dom";
+import { getCreatedEvents, fetchEvents } from "../../store/event.js";
 import "./Navigation.css";
 import { BsSearch, BsSuitHeart, BsChevronDown } from "react-icons/bs";
 import { TbTicket } from "react-icons/tb";
@@ -14,6 +15,7 @@ const LoggedInNav = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   let numCreatedEvents;
+  const organizedEvents = useSelector(getCreatedEvents);
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -34,6 +36,10 @@ const LoggedInNav = () => {
     document.addEventListener("click", closeMenu);
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
+
+  useEffect(() => {
+    dispatch(fetchEvents());
+  }, []);
 
   const logout = (e) => {
     e.preventDefault();
@@ -84,7 +90,7 @@ const LoggedInNav = () => {
                   to={`/users/${sessionUser.id}/events`}
                 >
                   {/* Created Events ({numCreatedEvents}) */}
-                  Created Events ({`${sessionUser.eventIds.length}`})
+                  Created Events ({`${organizedEvents.length}`})
                 </Link>
               </li>
               <li>

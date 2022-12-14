@@ -29,19 +29,25 @@ export const getEvent = (eventId) => (state) => {
 export const getEvents = (state) => {
   return state.events ? Object.values(state.events) : [];
 };
-export const getCreatedEvents = (state) => {
-  const totalEvents = state.events;
-  const user = state.session.user;
+// export const getCreatedEvents = (state) => {
+//   const totalEvents = state.events;
+//   const user = state.session.user;
 
-  if (Object.keys(totalEvents).length !== 0 && user) {
-    const createdEvents = user.eventIds;
-    const totalEventsArr = Object.entries(totalEvents);
-    const filteredEvents = totalEventsArr.filter(([k, v]) =>
-      createdEvents.includes(parseInt(k))
-    );
-    const createdEventsObj = Object.fromEntries(filteredEvents);
-    return Object.values(createdEventsObj);
-  } else return [];
+//   if (Object.keys(totalEvents).length !== 0 && user) {
+//     const createdEvents = user.eventIds;
+//     const totalEventsArr = Object.entries(totalEvents);
+//     const filteredEvents = totalEventsArr.filter(([k, v]) =>
+//       createdEvents.includes(parseInt(k))
+//     );
+//     const createdEventsObj = Object.fromEntries(filteredEvents);
+//     return Object.values(createdEventsObj);
+//   } else return [];
+// };
+export const getCreatedEvents = (state) => {
+  const events = state.events ? Object.values(state.events) : [];
+  const currentUser = state.session.user;
+
+  return events.filter((event) => event.organizerId === currentUser.id);
 };
 
 //Thunk Action Creators

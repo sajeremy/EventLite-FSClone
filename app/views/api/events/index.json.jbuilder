@@ -11,6 +11,7 @@ json.events do
             json.photoUrl event.photo.url
             json.organizer_first_name event.organizer.first_name
             json.organizer_last_name event.organizer.last_name
+            json.organizer_id event.organizer.id
         end
         
     end
