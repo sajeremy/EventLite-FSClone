@@ -24,6 +24,7 @@ const CreatedEventsIndexPage = () => {
   return (
     <>
       <div className="created-events-container">
+        <h1>Created Events</h1>
         <div className="created-events-list-header">
           <div className="header-event-col">
             <span>Event</span>

@@ -29,8 +29,8 @@ const CreatedEventsListItem = (props) => {
 
   const parseDate = () => {
     return dateObj.toLocaleString("en-US", {
-      weekday: "short",
-      month: "short",
+      weekday: "long",
+      month: "long",
       day: "numeric",
       hour: "numeric",
       minute: "numeric",
@@ -58,11 +58,9 @@ const CreatedEventsListItem = (props) => {
   return (
     <div className="event-list-item-container">
       <div className="event-list-item-info-container">
-        <NavLink to={`/events/${event.id}`}>
-          <div className="event-list-image">
-            <img src={placeHolderImg()} alt=""></img>
-          </div>
-        </NavLink>
+        <div className="event-list-image">
+          <img src={placeHolderImg()} alt=""></img>
+        </div>
         <div className="event-list-info">
           <h2>{event.title}</h2>
           <p>{event.address}</p>
@@ -70,7 +68,12 @@ const CreatedEventsListItem = (props) => {
         </div>
       </div>
 
-      <div className="event-list-item-tickets-container">O/12</div>
+      <div className="event-list-item-tickets-container">
+        <div className="event-list-item-ticket-number">4/12</div>
+        <div className="event-list-item-progress-border">
+          <div className="event-list-item-progress-fill"></div>
+        </div>
+      </div>
 
       <div className="event-list-item-sales-container">$200</div>
 
@@ -82,7 +85,8 @@ const CreatedEventsListItem = (props) => {
         </div>
         <div>
           <button className="event-list-delete-button" onClick={handleDelete}>
-            Delete Event {event.id}
+            Delete
+            {/* {event.id} */}
           </button>
         </div>
       </div>

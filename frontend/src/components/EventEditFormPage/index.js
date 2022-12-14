@@ -414,9 +414,9 @@ const EventEditFormPage = () => {
                     // onChange={(e) => setPhotoUrl(e.target.value)}
                     onChange={handleFile}
                   ></input>
-                  <div className="image-input-preview">
+                  {/* <div className="image-input-preview">
                     <img src={handleImgPreview()} alt="" />
-                  </div>
+                  </div> */}
                   {/* <div className="create-event-error-handling-text">
                 {handleImage()}
               </div> */}

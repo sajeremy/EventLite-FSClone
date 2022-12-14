@@ -1,5 +1,5 @@
 .created-events-container {
-    border: 3px blue solid;
+
     width: 80vw;
     height: 100%;
     margin-left: 10vw;
@@ -8,7 +8,7 @@
 }
 
 .created-events-list-header {
-    border: 3px red solid;
+
     background-color: #f8f7fa;
     display: flex;
     height: 100%;
@@ -17,7 +17,7 @@
     flex: 1 1 auto;
     padding-left: 1vw;
     padding-right: 1vw;
-    /* justify-content: space-between; */
+
     align-items: center;
 }
 
@@ -33,23 +33,24 @@
 
 .header-event-col {
     width: 60%;
-    border: 3px green solid;
+
 }
 
 .header-ticket-col {
-    width: 10%;
-    border: 3px purple solid;
+    width: 15%;
+
 }
 
 .header-sales-col {
     width: 10%;
-    border: 3px teal solid;
+
 }
 
 .event-list-item-container {
-    border: 3px purple solid;
+
     display: flex;
-    flex: 1 1 auto;
+
+    border-bottom: #d9d7dc 1.5px solid;
 }
 
 .ul-event-list {
@@ -59,34 +60,75 @@
 
 .event-list-item-info-container {
     width: 60%;
-    margin-left: 1vw;
-    border: 3px purple solid;
 
-}
-
-.event-list-item-info-container a  {
+    display: flex;
+    height: 20vh;
     text-decoration: none;
-    border: 3px red solid;
-    background-color: #f8f7fa;
-    height: 100%;
-    width: 100%;
+
     font-size: .75rem;
     line-height: 1rem;
+    
 }
+
 
 .event-list-image img {
-    object-fit: cover;
-    height: 25%;
-    width: 25%;
-    border: blue 1px solid;
+    height: 100%;
+
+    width: 100%;
 }
 
-/* .event-list-info {
-    width: 100%;
-} */
+.event-list-image {
+
+    object-fit: cover;
+    width: 15vw;
+
+}
+
+.event-list-info {
+
+    margin-left: 10px;
+    overflow-wrap: break-word;
+}
+
+.event-list-info h2 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.event-list-info p {
+    color: #6f7287;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+
 
 .event-list-item-tickets-container {
-    width: 10%;
+    width: 15%;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.event-list-item-ticket-number {
+    margin-bottom: 30%;
+    
+}
+
+.event-list-item-progress-border {
+    
+    height: 10px;
+    background-color: #ddd9d9;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.event-list-item-progress-fill {
+    background-color: #f05537;
+    width: 25%;
+    height: 10px;
 }
 
 .event-list-item-sales-container {
@@ -96,16 +138,41 @@
 .event-list-item-button-container {
     display: flex;
     align-items: center;
-    justify-content:space-evenly;
+
     flex-direction: column;
-    border: blue 1px solid;
-    width:20%;
+
+    width:15%;
 }
 
 .event-list-item-button-container button {
-    width: 150px;
-    height: 50px;
+    margin-top: 10px;
+    width: 120px;
+    height: 40px;
+    font-size: 15px;
+
+    cursor: pointer;
+    color: white;
+    font-weight: 500;
+    border:none;
+
+    filter: brightness(.95);  
 }
 
+.event-list-edit-button {
+    background-color: #3d64ff;
+    border-radius: 17px;
+}
+
+.event-list-delete-button {
+    background-color: rgb(235, 45, 45);
+    border-radius: 5px;
+}
+.event-list-item-button-container button:hover {
+    filter: brightness(1.05); 
+}
+
+.created-events-container > h1 {
+    margin-bottom: 10px;
+}
 
 

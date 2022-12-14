@@ -209,4 +209,8 @@ a.tickets-dropdown-button:hover {
 
 } 
 
+.event-list-item-container:hover {
+  box-shadow: 0 40px 64px -16px rgb(46 55 77 / 40%);
+}
+
 
