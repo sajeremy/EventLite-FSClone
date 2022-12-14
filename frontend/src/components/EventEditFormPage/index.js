@@ -12,18 +12,24 @@ const EventEditFormPage = () => {
   const history = useHistory();
   const { eventId } = useParams();
   const organizerId = useSelector((state) => state.session.user.id);
-  // const [title, setTitle] = useState("");
-  // const [category, setCategory] = useState("");
-  // const [address, setAddress] = useState("");
-  // const [startDatetime, setstartDatetime] = useState("");
-  // const [endDatetime, setendDatetime] = useState("");
-  // const [body, setBody] = useState("");
-  // const [capacity, setCapacity] = useState("");
-  // const [ticketPrice, setTicketPrice] = useState("");
-  const [errors, setErrors] = useState([]);
-  // const [photoFile, setPhotoFile] = useState(null);
   const currEvent = useSelector(getEvent(eventId));
-  const [event, setEvent] = useState(eventId ? currEvent : {});
+  // debugger;
+  const [title, setTitle] = useState(currEvent.title);
+  const [category, setCategory] = useState(currEvent.category);
+  const [address, setAddress] = useState(currEvent.address);
+  const [startDatetime, setStartDatetime] = useState(currEvent.startDatetime);
+  const [endDatetime, setEndDatetime] = useState(currEvent.endDatetime);
+  const [body, setBody] = useState(currEvent.body);
+  const [capacity, setCapacity] = useState(currEvent.capacity);
+  const [ticketPrice, setTicketPrice] = useState(currEvent.ticketPrice);
+  const [photoUrl, setPhotoUrl] = useState(currEvent.photoUrl);
+  const [errors, setErrors] = useState([]);
+  const [photoFile, setPhotoFile] = useState(null);
+  // debugger;
+  // const [event, setEvent] = useState(eventId ? currEvent : {});
+  // const [event, setEvent] = useState(currEvent);
+  // debugger;
+
   const updateFormEvent = (formData) => async (dispatch) => {
     const res = await csrfFetch(`/api/events/${eventId}`, {
       method: "PUT",
@@ -41,30 +47,31 @@ const EventEditFormPage = () => {
       // await setEvent({ ...fetchedEvent.event, photoUrl: undefined });
       let fetchedEvent = dispatch(fetchEvent(eventId));
       // delete fetchEvent.event.photoUrl;
-      setEvent({ ...fetchedEvent.event, photoUrl: undefined });
+      setPhotoUrl(undefined);
     };
     fetchFormData();
   }, []);
+  // if (!currEvent) return null;
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
     // setLoading(true);
-
+    // debugger;
     const formData = new FormData();
-    formData.append("event[title]", event.title);
-    formData.append("event[category]", event.category);
-    formData.append("event[address]", event.address);
-    formData.append("event[start_datetime]", event.startDatetime);
-    formData.append("event[end_datetime]", event.endDatetime);
-    formData.append("event[body]", event.body);
-    formData.append("event[capacity]", event.capacity);
-    formData.append("event[ticket_price]", event.ticketPrice);
+    formData.append("event[title]", title);
+    formData.append("event[category]", category);
+    formData.append("event[address]", address);
+    formData.append("event[start_datetime]", startDatetime);
+    formData.append("event[end_datetime]", endDatetime);
+    formData.append("event[body]", body);
+    formData.append("event[capacity]", capacity);
+    formData.append("event[ticket_price]", ticketPrice);
 
-    if (event.photoFile) {
-      formData.append("event[photo]", event.photoFile);
+    if (photoFile) {
+      formData.append("event[photo]", photoFile);
     }
-
+    // debugger;
     dispatch(updateFormEvent(formData)).catch(async (res) => {
       let data;
       try {
@@ -138,7 +145,8 @@ const EventEditFormPage = () => {
     }
     //Too many re-renders error
     // setEvent({ ...event, startDatetime: `${yr}-${newMo}-${day}T${time}` });
-    event.endDatetime = `${yr}-${mo}-${day}T${time}`;
+    // setEndDatetime(`${yr}-${mo}-${day}T${time}`);
+    // setEndDatetime(`${yr}-${mo}-${day}T${time}`);
     // debugger;
     return `${yr}-${mo}-${day}T${time}`;
   };
@@ -207,7 +215,7 @@ const EventEditFormPage = () => {
       }
     }
   };
-  if (!event) {
+  if (!currEvent) {
     return null;
   }
 
@@ -223,7 +231,7 @@ const EventEditFormPage = () => {
   // debugger;
   return (
     <>
-      {event && (
+      {currEvent && (
         <div className="event-form-container">
           <div className="created-events-index-button-container">
             <NavLink
@@ -237,7 +245,7 @@ const EventEditFormPage = () => {
             </NavLink>
           </div>
           <div className="create-event-form-container">
-            <h1>{event.title}</h1>
+            <h1>{title}</h1>
             <form className="create-event-form" onSubmit={handleSubmit}>
               <ul>
                 {errors.map((error) => (
@@ -261,10 +269,8 @@ const EventEditFormPage = () => {
                     id="create-event-title-input"
                     type="text"
                     placeholder="Be clear and descriptive"
-                    value={event.title}
-                    onChange={(e) =>
-                      setEvent({ ...event, title: e.target.value })
-                    }
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
                   />
                   <div className="create-event-error-handling-text">
                     {handleTitle()}
@@ -272,12 +278,10 @@ const EventEditFormPage = () => {
                 </div>
                 <div className="category-container">
                   <select
-                    defaultValue={event.category}
+                    defaultValue={category}
                     className="create-event-input"
                     id="create-event-category-input"
-                    onChange={(e) =>
-                      setEvent({ ...event, category: e.target.value })
-                    }
+                    onChange={(e) => setCategory(e.target.value)}
                   >
                     <option value="Category" disabled>
                       Category
@@ -316,10 +320,8 @@ const EventEditFormPage = () => {
                     id="create-event-address-input"
                     type="text"
                     placeholder="Specify address for event."
-                    value={event.address}
-                    onChange={(e) =>
-                      setEvent({ ...event, address: e.target.value })
-                    }
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
                   />
                   <div className="create-event-error-handling-text">
                     {handleAddress()}
@@ -336,18 +338,14 @@ const EventEditFormPage = () => {
                 </div>
                 <div className="start-date-time-container">
                   <div>
-                    <label>
-                      Event Starts {formatedDate(event.startDatetime)}
-                    </label>
+                    <label>Event Starts {formatedDate(startDatetime)}</label>
                   </div>
                   <input
                     id="create-event-start-datetime-input"
                     type="datetime-local"
                     // value={event.startDatetime}
                     value="2022-09-15T11:51"
-                    onChange={(e) =>
-                      setEvent({ ...event, startDatetime: e.target.value })
-                    }
+                    onChange={(e) => setStartDatetime(e.target.value)}
                   />
                   <div className="create-event-error-handling-text">
                     {handleStartDatetime()}
@@ -355,16 +353,14 @@ const EventEditFormPage = () => {
                 </div>
                 <div className="end-date-time-container">
                   <div>
-                    <label>Event Ends {formatedDate(event.endDatetime)}</label>
+                    <label>Event Ends {formatedDate(endDatetime)}</label>
                   </div>
                   <input
                     id="create-event-end-datetime-input"
                     type="datetime-local"
                     // value={event.endDatetime}
                     value="2022-12-28T10:10"
-                    onChange={(e) =>
-                      setEvent({ ...event, endDatetime: e.target.value })
-                    }
+                    onChange={(e) => setEndDatetime(e.target.value)}
                   />
                   <div className="create-event-error-handling-text">
                     {handleEndDatetime()}
@@ -386,10 +382,8 @@ const EventEditFormPage = () => {
                     id="create-event-body-input"
                     rows="5"
                     cols="50"
-                    value={event.body}
-                    onChange={(e) =>
-                      setEvent({ ...event, body: e.target.value })
-                    }
+                    value={body}
+                    onChange={(e) => setBody(e.target.value)}
                   ></textarea>
                   <div className="create-event-error-handling-text">
                     {handleBody()}
@@ -409,9 +403,7 @@ const EventEditFormPage = () => {
                     type="file"
                     className="create-event-input"
                     id="create-event-image-input"
-                    onChange={(e) =>
-                      setEvent({ ...event, photoUrl: e.target.files[0] })
-                    }
+                    onChange={(e) => setPhotoUrl(e.target.value)}
                   ></input>
                   {/* <div className="create-event-error-handling-text">
                 {handleImage()}
@@ -431,10 +423,8 @@ const EventEditFormPage = () => {
                     id="create-event-capacity-input"
                     type="number"
                     placeholder="(i.e. 1, 10, 100)"
-                    value={event.capacity}
-                    onChange={(e) =>
-                      setEvent({ ...event, capacity: e.target.value })
-                    }
+                    value={capacity}
+                    onChange={(e) => setCapacity(e.target.value)}
                   />
                   <div className="create-event-error-handling-text">
                     {handleCapacity()}
@@ -447,10 +437,8 @@ const EventEditFormPage = () => {
                     id="create-event-ticket-price-input"
                     type="number"
                     placeholder="(i.e. 0, 2.50, 30.99)"
-                    value={event.ticketPrice}
-                    onChange={(e) =>
-                      setEvent({ ...event, ticketPrice: e.target.value })
-                    }
+                    value={ticketPrice}
+                    onChange={(e) => setTicketPrice(e.target.value)}
                   />
                   <div className="create-event-error-handling-text">
                     {handleTicketPrice()}

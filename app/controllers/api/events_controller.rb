@@ -40,12 +40,11 @@ class Api::EventsController < ApplicationController
 
     def update
         @event = Event.find_by(id: params[:id])
-        debugger
+
         @event.start_datetime = @event.start_datetime ? @event.start_datetime.to_datetime : nil
         @event.end_datetime = @event.start_datetime ? @event.end_datetime.to_datetime : nil
         @event.ticket_price = @event.ticket_price.to_f
         @event.capacity = @event.capacity.to_i
-        debugger
 
         if @event.update(event_params)
             render :show
