@@ -29,6 +29,20 @@ export const getEvent = (eventId) => (state) => {
 export const getEvents = (state) => {
   return state.events ? Object.values(state.events) : [];
 };
+export const getCreatedEvents = (state) => {
+  const totalEvents = state.events;
+  const user = state.session.user;
+
+  if (Object.keys(totalEvents).length !== 0 && user) {
+    const createdEvents = user.eventIds;
+    const totalEventsArr = Object.entries(totalEvents);
+    const filteredEvents = totalEventsArr.filter(([k, v]) =>
+      createdEvents.includes(parseInt(k))
+    );
+    const createdEventsObj = Object.fromEntries(filteredEvents);
+    return Object.values(createdEventsObj);
+  } else return [];
+};
 
 //Thunk Action Creators
 export const fetchEvents = () => async (dispatch) => {
@@ -89,7 +103,7 @@ export const updateEvent = (event) => async (dispatch) => {
 };
 
 export const deleteEvent = (eventId) => async (dispatch) => {
-  await csrfFetch(`/api/posts/${eventId}`, { method: "DELETE" });
+  await csrfFetch(`/api/events/${eventId}`, { method: "DELETE" });
   dispatch(removeEvent(eventId));
 };
 

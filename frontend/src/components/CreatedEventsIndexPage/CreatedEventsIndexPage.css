@@ -1,0 +1,49 @@
+.created-events-container {
+    border: 3px blue solid;
+    width: 80vw;
+    height: 100%;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 20px;
+}
+
+.created-events-list-header,
+.event-list-item-container {
+    border: 3px red solid;
+    background-color: #f8f7fa;
+    display: flex;
+    height: 50px;
+    font-size: .75rem;
+    line-height: 1rem;
+    flex: 1 1 auto;
+    padding-left: 1vw;
+    padding-right: 1vw;
+    /* justify-content: space-between; */
+    align-items: center;
+}
+
+.header-event-col,
+.header-ticket-col,
+.header-sales-col {
+    font-weight: 600;
+    color: #39364f;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;   
+}
+
+.header-event-col {
+    width: 60%;
+    border: 3px green solid;
+}
+
+.header-ticket-col {
+    width: 20%;
+    border: 3px purple solid;
+}
+
+.header-sales-col {
+    width: 20%;
+    border: 3px teal solid;
+}
+

@@ -13,6 +13,7 @@ import EventIndexPage from "./components/EventIndexPage/index.js";
 import EventShowPage from "./components/EventShowPage/index";
 import HomePageBanner from "./components/HomePageBanner";
 import EventCreateFormPage from "./components/EventCreateFormPage";
+import CreatedEventsIndexPage from "./components/CreatedEventsIndexPage";
 
 function App() {
   return (
@@ -30,6 +31,10 @@ function App() {
         <Route path="/events/:eventId">
           <Navigation />
           <EventShowPage />
+        </Route>
+        <Route path="/users/:userId/events">
+          <Navigation />
+          <CreatedEventsIndexPage />
         </Route>
         <Route path="/login">
           <LoginFormPage />

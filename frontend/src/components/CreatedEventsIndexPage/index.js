@@ -1,35 +1,37 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getEvents, fetchEvents } from "../../store/event.js";
-import EventListItem from "./EventListItem.js";
-import EventCategories from "./EventCategories";
+import { getCreatedEvents, fetchEvents } from "../../store/event.js";
 import "./CreatedEventsIndexPage.css";
+import CreatedEventsListItem from "./CreatedEventsListItem.js";
 
 const CreatedEventsIndexPage = () => {
   const dispatch = useDispatch();
-  const events = useSelector(getEvents);
+  const organizedEvents = useSelector(getCreatedEvents);
+  // const organizedEvents = useSelector((state) => state.session.user.eventIds);
 
   useEffect(() => {
     dispatch(fetchEvents());
   }, []);
-
-  const eventsList = events.map((event) => {
-    return <EventListItem key={event.id} event={event} />;
+  const createdEventsList = organizedEvents.map((event) => {
+    return <CreatedEventsListItem key={event.id} event={event} />;
   });
 
   return (
     <>
-      <section className="event-index-layout">
-        <div className="index-layout-border">
-          <EventCategories />
-          <div className="index-section-container">
-            <div className="index-card-header">
-              <h3 className="events-index-title">Events Nearby</h3>
-            </div>
-            <div className="index-feed-container">{eventsList}</div>
+      <div className="created-events-container">
+        <div className="created-events-list-header">
+          <div className="header-event-col">
+            <span>Event</span>
+          </div>
+          <div className="header-ticket-col">
+            <span>Sold</span>
+          </div>
+          <div className="header-sales-col">
+            <span>Gross</span>
           </div>
         </div>
-      </section>
+        <ul>{createdEventsList}</ul>
+      </div>
     </>
   );
 };

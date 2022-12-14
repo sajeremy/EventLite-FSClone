@@ -27,7 +27,7 @@
     color: #3659e3;
     cursor: pointer;
     display: flex;
-    justify-content: center;;
+    justify-content: left;
 }
 
 .created-events-index-button-icon {

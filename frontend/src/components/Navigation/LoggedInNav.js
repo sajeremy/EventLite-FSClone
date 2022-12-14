@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Link, Redirect } from "react-router-dom";
+import { NavLink, Link, useHistory, Redirect } from "react-router-dom";
 import "./Navigation.css";
 import { BsSearch, BsSuitHeart, BsChevronDown } from "react-icons/bs";
 import { TbTicket } from "react-icons/tb";
@@ -12,6 +12,8 @@ import * as sessionActions from "../../store/session";
 const LoggedInNav = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
+  let numCreatedEvents;
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -36,9 +38,9 @@ const LoggedInNav = () => {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push(`/login`);
     // <Redirect to="/login" />;
   };
-  // debugger;
   return (
     <>
       <div className="navbar">
@@ -77,8 +79,12 @@ const LoggedInNav = () => {
                 </Link>
               </li>
               <li>
-                <Link className="likes-dropdown-button" to="#">
-                  Created Events (2)
+                <Link
+                  className="likes-dropdown-button"
+                  to={`/users/${sessionUser.id}/events`}
+                >
+                  {/* Created Events ({numCreatedEvents}) */}
+                  Created Events ({`${sessionUser.eventIds.length}`})
                 </Link>
               </li>
               <li>
@@ -107,27 +113,6 @@ const LoggedInNav = () => {
           </div>
           <p>Create an event</p>
         </NavLink>
-        {/* {showMenu && (
-          <div id="profile-dropdown-container">
-            <ul className="profile-dropdown">
-              <li>
-                <Link className="tickets-dropdown-button" to="#">
-                  Tickets (4)
-                </Link>
-              </li>
-              <li>
-                <Link className="likes-dropdown-button" to="#">
-                  Liked
-                </Link>
-              </li>
-              <li>
-                <Link className="log-out-button" to="#" onClick={logout}>
-                  Log Out
-                </Link>
-              </li>
-            </ul>
-          </div>
-        )} */}
       </div>
     </>
   );

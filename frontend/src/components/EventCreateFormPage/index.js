@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
-import { createFormEvent } from "../../store/event";
+// import { createFormEvent } from "../../store/event";
 import csrfFetch from "../../store/csrf";
 import { BiChevronLeft } from "react-icons/bi";
 import "./EventCreateFormPage.css";
@@ -9,9 +9,7 @@ import "./EventCreateFormPage.css";
 const EventCreateFormPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
-  // const organizerId = useSelector((state) =>
-  //   state.session ? state.session.id : null
-  // );
+  const organizerId = useSelector((state) => state.session.user.id);
   const [title, setTitle] = useState("");
   const [category, setCategory] = useState("");
   const [address, setAddress] = useState("");
@@ -21,11 +19,11 @@ const EventCreateFormPage = () => {
   const [capacity, setCapacity] = useState("");
   const [ticketPrice, setTicketPrice] = useState("");
   const [errors, setErrors] = useState([]);
+  const [photoFile, setPhotoFile] = useState(null);
 
   // const [uploaded, setUploaded] = useState("");
   // const [redirect, setRedirect] = useState(false);
   // const [loading, setLoading] = useState(false);
-  const [photoFile, setPhotoFile] = useState(null);
   // const [photoUrl, setPhotoUrl] = useState(null);
 
   const createFormEvent = (formData) => async (dispatch) => {
@@ -71,8 +69,6 @@ const EventCreateFormPage = () => {
       else if (data) setErrors([data]);
       else setErrors([res.statusText]);
     });
-
-    // .then(history.push("/"));
   };
   const handleTitle = () => {
     let result;
@@ -191,12 +187,15 @@ const EventCreateFormPage = () => {
   return (
     <div className="event-form-container">
       <div className="created-events-index-button-container">
-        <button className="created-events-index-button">
+        <NavLink
+          className="created-events-index-button"
+          to={`/users/${organizerId}/events`}
+        >
           <div className="created-events-index-button-icon">
             <BiChevronLeft className="created-events-index-button-icon" />
           </div>
           <p className="created-events-index-button-text">Events</p>
-        </button>
+        </NavLink>
       </div>
       <div className="create-event-form-container">
         <form className="create-event-form" onSubmit={handleSubmit}>
