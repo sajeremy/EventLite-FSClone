@@ -39,7 +39,11 @@ class Event < ApplicationRecord
 
     has_many :tickets,
     primary_key: :id,
-    foreign_key: :events_id
-    class_name: :Event,
+    foreign_key: :events_id,
+    class_name: :Ticket,
     dependent: :destroy
+
+    has_many :attendees,
+    through: :tickets,
+    source: :attendees
 end

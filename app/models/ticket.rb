@@ -10,6 +10,7 @@
 #
 class Ticket < ApplicationRecord
     validates :events_id, :attendee_id, presence: true
+    # validate_on_create :tickets_within_capacity
 
     belongs_to :attendee,
     primary_key: :id,
@@ -19,5 +20,10 @@ class Ticket < ApplicationRecord
     belongs_to :event,
     primary_key: :id,
     foreign_key: :events_id,
-    class_name: :events
+    class_name: :Event
+
+    has_one :organizer,
+    through: :event
+
+
 end

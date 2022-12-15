@@ -36,10 +36,13 @@ class User < ApplicationRecord
     dependent: :destroy
 
     has_many :tickets,
-    primary_key: :id,
-    foreign_key: :ticket_id
-    class_name: :Ticket,
-    dependent: :destroy
+    through: :events,
+    source: :tickets
+
+    has_many :attending_events,
+    through: :tickets,
+    source: :attendee
+
 
 
     def self.find_by_credentials(email, password)

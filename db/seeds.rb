@@ -9,11 +9,13 @@ ApplicationRecord.transaction do
     # Unnecessary if using `rails db:seed:replant`
     Event.destroy_all
     User.destroy_all
+    Ticket.destroy_all
   
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
     ApplicationRecord.connection.reset_pk_sequence!('events')
+    ApplicationRecord.connection.reset_pk_sequence!('tickets')
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
@@ -308,6 +310,9 @@ ApplicationRecord.transaction do
 
     end
 
+    Ticket.create!({events_id: 1, attendee_id: 1})
+    Ticket.create!({events_id: 2, attendee_id: 2})
+    Ticket.create!({events_id: 3, attendee_id: 3})
 
   
     puts "Done!"
