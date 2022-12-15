@@ -1,5 +1,6 @@
 .event-form-container {
-    border: red 3px solid;
+    border: #d9d7dc 1px solid;
+    border-radius: 4px;
     width: 75vw;
     display: block;
     position: absolute;
@@ -9,7 +10,7 @@
 }
 
 .created-events-index-button-container {
-    border: blue 3px solid;
+    /* border: blue 3px solid; */
     display: block;
     margin: 0;
     padding: 0;
@@ -40,17 +41,17 @@
 }
 
 .create-event-form-container {
-    border: green 3px solid;
+    /* border: green 3px solid; */
     margin-bottom: 48px;
     margin-top: 20px;
     padding-bottom: 48px;
-    padding-top: 20px;
+    /* padding-top: 20px; */
     /* margin-left: 160px;
     margin-right: 80px; */
-    margin-left: 10vw;
-    margin-right: 10vw;
+    margin-left: 5vw;
+    /* margin-right: 5vw; */
     min-width: 453px;
-    max-width: 680px;
+    max-width: 650px;
     /* overflow-wrap: break-word; */
 }
 
@@ -92,4 +93,195 @@
     margin-right: -0.5px;
     /* overflow-wrap: break-word; */
 
+}
+
+.event-form-title-container,
+.event-form-category-container,
+.event-form-location-container,
+.start-date-time-label {
+    margin-top: 10px;
+}
+
+.event-form-title-container label,
+.event-form-category-container p,
+.event-form-location-container label,
+.start-date-time-label,
+.end-date-time-label,
+.capacity-label-container > label {
+    font-weight: 300;
+}
+
+.event-form-title-input-section input,
+.event-form-location-container input {
+    font-size: 14px;
+    line-height: 22px;
+    min-height: 22px;
+    padding: 8px;
+    border-radius: 2px;
+    border-color: rgb(238, 237, 242);
+    border-style: solid;
+    border-width: 1.75px;
+    width:40vw;
+  }
+
+  .event-form-category-container select,
+  .event-form-category-container option {
+    font-size: 14px;
+    line-height: 22px;
+    min-height: 22px;
+    padding: 8px;
+    border-radius: 2px;
+    border-color: rgb(238, 237, 242);
+    border-style: solid;
+    border-width: 1.75px;
+    margin-bottom: 25px;
+  }
+
+.event-form-location-container input {
+    margin-bottom: 25px;
+}
+
+.event-form-date-time-input-container {
+    display: inline-flex;
+    /* justify-content:space-around; */
+    height: 100px;
+    margin-top: 10px;
+    /* align-items: center; */
+       
+}
+
+/* .event-form-date-time-input-container {
+    border: red 1px solid;
+} */
+
+.date-time-header-container h1 {
+    display: block;
+    /* border: blue 1px solid; */
+}
+
+/* .create-event-error-handling-text {
+    border: purple 1px solid;
+} */
+
+.end-date-time-container {
+    /* border: brown 1px solid; */
+    height: 100%;
+    margin-top: 10px;
+    margin-left: 8vw;
+}
+
+/* .start-date-time-container {
+    border: green solid 1px;
+} */
+
+.start-date-time-container input,
+.end-date-time-container input,
+.event-form-body-input-container textarea {
+    font-size: 15px;
+    line-height: 22px;
+    min-height: 22px;
+    padding: 8px;
+    border-radius: 2px;
+    border-color: rgb(238, 237, 242);
+    border-style: solid;
+    border-width: 1.75px;
+}
+
+.body-header-container > p {
+    margin-bottom: 20px;
+}
+
+.image-header-container,
+.image-input-container {
+    margin-top: 15px;
+}
+
+.create-event-input::-webkit-file-upload-button  {
+    /* display: none;
+    border: 1px solid #ccc;
+    display: block;
+    padding: 6px 12px;
+    cursor: pointer; */
+    visibility: hidden;
+
+}
+
+.create-event-input::before {
+    content: 'Upload Your Event Image';
+    display: inline-block;
+    background: linear-gradient(top, #f9f9f9, #e3e3e3);
+    border: 1.75px solid  rgb(238, 237, 242);
+    border-radius: 3px;
+    padding: 5px 8px;
+    outline: none;
+    white-space: nowrap;
+    -webkit-user-select: none;
+    cursor: pointer;
+    text-shadow: 1px 1px #fff;
+    font-weight: 700;
+    font-size: 10pt;
+    width: 300px;
+    text-align: center;
+    color: #39364f;
+    font-size: .855rem;
+    line-height: 1.25rem;
+    font-weight: 400;
+    letter-spacing: .5px;
+
+}
+
+.create-event-input:hover::before,
+.create-event-input:hover,
+.create-event-input-datetime:hover {
+    border-color: rgb(190, 189, 193);
+    border-width: 1.75px;
+  }
+
+.ticket-input-container > input{
+    border-style: solid;
+    border: none;
+    border-width: 1px; 
+    font-size: 14px;
+    line-height: 22px;
+    min-height: 22px;
+    padding: 8px;
+    border-radius: 2px;
+    border-color: rgb(238, 237, 242);
+    border-style: solid;
+    border-width: 1.75px;
+    margin-bottom: 25px;
+}
+
+#create-event-ticket-price-input,
+#create-event-capacity-input {
+    color: #39364f;
+}
+
+.form-submit-button-container button {
+    margin-top: 10px;
+    width: 120px;
+    width: 43vw;
+    height: 40px;
+    font-size: 15px;
+    /* margin-left: 15vw; */
+
+    cursor: pointer;
+    color: white;
+    font-weight: 500;
+    border:none;
+
+    filter: brightness(.95);  
+}
+
+
+.form-submit-button {
+    background-color: #f05537;
+    border-radius: 5px;
+}
+
+#different-color-button {
+    background-color: #3d64ff;
+}
+.form-submit-button-container button:hover {
+    filter: brightness(1.05); 
 }

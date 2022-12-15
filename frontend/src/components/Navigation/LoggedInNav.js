@@ -44,7 +44,7 @@ const LoggedInNav = () => {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
-    history.push(`/login`);
+    history.push(`/signup`);
     // <Redirect to="/login" />;
   };
   return (
