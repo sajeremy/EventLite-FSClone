@@ -51,7 +51,8 @@ const EventEditFormPage = () => {
       // await setEvent({ ...fetchedEvent.event, photoUrl: undefined });
       let fetchedEvent = dispatch(fetchEvent(eventId));
       // delete fetchEvent.event.photoUrl;
-      setPhotoUrl(undefined);
+
+      // setPhotoUrl(undefined);
     };
     fetchFormData();
   }, []);
@@ -226,21 +227,30 @@ const EventEditFormPage = () => {
       }
     }
   };
-  const handleImgPreview = () => {
-    return currEvent.photoUrl ? currEvent.photoUrl : "";
-  };
+  // const handleImgPreview = () => {
+  //   return currEvent.photoUrl ? currEvent.photoUrl : "";
+  // };
 
   if (!currEvent) {
     return null;
   }
 
+  // const handleFile = (e) => {
+  //   const file = e.currentTarget.files[0];
+  //   setPhotoFile(file);
+  // };
   const handleFile = (e) => {
     const file = e.currentTarget.files[0];
-    setPhotoFile(file);
+    if (file) {
+      const fileReader = new FileReader();
+      fileReader.readAsDataURL(file);
+      fileReader.onload = () => {
+        setPhotoFile(file);
+        setPhotoUrl(fileReader.result);
+      };
+    }
   };
-
-  // console.log(eventPhoto);
-  // debugger;
+  const preview = photoUrl ? <img src={photoUrl} alt="" height="200" /> : null;
   return (
     <>
       {currEvent && (
@@ -259,11 +269,11 @@ const EventEditFormPage = () => {
           <div className="create-event-form-container">
             <h1>Edit your Event</h1>
             <form className="create-event-form" onSubmit={handleSubmit}>
-              <ul>
+              {/* <ul>
                 {errors.map((error) => (
                   <li key={error}>{error}</li>
                 ))}
-              </ul>
+              </ul> */}
               <div className="basic-info-section">
                 <div className="basic-info-header-container">
                   <h1>
@@ -442,6 +452,8 @@ const EventEditFormPage = () => {
                 {handleImage()}
               </div> */}
                 </div>
+                <br></br>
+                {preview}
               </div>
               <div className="ticket-section">
                 <div className="image-header-container">
