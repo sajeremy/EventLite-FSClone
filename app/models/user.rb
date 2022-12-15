@@ -35,6 +35,12 @@ class User < ApplicationRecord
     inverse_of: :organizer,
     dependent: :destroy
 
+    has_many :tickets,
+    primary_key: :id,
+    foreign_key: :ticket_id
+    class_name: :Ticket,
+    dependent: :destroy
+
 
     def self.find_by_credentials(email, password)
         user = User.find_by(email: email)
