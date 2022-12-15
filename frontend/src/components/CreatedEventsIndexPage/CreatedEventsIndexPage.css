@@ -1,0 +1,178 @@
+.created-events-container {
+
+    width: 80vw;
+    height: 100%;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 20px;
+}
+
+.created-events-list-header {
+
+    background-color: #f8f7fa;
+    display: flex;
+    height: 100%;
+    font-size: .75rem;
+    line-height: 1rem;
+    flex: 1 1 auto;
+    padding-left: 1vw;
+    padding-right: 1vw;
+
+    align-items: center;
+}
+
+.header-event-col,
+.header-ticket-col,
+.header-sales-col {
+    font-weight: 600;
+    color: #39364f;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;   
+}
+
+.header-event-col {
+    width: 60%;
+
+}
+
+.header-ticket-col {
+    width: 15%;
+
+}
+
+.header-sales-col {
+    width: 10%;
+
+}
+
+.event-list-item-container {
+
+    display: flex;
+
+    border-bottom: #d9d7dc 1.5px solid;
+}
+
+.ul-event-list {
+    padding: 0;
+    list-style-type: none;
+}
+
+.event-list-item-info-container {
+    width: 60%;
+
+    display: flex;
+    height: 20vh;
+    text-decoration: none;
+
+    font-size: .75rem;
+    line-height: 1rem;
+    
+}
+
+
+.event-list-image img {
+    height: 100%;
+
+    width: 100%;
+}
+
+.event-list-image {
+
+    object-fit: cover;
+    width: 15vw;
+
+}
+
+.event-list-info {
+
+    margin-left: 10px;
+    overflow-wrap: break-word;
+}
+
+.event-list-info h2 {
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.event-list-info p {
+    color: #6f7287;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+
+
+.event-list-item-tickets-container {
+    width: 15%;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.event-list-item-ticket-number {
+    margin-bottom: 30%;
+    
+}
+
+.event-list-item-progress-border {
+    
+    height: 10px;
+    background-color: #ddd9d9;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.event-list-item-progress-fill {
+    background-color: #f05537;
+    width: 25%;
+    height: 10px;
+}
+
+.event-list-item-sales-container {
+    width: 10%;
+}
+
+.event-list-item-button-container {
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+
+    width:15%;
+}
+
+.event-list-item-button-container button {
+    margin-top: 10px;
+    width: 120px;
+    height: 40px;
+    font-size: 15px;
+
+    cursor: pointer;
+    color: white;
+    font-weight: 500;
+    border:none;
+
+    filter: brightness(.95);  
+}
+
+.event-list-edit-button {
+    background-color: #3d64ff;
+    border-radius: 17px;
+}
+
+.event-list-delete-button {
+    background-color: rgb(235, 45, 45);
+    border-radius: 5px;
+}
+.event-list-item-button-container button:hover {
+    filter: brightness(1.05); 
+}
+
+.created-events-container > h1 {
+    margin-bottom: 10px;
+}
+
+

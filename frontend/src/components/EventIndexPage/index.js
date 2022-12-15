@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getEvents, fetchEvents } from "../../store/event.js";
 import EventListItem from "./EventListItem.js";
 import EventCategories from "./EventCategories";
+import "./EventIndexPage.css";
 
 const EventIndexPage = () => {
   const dispatch = useDispatch();
@@ -21,7 +22,12 @@ const EventIndexPage = () => {
       <section className="event-index-layout">
         <div className="index-layout-border">
           <EventCategories />
-          <ol>{eventsList}</ol>
+          <div className="index-section-container">
+            <div className="index-card-header">
+              <h3 className="events-index-title">Events Nearby</h3>
+            </div>
+            <div className="index-feed-container">{eventsList}</div>
+          </div>
         </div>
       </section>
     </>

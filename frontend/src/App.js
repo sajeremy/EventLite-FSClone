@@ -12,6 +12,9 @@ import Navigation from "./components/Navigation/index";
 import EventIndexPage from "./components/EventIndexPage/index.js";
 import EventShowPage from "./components/EventShowPage/index";
 import HomePageBanner from "./components/HomePageBanner";
+import EventCreateFormPage from "./components/EventCreateFormPage";
+import CreatedEventsIndexPage from "./components/CreatedEventsIndexPage";
+import EventEditFormPage from "./components/EventEditFormPage";
 
 function App() {
   return (
@@ -22,9 +25,21 @@ function App() {
           <HomePageBanner />
           <EventIndexPage />
         </Route>
+        <Route exact path="/events/create">
+          <Navigation />
+          <EventCreateFormPage />
+        </Route>
+        <Route exact path="/events/:eventId/edit">
+          <Navigation />
+          <EventEditFormPage />
+        </Route>
         <Route path="/events/:eventId">
           <Navigation />
           <EventShowPage />
+        </Route>
+        <Route path="/users/:userId/events">
+          <Navigation />
+          <CreatedEventsIndexPage />
         </Route>
         <Route path="/login">
           <LoginFormPage />

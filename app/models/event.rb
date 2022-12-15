@@ -27,7 +27,7 @@ class Event < ApplicationRecord
     validates :ticket_price, 
         numericality: { greater_than_or_equal_to: 0, less_than: BigDecimal(10**3) },
         format: { with: /\A\d{1,3}(\.\d{1,2})?\z/ }
-    validates :title, :body, :address, :start_datetime, :end_datetime, :capacity, :ticket_price, :category,  presence: true
+    validates :title, :body, :address, :end_datetime, :capacity, :ticket_price, :category,  presence: true
 
     belongs_to :organizer,
     primary_key: :id,

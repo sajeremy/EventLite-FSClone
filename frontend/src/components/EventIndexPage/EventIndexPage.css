@@ -3,24 +3,25 @@ body {
     font-weight: 400;
 }
 
-.home-cateogry-tiles {
-    /* padding-top: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
-    font-weight: 400; */
-    
+.home-category-tiles-title {
+    padding-bottom: 1rem;
+    margin-top: 25px;
+    margin-bottom: 7px;  
 }
 
-.home-category-tiles-title {
+.events-index-title {
+    margin-top: 25px;
+}
+
+.home-category-tiles-title,
+.events-index-title {
     font-size: 1.5rem;
     line-height: 2rem;
     letter-spacing: .25px;
     margin-right: -0.25px;
     font-weight: 700;
-    padding-bottom: 1rem;
-    margin-top: 25px;
-    margin-bottom: 15px;
 }
+
 
 .tile-group {
     display: grid;
@@ -68,7 +69,7 @@ body {
 }
 
 .tile-name {
-    background-color: #f8f7fa;
+    background-color: #f7f7f7;;
     font-weight: 600;
     font-size: 13px;
     padding-left: 16px;
@@ -87,3 +88,111 @@ section.event-index-layout {
     margin: 0 auto;
     padding: 0 50px !important
 }
+
+.index-feed-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.event-card-container-outer-edge {
+    padding: 16px;
+    width: 25%;
+    min-width: 250px;
+
+}
+
+.event-card-container {
+    height: 100%;
+    box-shadow: 0 40px 64px -16px rgb(46 55 77 / 10%);
+    position: relative;
+    background-color: #f7f7f7;
+}
+
+.event-card-container:hover {
+    box-shadow: 0 40px 64px -16px rgb(46 55 77 / 40%);
+}
+
+.event-card-info-container {
+    padding: 24px 16px;
+    display: block;
+    overflow: visible;
+    position: relative;
+    background-color: #f7f7f7;
+}
+
+.event-card-info-title {
+    font-weight: 650;
+    font-size: 1.125rem;
+    line-height: 1.5rem;
+    /* text-rendering: optimizeLegibility;    */
+    
+}
+
+.event-card-info-title-link {
+    text-decoration: none;
+    color: #39364f;
+}
+
+.event-card-info-date {
+    color: #d1410c;
+    font-weight: 500;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    margin-top: 10px;
+}
+
+.event-card-info-address {
+    margin-top: 10px;
+}
+
+.event-card-info-ticket {
+    margin-top: 5px;
+}
+.event-card-info-address,
+.event-card-info-ticket {
+    color: #6f7287;
+    font-size: .875rem;
+    line-height: 1rem;
+    font-weight: 400;
+    text-overflow: ellipsis;
+}
+
+.event-card-info-organizer-likes {
+    color: #39364f;
+    font-size: .8rem;
+    line-height: 1.25rem;
+    font-weight: 600;
+    margin-top: 10px;
+
+}
+
+.event-card-like-button-container {
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    background-color: #f8f7fa;
+    border: .05rem rgba(57, 54, 79, .3) solid;
+    top: -24px;
+    position: absolute;
+    right: 8px;
+    display: flex
+}
+
+.event-card-like-button-container {
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+    
+}
+
+.event-card-like-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+}
+
+#like-icon-thickness {
+    stroke-width:.05rem;
+}
+
+

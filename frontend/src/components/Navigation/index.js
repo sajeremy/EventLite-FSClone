@@ -33,7 +33,7 @@ const Navigation = () => {
           <NavLink className="logged-out-login-button" to="/login">
             Log In
           </NavLink>
-          <NavLink to="#" className="logged-create-event-button">
+          <NavLink className="logged-create-event-button" to="/login">
             Create an event
           </NavLink>
           <Link

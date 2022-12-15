@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useHistory, Redirect } from "react-router-dom";
+import { getCreatedEvents, fetchEvents } from "../../store/event.js";
 import "./Navigation.css";
 import { BsSearch, BsSuitHeart, BsChevronDown } from "react-icons/bs";
 import { TbTicket } from "react-icons/tb";
@@ -12,6 +13,9 @@ import * as sessionActions from "../../store/session";
 const LoggedInNav = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
+  let numCreatedEvents;
+  const organizedEvents = useSelector(getCreatedEvents);
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -33,11 +37,16 @@ const LoggedInNav = () => {
     return () => document.removeEventListener("click", closeMenu);
   }, [showMenu]);
 
+  useEffect(() => {
+    dispatch(fetchEvents());
+  }, []);
+
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
+    history.push(`/signup`);
+    // <Redirect to="/login" />;
   };
-
   return (
     <>
       <div className="navbar">
@@ -72,7 +81,16 @@ const LoggedInNav = () => {
               </li>
               <li>
                 <Link className="likes-dropdown-button" to="#">
-                  Liked
+                  Liked (5)
+                </Link>
+              </li>
+              <li>
+                <Link
+                  className="likes-dropdown-button"
+                  to={`/users/${sessionUser.id}/events`}
+                >
+                  {/* Created Events ({numCreatedEvents}) */}
+                  Created Events ({`${organizedEvents.length}`})
                 </Link>
               </li>
               <li>
@@ -95,33 +113,12 @@ const LoggedInNav = () => {
           </div>
           <p>Likes</p>
         </NavLink>
-        <NavLink className="login-create-event-button" to="#">
+        <NavLink className="login-create-event-button" to="/events/create">
           <div>
             <AiOutlinePlus />
           </div>
           <p>Create an event</p>
         </NavLink>
-        {/* {showMenu && (
-          <div id="profile-dropdown-container">
-            <ul className="profile-dropdown">
-              <li>
-                <Link className="tickets-dropdown-button" to="#">
-                  Tickets (4)
-                </Link>
-              </li>
-              <li>
-                <Link className="likes-dropdown-button" to="#">
-                  Liked
-                </Link>
-              </li>
-              <li>
-                <Link className="log-out-button" to="#" onClick={logout}>
-                  Log Out
-                </Link>
-              </li>
-            </ul>
-          </div>
-        )} */}
       </div>
     </>
   );

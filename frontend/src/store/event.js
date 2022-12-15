@@ -1,4 +1,7 @@
 import csrfFetch, { storeCSRFToken } from "./csrf";
+import { useHistory } from "react-router-dom";
+
+//
 
 //Action constants
 export const RECEIVE_EVENTS = "events/RECEIVE_EVENTS";
@@ -25,6 +28,26 @@ export const getEvent = (eventId) => (state) => {
 };
 export const getEvents = (state) => {
   return state.events ? Object.values(state.events) : [];
+};
+// export const getCreatedEvents = (state) => {
+//   const totalEvents = state.events;
+//   const user = state.session.user;
+
+//   if (Object.keys(totalEvents).length !== 0 && user) {
+//     const createdEvents = user.eventIds;
+//     const totalEventsArr = Object.entries(totalEvents);
+//     const filteredEvents = totalEventsArr.filter(([k, v]) =>
+//       createdEvents.includes(parseInt(k))
+//     );
+//     const createdEventsObj = Object.fromEntries(filteredEvents);
+//     return Object.values(createdEventsObj);
+//   } else return [];
+// };
+export const getCreatedEvents = (state) => {
+  const events = state.events ? Object.values(state.events) : [];
+  const currentUser = state.session.user;
+
+  return events.filter((event) => event.organizerId === currentUser.id);
 };
 
 //Thunk Action Creators
@@ -55,6 +78,24 @@ export const createEvent = (event) => async (dispatch) => {
     dispatch(receiveEvent(newEvent));
   }
 };
+export const createFormEvent = (formData, setPhotoFile) => async (dispatch) => {
+  const history = useHistory();
+  const res = await csrfFetch(`/api/events`, {
+    method: "POST",
+    body: formData,
+  });
+  if (res.ok) {
+    history.push("/");
+  }
+  // if (res.ok) {
+  //   debugger;
+  //   const newEvent = await res.json();
+  //   dispatch(receiveEvent(newEvent));
+  //   setPhotoFile(null);
+  //   history.push("/");
+  // }
+};
+
 export const updateEvent = (event) => async (dispatch) => {
   const res = await csrfFetch(`/api/events/${event.id}`, {
     method: "PUT",
@@ -68,7 +109,7 @@ export const updateEvent = (event) => async (dispatch) => {
 };
 
 export const deleteEvent = (eventId) => async (dispatch) => {
-  await csrfFetch(`/api/posts/${eventId}`, { method: "DELETE" });
+  await csrfFetch(`/api/events/${eventId}`, { method: "DELETE" });
   dispatch(removeEvent(eventId));
 };
 

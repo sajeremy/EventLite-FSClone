@@ -1,28 +1,152 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 
 const EventListItem = (props) => {
   const { event } = props;
+  const [likeStatus, setLikeStatus] = useState(false);
+  const startDate = event.startDatetime;
+  const dateObj = new Date(startDate);
+  const nowObj = new Date();
+  const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  const months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec",
+  ];
+
+  const tomorrowObj = () => {
+    const tomorrowDate = new Date(Number(nowObj));
+    tomorrowDate.setDate(nowObj.getDate() + 1);
+    return tomorrowDate;
+  };
+
+  const parseDate = () => {
+    let parsedDateObj;
+
+    if (
+      dateObj.getFullYear() === nowObj.getFullYear() &&
+      dateObj.getMonth() === nowObj.getMonth()
+    ) {
+      if (dateObj.getDate() === nowObj.getDate()) {
+        parsedDateObj =
+          "Today at " +
+          dateObj.toLocaleString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          });
+      } else if (dateObj.getDate() === tomorrowObj().getDate()) {
+        parsedDateObj =
+          "Tomorrow at " +
+          dateObj.toLocaleString("en-US", {
+            hour: "numeric",
+            minute: "numeric",
+            hour12: true,
+          });
+      }
+    } else {
+      parsedDateObj = dateObj.toLocaleString("en-US", {
+        weekday: "short",
+        month: "short",
+        day: "numeric",
+        hour: "numeric",
+        minute: "numeric",
+        hour12: true,
+      });
+    }
+    return parsedDateObj;
+  };
+
+  const formatTicketPrice = () => {
+    // debugger;
+    const numSplit = event.ticketPrice.split(".");
+    let formattedPrice;
+    if (numSplit[1].length === 1) {
+      formattedPrice = event.ticketPrice + "0";
+    } else {
+      formattedPrice = event.ticketPrice;
+    }
+
+    return formattedPrice;
+  };
+
+  const handleLikeClick = () => {
+    let icon = document.getElementById(
+      `event-card-like-button-icons-${event.id}`
+    );
+    if (likeStatus) {
+      setLikeStatus(false);
+      icon.style.color = "#39364f";
+    } else {
+      setLikeStatus(true);
+      if (icon) {
+        icon.style.color = "#d1410c";
+      }
+    }
+  };
+
+  const likeIcon = () => {
+    if (likeStatus) {
+      return <BsSuitHeartFill />;
+    } else {
+      return <BsSuitHeart id="like-icon-thickness" />;
+    }
+  };
 
   return (
-    <li>
-      <NavLink to={`/events/${event.id}`}>
-        <img src={event.photoUrl} alt=""></img>
-        <div>
-          <strong>Title:</strong> {event.title}
+    <div className="event-card-container-outer-edge">
+      <div className="event-card-container">
+        <div className="event-card-img-container">
+          <NavLink to={`/events/${event.id}`}>
+            <img src={event.photoUrl} alt=""></img>
+          </NavLink>
         </div>
-        <div>
-          <strong>Body:</strong> {event.body}
+        <div className="event-card-info-container">
+          <NavLink
+            className="event-card-info-title-link"
+            to={`/events/${event.id}`}
+          >
+            <h3 className="event-card-info-title">{event.title}</h3>
+          </NavLink>
+          <p className="event-card-info-date">{parseDate()}</p>
+          <p className="event-card-info-address">
+            {event.address.slice(0, 19) + "..."}
+          </p>
+          <p className="event-card-info-ticket">
+            {"Starts at $" + formatTicketPrice()}
+          </p>
+          <div className="event-card-info-organizer-likes">
+            <p>
+              {"Organized by " +
+                event.organizerFirstName +
+                " " +
+                event.organizerLastName}
+            </p>
+            <p># of Likes</p>
+          </div>
+          <div className="event-card-like-button-container">
+            <button
+              onClick={() => handleLikeClick()}
+              className="event-card-like-button"
+            >
+              <div id={`event-card-like-button-icons-${event.id}`}>
+                {likeIcon()}
+              </div>
+            </button>
+          </div>
         </div>
-        <div>
-          <strong>Address:</strong> {event.address}
-        </div>
-        <div>
-          <strong>Category: </strong>
-          {event.category}
-        </div>
-      </NavLink>
-    </li>
+      </div>
+    </div>
   );
 };
 

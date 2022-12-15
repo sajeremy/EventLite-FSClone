@@ -45,7 +45,9 @@
 a.log-out-button:hover,
 a.likes-dropdown-button:hover,
 a.tickets-dropdown-button:hover {
-  background-color: #f5f5f5f1 !important;
+  /* background-color: #f5f5f5f1 !important; */
+  background-color: #f5f5f5;
+
 }
 
 
@@ -135,6 +137,7 @@ a.tickets-dropdown-button:hover {
   position: absolute;
   right: 0;
   top: 42px;
+  z-index: 999;
 
 }
 
@@ -205,5 +208,9 @@ a.tickets-dropdown-button:hover {
   margin-left: -10px;
 
 } 
+
+.event-list-item-container:hover {
+  box-shadow: 0 40px 64px -16px rgb(46 55 77 / 40%);
+}
 
 
