@@ -4,7 +4,7 @@ require 'open-uri'
 # event.photo.attach(io: file, filename: 'jpg_image.png')
 
 
-ApplicationRecord.transaction do 
+# ApplicationRecord.transaction do 
     puts "Destroying tables..."
     # Unnecessary if using `rails db:seed:replant`
     Event.destroy_all
@@ -331,7 +331,7 @@ ApplicationRecord.transaction do
 
     
     puts "Done!"
-  end
+  # end
   
   
   # Ticket.create!({events_id: 1, attendee_id: 1})
