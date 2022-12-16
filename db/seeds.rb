@@ -93,8 +93,8 @@ ApplicationRecord.transaction do
         ticket_price: 200.00,
         category: 'Hobbies',
         organizer_id: 1,
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/image8.png",
-        filename: "image8.jpg"
+        file: "https://eventlite-22-seeds.s3.amazonaws.com/image15.jpg",
+        filename: "image15.jpg"
       },
       {
         title:'Japanese Taiko "Thunder Drum" Workshop, Demo, & Jam Session',
@@ -281,18 +281,38 @@ ApplicationRecord.transaction do
         filename: "image11.jpg"
       },
       {
-        title:'Restorative Yoga',
-        body: 'Restorative yoga is a form of yoga that works with the sympathetic and parasympathetic system to help you go from the fight and flight mode to the rest and digest mode. It seeks to achieve physical, mental and emotional relaxation with the aid of props. The use of props makes it easier for you to maintain balance while you are stimulating, stretching and relaxing your body.(Pillows, blocks and blankets) This type of Yoga is designed to restore, rejuvenate and relax. Whether you are stressed or suffering depletion of energy, or if you simply need a deep stretch and better health, this yoga is the right one for you.',
-        address: 'Absalom 223 Degraw Avenue Teaneck, NJ 07666',
-        start_datetime: DateTime.parse("Wed, Jan 18, 2023, 09:30 AM EST"),
-        end_datetime: DateTime.parse("Wed, Jan 18, 2023, 11:30 AM EST"),
+        title:'OPEN MIC NIGHT',
+        body: "Our open mic night is open to anybody. Whether you want to sing, do some slam poetry, try out some new stand up comedy, tell a short story, play an instrument, or whatever fuels you creatively! This is the perfect community to share with. Even if you don't want to perform and just want to be a part of the fun! You can come solo, bring a friend, or a date. Our Open Mic night is the best way to get out, enjoy something new, and meet amazing people.
+
+        We will be serving up wine, warm spiced hot chocolate, and tasty pastries!",
+        address: '704 DeKalb Ave 704 DeKalb Avenue Brooklyn, NY 11216',
+        start_datetime: DateTime.parse("Mon, Jan 16, 2023, 09:30 PM EST"),
+        end_datetime: DateTime.parse("Mon, Jan 16, 2023, 11:30 PM EST"),
         capacity: 20,
-        ticket_price: 35.00,
-        category: 'Health',
+        ticket_price: 15.00,
+        category: 'Performing & Visual Arts',
         organizer_id: rand(User.all.length),
-        file: "https://eventlite-22-seeds.s3.amazonaws.com/image12.jpg",
-        filename: "image12.jpg"
-      }
+        file: "https://eventlite-22-seeds.s3.amazonaws.com/image13.jpg",
+        filename: "image13.jpg"
+      },
+      {
+        title:'Neurohacking 101: Analyzing and Visualizing Brain Networks',
+        body: "Did you know you can learn a lot about the brain from as little as a half-hour in an MRI scanner? And that there are tens of thousands of brain scans publicly available on the internet? MRI has revolutionized the way we see the brain and mind, and it is advancing at an incredible speed. This introductory course covers some of the most important techniques used in the analysis of MRI data, and you'll learn plenty about neuroscience along the way!
+
+        We'll start by going over some of the neuroscience fundamentals, and talk about how they apply to brain networks. You'll use Python, a powerful general-purpose open-source programming language. You'll get an introduction to working with powerful Python packages, including Nilearn, Nibabel, and Scikit Learn. You'll pull brain data from servers, and analyze and visualize the brain networks in these open source data on your own laptop!
+        
+        We encourage workshop participants to have some previous coding experience, but this is not required. The course will not spend much time on the basics of Python: rather, we will only do a brief review of basic Python commands before jumping in to specific neuroimaging packages.",
+        address: 'Genspace 132 32nd Street #108 Brooklyn, NY 11232',
+        start_datetime: DateTime.parse("Sat, Jan 28, 2023, 02:00 PM EST"),
+        end_datetime: DateTime.parse("Sat, Jan 28, 2023, 05:00 PM EST"),
+        capacity: 40,
+        ticket_price: 115.00,
+        category: 'Business',
+        organizer_id: rand(User.all.length),
+        file: "https://eventlite-22-seeds.s3.amazonaws.com/image14.jpg",
+        filename: "image14.jpg"
+      },
+
     ]
 
     events_list.each do |event|
@@ -317,3 +337,19 @@ ApplicationRecord.transaction do
 
     puts "Done!"
   end
+
+
+
+  # {
+  #   title:'Restorative Yoga',
+  #   body: 'Restorative yoga is a form of yoga that works with the sympathetic and parasympathetic system to help you go from the fight and flight mode to the rest and digest mode. It seeks to achieve physical, mental and emotional relaxation with the aid of props. The use of props makes it easier for you to maintain balance while you are stimulating, stretching and relaxing your body.(Pillows, blocks and blankets) This type of Yoga is designed to restore, rejuvenate and relax. Whether you are stressed or suffering depletion of energy, or if you simply need a deep stretch and better health, this yoga is the right one for you.',
+  #   address: 'Absalom 223 Degraw Avenue Teaneck, NJ 07666',
+  #   start_datetime: DateTime.parse("Wed, Jan 18, 2023, 09:30 AM EST"),
+  #   end_datetime: DateTime.parse("Wed, Jan 18, 2023, 11:30 AM EST"),
+  #   capacity: 20,
+  #   ticket_price: 35.00,
+  #   category: 'Health',
+  #   organizer_id: rand(User.all.length),
+  #   file: "https://eventlite-22-seeds.s3.amazonaws.com/image12.jpg",
+  #   filename: "image12.jpg"
+  # },
