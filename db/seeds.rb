@@ -329,16 +329,16 @@ ApplicationRecord.transaction do
 
     end
 
-    Ticket.create!({events_id: 1, attendee_id: 1})
-    Ticket.create!({events_id: 2, attendee_id: 1})
-    Ticket.create!({events_id: 2, attendee_id: 2})
-    Ticket.create!({events_id: 2, attendee_id: 3})
-    Ticket.create!({events_id: 3, attendee_id: 3})
-
+    
     puts "Done!"
   end
-
-
+  
+  
+  # Ticket.create!({events_id: 1, attendee_id: 1})
+  # Ticket.create!({events_id: 2, attendee_id: 1})
+  # Ticket.create!({events_id: 2, attendee_id: 2})
+  # Ticket.create!({events_id: 2, attendee_id: 3})
+  # Ticket.create!({events_id: 3, attendee_id: 3})
 
   # {
   #   title:'Restorative Yoga',
