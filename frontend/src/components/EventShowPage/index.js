@@ -6,6 +6,7 @@ import "./EventShowPage.css";
 import { BsSuitHeart, BsSuitHeartFill, BsClockHistory } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
 import { AiTwotoneCalendar } from "react-icons/ai";
+import TicketModal from "./TicketModal";
 
 const EventShowPage = () => {
   const { eventId } = useParams();
@@ -120,9 +121,18 @@ const EventShowPage = () => {
     return formattedPrice;
   };
 
-  const handleTickets = () => {
-    alert(`Redirect to ticket modal for Event ${event.id}`);
+  //Ticket Modal
+  const modalContainer = document.getElementById("microMobilityModal");
+
+  const handleTicketModal = () => {
+    // alert(`Redirect to ticket modal for Event ${event.id}`);
+    modalContainer.style.display = "block";
   };
+  window.addEventListener("click", function (event) {
+    if (event.target === modalContainer) {
+      modalContainer.style.display = "none";
+    }
+  });
 
   return (
     <>
@@ -209,13 +219,14 @@ const EventShowPage = () => {
             </div>
             <button
               className="show-page-ticket-button"
-              onClick={() => handleTickets()}
+              onClick={() => handleTicketModal()}
             >
               Get Tickets
             </button>
           </div>
         </div>
       </div>
+      <TicketModal event={event} />
     </>
   );
 };

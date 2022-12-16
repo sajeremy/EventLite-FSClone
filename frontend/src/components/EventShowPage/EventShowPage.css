@@ -193,4 +193,134 @@
    background-color: #f05537; 
 }
 
+/* -------------------------------- */
+/* Ticket Modal */
 
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 901;
+    padding-top: 200px; 
+    left: 0;
+    top: 0;
+    width: 100%; 
+    height: 100%; 
+    background-color: rgb(57,54,79,0.9);
+}
+
+.modal-content {
+    position: relative;
+    color: #39364f;
+    background-color: #f8f7fa;
+    margin: auto;
+    padding: 0;
+    border: 1px solid #888;
+    border-radius: 10px;
+    width: 70vw;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    opacity: 1;
+  }
+
+.modal-body {
+  display: flex;
+  flex-direction: row;
+  /* justify-content: space-around; */
+  font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif; 
+  margin-bottom: 20px;
+  margin-top: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+
+}
+
+.right-modal {
+    /* border: red 3px solid; */
+    width: 60%;
+    
+}
+
+.left-modal {
+    /* border: blue 3px solid; */
+    width: 40%;
+}
+
+
+.modal-top {
+  margin-left: 15px;
+  font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif; 
+}
+.modal-bottom {
+  display: flex;
+
+  margin-left: 15px;
+  margin-right: 15px;
+  position:relative;
+}
+
+.ticket-counter-container {
+    display: flex;
+    margin-top: 20px;
+    margin-left: 10px;
+    /* border: red 1px solid; */
+    width: 120px;
+    justify-content: space-around;
+}
+
+button.decrement,
+button.increment {
+    all:unset;
+    cursor: pointer;
+    background-color: #3659e3;
+    color: white;
+    font-size: 32px;
+    width:40px;
+    text-align: center;
+    border-radius: 7px;
+
+}
+
+
+.modal-event-title {
+    font-size: 24px;
+    font-weight: 600;
+}
+
+.ticket-count-container {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+.ticket-checkout {
+    margin-top: 10px;
+}
+
+.ticket-count,
+.ticket-price,
+.ticket-total {
+    display: flex;
+    justify-content:space-between;
+    margin-right: 30px;
+}
+
+.ticket-checkout {
+    display: flex;
+    justify-content: end;
+    margin-top: 25px;
+    margin-right: 30px;
+}
+
+button.check-out-button {
+    all:unset;
+    cursor: pointer;
+    background-color: #d1410c;
+    color: white;
+    width:200px;
+    height: 50px;
+    text-align: center;
+    font-size: .875rem;
+    line-height: 1.5rem;
+    width: 212px;
+    height: 44px;
+    border-radius: 8px;
+}

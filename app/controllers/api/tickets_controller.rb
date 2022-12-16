@@ -4,7 +4,6 @@ class Api::TicketsController < ApplicationController
     def index
         @current_user = current_user
         @tickets = Ticket.all
-        @user_tickets = Ticket.where(attendee_id: @current_user.id)
 
         if @tickets
             render :index
@@ -12,6 +11,7 @@ class Api::TicketsController < ApplicationController
             render json: {errors: ['no tickets found']}, status:404
         end
     end
+
 
     def show
         @ticket = Ticket.find_by(id: params[:id])
@@ -24,11 +24,9 @@ class Api::TicketsController < ApplicationController
     end
     
     def create
-        debugger
-        event_tickets_count = Ticket.where(events_id: ticket_params[:events_id]).length
-        debugger
-        @event = Event.find_by(id: ticket_params[:events_id])
-        @ticket = Ticket.new(ticket_params)
+        event_tickets_count = Ticket.where(events_id: params[:event_id]).length
+        @event = Event.find_by(id: params[:event_id])
+        @ticket = Ticket.new(events_id: params[:event_id])
         @ticket.attendee_id = @current_user.id
         
 
@@ -39,8 +37,7 @@ class Api::TicketsController < ApplicationController
             render json: { message: 'Successfully purchased ticket!' }
         
         else 
-            # render json: { errors: @ticket.errors.full_messages }, status: :unprocessable_entity
-            render json: ['test message']
+            render json: { errors: @ticket.errors.full_messages }, status: :unprocessable_entity
         end
 
     end
@@ -50,18 +47,11 @@ class Api::TicketsController < ApplicationController
 
         if @ticket
             @ticket.destroy
-            render :index
+            render json: { message: 'Successfully deleted ticket' }
         else 
             render json: {errors: ['Was not able to complete your request']}, status: :unprocessable_entity
         end
 
-    end
-
-  
-    private
-  
-    def ticket_params
-      params.require(:ticket).permit(:events_id)
     end
 
 end
