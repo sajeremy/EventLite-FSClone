@@ -46,6 +46,8 @@ require 'open-uri'
       }) 
     end
 
+    puts "reading events hash"
+
     events_list = [
       {
         title:'"STREET / ART Brooklyn" Gowanus Art Walk',
@@ -131,7 +133,7 @@ require 'open-uri'
         capacity: 50,
         ticket_price: 28.79,
         category: 'Music',
-        organizer_id: rand(User.all.length),
+        organizer_id: 2,
         file: "https://eventlite-22-seeds.s3.amazonaws.com/Image3.jpg",
         filename: "image3.jpg"
       },
@@ -160,7 +162,7 @@ require 'open-uri'
         capacity: 20,
         ticket_price: 0.00,
         category: 'Business',
-        organizer_id: rand(User.all.length),
+        organizer_id: 3,
         file: "https://eventlite-22-seeds.s3.amazonaws.com/image4.jpg",
         filename: "image4.jpg"
       },
@@ -176,7 +178,7 @@ require 'open-uri'
         capacity: 20,
         ticket_price: 0.00,
         category: 'Business',
-        organizer_id: rand(User.all.length),
+        organizer_id: 4,
         file: "https://eventlite-22-seeds.s3.amazonaws.com/image5.jpg",
         filename: "image5.jpg"
       },
@@ -190,7 +192,7 @@ require 'open-uri'
         capacity: 1000,
         ticket_price: 0.00,
         category: 'Holiday',
-        organizer_id: rand(User.all.length),
+        organizer_id: 2,
         file: "https://eventlite-22-seeds.s3.amazonaws.com/image6.jpg",
         filename: "image6.jpg"
       },
@@ -227,7 +229,7 @@ require 'open-uri'
         capacity: 24,
         ticket_price: 12.50,
         category: 'Performing & Visual Arts',
-        organizer_id: rand(User.all.length),
+        organizer_id: 3,
         file: "https://eventlite-22-seeds.s3.amazonaws.com/image7.jpg",
         filename: "image7.jpg"
       },
@@ -240,7 +242,7 @@ require 'open-uri'
         capacity: 50,
         ticket_price: 5.00,
         category: 'Business',
-        organizer_id: rand(User.all.length),
+        organizer_id: 4,
         file: "https://eventlite-22-seeds.s3.amazonaws.com/image9.jpg",
         filename: "image9.jpg"
       },
@@ -257,7 +259,7 @@ require 'open-uri'
         capacity: 40,
         ticket_price: 10.00,
         category: 'Food & Drink',
-        organizer_id: rand(User.all.length),
+        organizer_id: 5,
         file: "https://eventlite-22-seeds.s3.amazonaws.com/image10.jpg",
         filename: "image10.jpg"
       },
@@ -276,7 +278,7 @@ require 'open-uri'
         capacity: 20,
         ticket_price: 20.50,
         category: 'Health',
-        organizer_id: rand(User.all.length),
+        organizer_id: 6,
         file: "https://eventlite-22-seeds.s3.amazonaws.com/image11.jpg",
         filename: "image11.jpg"
       },
@@ -291,7 +293,7 @@ require 'open-uri'
         capacity: 20,
         ticket_price: 15.00,
         category: 'Performing & Visual Arts',
-        organizer_id: rand(User.all.length),
+        organizer_id: 7,
         file: "https://eventlite-22-seeds.s3.amazonaws.com/image13.jpg",
         filename: "image13.jpg"
       },
@@ -308,12 +310,14 @@ require 'open-uri'
         capacity: 40,
         ticket_price: 115.00,
         category: 'Business',
-        organizer_id: rand(User.all.length),
+        organizer_id: 8,
         file: "https://eventlite-22-seeds.s3.amazonaws.com/image14.jpg",
         filename: "image14.jpg"
       },
 
     ]
+
+    puts "events each loop..."
 
     events_list.each do |event|
       event_attributes = [:title, :body, :address, :start_datetime,:end_datetime, :capacity, :ticket_price, :category,:organizer_id]

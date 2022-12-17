@@ -19,7 +19,7 @@
 #
 class Event < ApplicationRecord
     validates :start_datetime, 
-        comparison: { greater_than: DateTime.now(), less_than: :end_datetime }
+        comparison: {  less_than: :end_datetime }  #greater_than: DateTime.now(),
     validates :capacity, 
         numericality: {greater_than: 0}
     validates :title, 
