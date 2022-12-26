@@ -15,6 +15,10 @@ const EventShowPage = () => {
   let startDateObj, endDateObj;
 
   useEffect(() => {
+    window.scroll(0, 0);
+  }, []);
+
+  useEffect(() => {
     dispatch(fetchEvent(eventId));
   }, [eventId, dispatch]);
 

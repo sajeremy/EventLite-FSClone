@@ -1,9 +1,3 @@
-// function App() {
-//   return <h1>Yo... Jimmy</h1>;
-// }
-
-// export default App;
-
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
@@ -40,6 +34,9 @@ function App() {
         <Route path="/users/:userId/events">
           <Navigation />
           <CreatedEventsIndexPage />
+        </Route>
+        <Route path="/users/:userId/tickets">
+          <Navigation />
         </Route>
         <Route path="/login">
           <LoginFormPage />

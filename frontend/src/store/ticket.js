@@ -6,11 +6,11 @@ export const RECEIVE_TICKET = "tickets/RECEIVE_TICKET";
 export const REMOVE_TICKET = "tickets/REMOVE_TICKET";
 
 //Actions
-const receieveTickets = (tickets) => ({
+const receiveTickets = (tickets) => ({
   type: RECEIVE_TICKETS,
   tickets,
 });
-const receieveTicket = (ticket) => ({
+const receiveTicket = (ticket) => ({
   type: RECEIVE_TICKET,
   ticket,
 });
@@ -20,3 +20,62 @@ const removeTicket = (ticketId) => ({
 });
 
 //Selectors
+export const getTickets = (state) => {
+  return state.tickets ? Object.values(state.tickets) : [];
+};
+
+export const getMyTickets = (state) => {
+  const tickets = state.tickets ? Object.values(state.tickets) : [];
+  const currentUser = state.session.user;
+
+  return tickets.filter((ticket) => ticket.attendeeId === currentUser.id);
+};
+
+//Thunk Action Creators
+
+// export const fetchTickets = () => async (dispatch) => {
+//   const res = await fetch(`/api/tickets`);
+//   if (res.ok) {
+//     const ticketsObj = await res.json();
+//     // debugger;
+//     dispatch(receiveTickets(ticketsObj.tickets));
+//   }
+// };
+// export const fetchEvent = (eventId) => async (dispatch) => {
+//   const res = await fetch(`/api/events/${eventId}`);
+//   if (res.ok) {
+//     const eventObj = await res.json();
+//     // debugger;
+//     dispatch(receiveEvent(eventObj.event));
+//   }
+// };
+export const createTicket = (ticket) => async (dispatch) => {
+  const res = await csrfFetch(`/api/tickets`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(ticket),
+  });
+  if (res.ok) {
+    const newTicket = await res.json();
+    dispatch(receiveTicket(newTicket));
+  }
+};
+
+//Tickets Reducer
+const ticketsReducer = (state = {}, action) => {
+  const newState = { ...state };
+
+  switch (action.type) {
+    case RECEIVE_TICKETS:
+      return { ...action.tickets };
+    case RECEIVE_TICKET:
+      return { [action.ticket.id]: action.ticket };
+    case REMOVE_TICKET:
+      delete newState[action.ticketId];
+      return newState;
+    default:
+      return state;
+  }
+};
+
+export default ticketsReducer;
