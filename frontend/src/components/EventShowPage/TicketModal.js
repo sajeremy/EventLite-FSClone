@@ -1,9 +1,11 @@
 import { React, useEffect, useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { createTicket } from "../../store/ticket";
 
 const TicketModal = (props) => {
   const { event } = props;
+  const { eventId } = useParams();
   const history = useHistory();
   const dispatch = useDispatch();
   const [ticketCount, setTicketCount] = useState(0);
@@ -13,9 +15,9 @@ const TicketModal = (props) => {
   const handleTicketPurchase = () => {
     for (let i = 0; i < ticketCount; i++) {
       console.log(`Purchased Ticket ${i + 1}`);
+      dispatch(createTicket(eventId));
     }
     if (ticketCount > 0) history.push(`/users/${sessionUserId}/tickets`);
-    // setTicketCount(0);
   };
 
   const handleDecClick = () => {

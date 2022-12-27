@@ -4,14 +4,15 @@ import csrfFetch, { storeCSRFToken } from "./csrf";
 export const RECEIVE_TICKETS = "tickets/RECEIVE_TICKETS";
 export const RECEIVE_TICKET = "tickets/RECEIVE_TICKET";
 export const REMOVE_TICKET = "tickets/REMOVE_TICKET";
+export const ADD_NEW_TICKET = "ticekts/ADD_NEW_TICKET";
 
 //Actions
 const receiveTickets = (tickets) => ({
   type: RECEIVE_TICKETS,
   tickets,
 });
-const receiveTicket = (ticket) => ({
-  type: RECEIVE_TICKET,
+const addNewTicket = (ticket) => ({
+  type: ADD_NEW_TICKET,
   ticket,
 });
 const removeTicket = (ticketId) => ({
@@ -49,15 +50,14 @@ export const getMyTickets = (state) => {
 //     dispatch(receiveEvent(eventObj.event));
 //   }
 // };
-export const createTicket = (ticket) => async (dispatch) => {
-  const res = await csrfFetch(`/api/tickets`, {
+export const createTicket = (eventId) => async (dispatch) => {
+  const res = await csrfFetch(`/api/events/${eventId}/tickets`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(ticket),
   });
   if (res.ok) {
     const newTicket = await res.json();
-    dispatch(receiveTicket(newTicket));
+    dispatch(addNewTicket(newTicket));
   }
 };
 
@@ -70,6 +70,10 @@ const ticketsReducer = (state = {}, action) => {
       return { ...action.tickets };
     case RECEIVE_TICKET:
       return { [action.ticket.id]: action.ticket };
+    case ADD_NEW_TICKET:
+      debugger;
+      newState[action.ticket.id] = action.ticket;
+      return newState;
     case REMOVE_TICKET:
       delete newState[action.ticketId];
       return newState;

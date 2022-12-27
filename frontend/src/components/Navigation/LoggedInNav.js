@@ -75,7 +75,10 @@ const LoggedInNav = () => {
           <div id="profile-dropdown-container">
             <ul className="profile-dropdown">
               <li>
-                <Link className="tickets-dropdown-button" to="#">
+                <Link
+                  className="tickets-dropdown-button"
+                  to={`/users/${sessionUser.id}/tickets`}
+                >
                   Tickets (4)
                 </Link>
               </li>
@@ -101,7 +104,10 @@ const LoggedInNav = () => {
             </ul>
           </div>
         )}
-        <NavLink className="ticket-button" to="#">
+        <NavLink
+          className="ticket-button"
+          to={`/users/${sessionUser.id}/tickets`}
+        >
           <div>
             <TbTicket />
           </div>
