@@ -1,4 +1,4 @@
-.created-events-container {
+/* .created-events-container {
 
     width: 80vw;
     height: 100%;
@@ -125,17 +125,11 @@
     margin-right: 5px;
 }
 
-/* .event-list-item-progress-fill {
+.event-list-item-progress-fill {
     background-color: #f05537;
     width: 25%;
     height: 10px;
-} */
-
-/* #progress-bar-fill-1 {
-    background-color: #f05537;
-    width: 50%;
-    height: 10px;
-} */
+}
 
 .event-list-item-sales-container {
     width: 10%;
@@ -181,4 +175,4 @@
     margin-bottom: 10px;
 }
 
-
+ */

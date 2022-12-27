@@ -9,6 +9,7 @@ import HomePageBanner from "./components/HomePageBanner";
 import EventCreateFormPage from "./components/EventCreateFormPage";
 import CreatedEventsIndexPage from "./components/CreatedEventsIndexPage";
 import EventEditFormPage from "./components/EventEditFormPage";
+import PurchasedTicketsIndexPage from "./components/PurchasedTicketsIndexPage";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
         </Route>
         <Route path="/users/:userId/tickets">
           <Navigation />
+          <PurchasedTicketsIndexPage />
         </Route>
         <Route path="/login">
           <LoginFormPage />
