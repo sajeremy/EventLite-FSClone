@@ -34,14 +34,14 @@ export const getMyTickets = (state) => {
 
 //Thunk Action Creators
 
-// export const fetchTickets = () => async (dispatch) => {
-//   const res = await fetch(`/api/tickets`);
-//   if (res.ok) {
-//     const ticketsObj = await res.json();
-//     // debugger;
-//     dispatch(receiveTickets(ticketsObj.tickets));
-//   }
-// };
+export const fetchUserTickets = () => async (dispatch) => {
+  const res = await fetch(`/api/tickets`);
+  if (res.ok) {
+    const ticketsObj = await res.json();
+    // debugger;
+    dispatch(receiveTickets(ticketsObj.tickets));
+  }
+};
 // export const fetchEvent = (eventId) => async (dispatch) => {
 //   const res = await fetch(`/api/events/${eventId}`);
 //   if (res.ok) {

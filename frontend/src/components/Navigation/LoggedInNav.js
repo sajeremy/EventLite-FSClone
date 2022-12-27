@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Link, useHistory, Redirect } from "react-router-dom";
 import { getCreatedEvents, fetchEvents } from "../../store/event.js";
+import { fetchUserTickets } from "../../store/ticket.js";
 import "./Navigation.css";
 import { BsSearch, BsSuitHeart, BsChevronDown } from "react-icons/bs";
 import { TbTicket } from "react-icons/tb";
@@ -16,6 +17,7 @@ const LoggedInNav = () => {
   const history = useHistory();
   let numCreatedEvents;
   const organizedEvents = useSelector(getCreatedEvents);
+  const purcahsedTickets = useSelector((state) => state.tickets.length);
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -39,6 +41,7 @@ const LoggedInNav = () => {
 
   useEffect(() => {
     dispatch(fetchEvents());
+    dispatch(fetchUserTickets());
   }, []);
 
   const logout = (e) => {

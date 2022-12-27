@@ -4,8 +4,8 @@ class Api::TicketsController < ApplicationController
     def index
         @current_user = current_user
         @tickets = Ticket.all
-
-        if @tickets
+        @user_tickets = Ticket.where(attendee_id: @current_user.id)
+        if @user_tickets
             render :index
         else
             render json: {errors: ['no tickets found']}, status:404
