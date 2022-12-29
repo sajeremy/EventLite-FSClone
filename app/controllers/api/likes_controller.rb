@@ -33,17 +33,16 @@ class Api::LikesController < ApplicationController
 
     end
 
-    # def destroy
-    #     @ticket = Ticket.find_by(event_id: like_params[:event_id], user_id: current_user.id)
+    def destroy
+        @like = Like.find_by(event_id: params[:id], user_id: current_user.id)
+        if @like
+            @like.destroy
+            render json: { message: 'Successfully unliked' }
+        else 
+            render json: {errors: ['Was not able to complete your request']}, status: :unprocessable_entity
+        end
 
-    #     if @ticket
-    #         @like.destroy
-    #         render json: { message: 'Successfully unliked' }
-    #     else 
-    #         render json: {errors: ['Was not able to complete your request']}, status: :unprocessable_entity
-    #     end
-
-    # end
+    end
 
     private
   
