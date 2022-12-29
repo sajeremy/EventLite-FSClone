@@ -17,7 +17,9 @@ const LoggedInNav = () => {
   const history = useHistory();
   let numCreatedEvents;
   const organizedEvents = useSelector(getCreatedEvents);
-  const purcahsedTickets = useSelector((state) => state.tickets.length);
+  const purcahsedTickets = useSelector(
+    (state) => Object.keys(state.tickets).length
+  );
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -82,7 +84,7 @@ const LoggedInNav = () => {
                   className="tickets-dropdown-button"
                   to={`/users/${sessionUser.id}/tickets`}
                 >
-                  Tickets (4)
+                  Tickets ({`${purcahsedTickets}`})
                 </Link>
               </li>
               <li>

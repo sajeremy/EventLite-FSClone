@@ -71,7 +71,6 @@ const ticketsReducer = (state = {}, action) => {
     case RECEIVE_TICKET:
       return { [action.ticket.id]: action.ticket };
     case ADD_NEW_TICKET:
-      debugger;
       newState[action.ticket.id] = action.ticket;
       return newState;
     case REMOVE_TICKET:

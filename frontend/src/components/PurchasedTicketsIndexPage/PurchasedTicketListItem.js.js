@@ -1,14 +1,18 @@
 import React from "react";
 import { Link, useHistory, NavLink } from "react-router-dom";
-import { useDispatch } from "react-redux";
-import { deleteEvent } from "../../store/event";
+import { useDispatch, useSelector } from "react-redux";
+import { getEvent } from "../../store/event";
 import * as sessionActions from "../../store/session";
-import "./CreatedEventsIndexPage.css";
+import "./PurchasedTicketsIndexPage.css";
 
-const CreatedEventsListItem = (props) => {
-  const { event } = props;
+const PurchasedTicketListItem = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { ticket } = props;
+  const event = useSelector(getEvent(ticket.eventsId));
+  if (!event) {
+    return null;
+  }
   const startDate = event.startDatetime;
   const dateObj = new Date(startDate);
   const days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
@@ -26,6 +30,7 @@ const CreatedEventsListItem = (props) => {
     "Nov",
     "Dec",
   ];
+  const colors = ["240-128-128", "255-165-0", "224-255-255", "152-251-152"];
 
   const parseDate = () => {
     return dateObj.toLocaleString("en-US", {
@@ -45,53 +50,38 @@ const CreatedEventsListItem = (props) => {
     );
   };
 
-  const handleEdit = () => {
-    history.push(`/events/${event.id}/edit`);
-  };
-
-  const handleDelete = (e) => {
-    // e.preventDefault();
-    dispatch(deleteEvent(event.id));
-  };
-
   // debugger;
   return (
-    <div className="event-list-item-container">
-      <div className="event-list-item-info-container">
-        <div className="event-list-image">
+    <div className="ticket-list-item-container">
+      <div className="ticket-item-info-container">
+        <div className="ticket-list-image">
           <img src={placeHolderImg()} alt=""></img>
         </div>
-        <div className="event-list-info">
+        <div className="ticket-list-info">
           <h2>{event.title}</h2>
           <p>{event.address}</p>
           <p>{parseDate()}</p>
         </div>
       </div>
 
-      <div className="event-list-item-tickets-container">
+      {/* <div className="event-list-item-tickets-container">
         <div className="event-list-item-ticket-number">4/12</div>
         <div className="event-list-item-progress-border">
           <div className="event-list-item-progress-fill"></div>
         </div>
-      </div>
+      </div> */}
 
-      <div className="event-list-item-sales-container">$200</div>
+      <div className="event-list-item-sales-container">{ticket.id}</div>
 
       <div className="event-list-item-button-container">
-        <div>
-          <button className="event-list-edit-button" onClick={handleEdit}>
-            Edit
-          </button>
-        </div>
-        <div>
-          <button className="event-list-delete-button" onClick={handleDelete}>
-            Delete
-            {/* {event.id} */}
-          </button>
-        </div>
+        <img
+          src={`https://api.qrserver.com/v1/create-qr-code/?data=https://www.linkedin.com/in/jeremy-santiago-11b05367&amp;size=100x100`}
+          alt=""
+          title=""
+        />
       </div>
     </div>
   );
 };
 
-export default CreatedEventsListItem;
+export default PurchasedTicketListItem;

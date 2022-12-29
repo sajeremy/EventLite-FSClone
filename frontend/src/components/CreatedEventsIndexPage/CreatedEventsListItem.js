@@ -55,7 +55,7 @@ const CreatedEventsListItem = (props) => {
   };
 
   if (event.id) {
-    console.log(`event ${event.id} exists`);
+    // console.log(`event ${event.id} exists`);
     const progressBar = document.getElementById(
       `progress-bar-fill-${event.id}`
     );
@@ -94,7 +94,9 @@ const CreatedEventsListItem = (props) => {
         </div>
       </div>
 
-      <div className="event-list-item-sales-container">$200</div>
+      <div className="event-list-item-sales-container">
+        ${event.tickets.length * event.ticketPrice}
+      </div>
 
       <div className="event-list-item-button-container">
         <div>

@@ -9,12 +9,14 @@ const TicketModal = (props) => {
   const history = useHistory();
   const dispatch = useDispatch();
   const [ticketCount, setTicketCount] = useState(0);
-  const sessionUserId = useSelector((state) => state.session.user.id);
+  const sessionUserId = useSelector((state) =>
+    state.session.user ? state.session.user.id : null
+  );
 
   // useEffect(() => {}, []);
   const handleTicketPurchase = () => {
     for (let i = 0; i < ticketCount; i++) {
-      console.log(`Purchased Ticket ${i + 1}`);
+      // console.log(`Purchased Ticket ${i + 1}`);
       dispatch(createTicket(eventId));
     }
     if (ticketCount > 0) history.push(`/users/${sessionUserId}/tickets`);

@@ -29,6 +29,34 @@ export const getEvent = (eventId) => (state) => {
 export const getEvents = (state) => {
   return state.events ? Object.values(state.events) : [];
 };
+export const getSortedUpcomingEvents = (state) => {
+  if (state.events) {
+    const eventsArr = Object.values(state.events);
+    const upcomingEvents = eventsArr.filter(
+      (event) => Date.parse(event.startDatetime) >= Date.now()
+    );
+    const sortedEvents = upcomingEvents.sort((a, b) => {
+      return Date.parse(a.startDatetime) - Date.parse(b.startDatetime);
+    });
+    return sortedEvents;
+  } else {
+    return [];
+  }
+};
+export const getSortedPastEvents = (state) => {
+  if (state.events) {
+    const eventsArr = Object.values(state.events);
+    const upcomingEvents = eventsArr.filter(
+      (event) => Date.parse(event.startDatetime) < Date.now()
+    );
+    const sortedEvents = upcomingEvents.sort((a, b) => {
+      return Date.parse(a.startDatetime) - Date.parse(b.startDatetime);
+    });
+    return sortedEvents;
+  } else {
+    return [];
+  }
+};
 // export const getCreatedEvents = (state) => {
 //   const totalEvents = state.events;
 //   const user = state.session.user;
@@ -48,6 +76,32 @@ export const getCreatedEvents = (state) => {
   const currentUser = state.session.user;
 
   return events.filter((event) => event.organizerId === currentUser.id);
+};
+export const getSortedCreatedEvents = (state) => {
+  const events = state.events ? Object.values(state.events) : [];
+  const currentUser = state.session.user;
+  const myEvents = events.filter(
+    (event) => event.organizerId === currentUser.id
+  );
+  const sortedEvents = myEvents.sort((a, b) => {
+    return Date.parse(a.startDatetime) - Date.parse(b.startDatetime);
+  });
+  return sortedEvents;
+};
+export const getSortedAttendingEvents = (state) => {
+  const events = state.events ? Object.values(state.events) : [];
+  const tickets = state.tickets ? Object.values(state.tickets) : [];
+  const eventTicketArr = tickets
+    ? tickets.map((ticket) => ticket.eventsId)
+    : [];
+  const attendingEvents = eventTicketArr.map((eventId) => {
+    // console.log(eventId);
+    return events[eventId - 1];
+  });
+  const sortedAttendingEvents = attendingEvents.sort((a, b) => {
+    return Date.parse(a.startDatetime) - Date.parse(b.startDatetime);
+  });
+  return sortedAttendingEvents;
 };
 
 //Thunk Action Creators

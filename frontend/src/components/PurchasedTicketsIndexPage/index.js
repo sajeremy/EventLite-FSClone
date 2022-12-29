@@ -1,8 +1,15 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getEvents, getCreatedEvents, fetchEvents } from "../../store/event.js";
-import "./CreatedEventsIndexPage.css";
-import CreatedEventsListItem from "./CreatedEventsListItem.js";
+import {
+  getEvents,
+  getSortedUpcomingEvents,
+  getCreatedEvents,
+  fetchEvents,
+  getSortedAttendingEvents,
+} from "../../store/event.js";
+import { getTickets } from "../../store/ticket.js";
+import "./PurchasedTicketsIndexPage.css";
+import PurchasedTicketListItem from "./PurchasedTicketListItem.js.js";
 
 const PurchasedTicketsIndexPage = () => {
   const dispatch = useDispatch();
@@ -11,32 +18,42 @@ const PurchasedTicketsIndexPage = () => {
   // const organizedEvents = events.filter(
   //   (event) => event.organizerId === sessionUser.id
   // );
-  const organizedEvents = useSelector(getCreatedEvents);
 
-  useEffect(() => {
-    dispatch(fetchEvents());
-  }, []);
+  const sortedAttendingEvents = useSelector(getSortedAttendingEvents);
+  const sortedEventIds = sortedAttendingEvents[0]
+    ? sortedAttendingEvents.map((event) => event.id)
+    : [];
+  const purchasedTickets = useSelector(getTickets);
+  purchasedTickets.sort(
+    (a, b) =>
+      sortedEventIds.indexOf(a.eventsId) - sortedEventIds.indexOf(b.eventsId)
+  );
 
-  const createdEventsList = organizedEvents.map((event) => {
-    return <CreatedEventsListItem key={event.id} event={event} />;
+  // useEffect(() => {
+  //   // dispatch(fetchEvents());
+
+  // }, []);
+
+  const purchasedTicketsList = purchasedTickets.map((ticket) => {
+    return <PurchasedTicketListItem key={ticket.id} ticket={ticket} />;
   });
 
   return (
     <>
-      <div className="created-events-container">
-        <h1>Created Events</h1>
-        <div className="created-events-list-header">
-          <div className="header-event-col">
-            <span>Event</span>
+      <div className="purchased-tickets-container">
+        <h1>Tickets</h1>
+        <div className="purchased-tickets-list-header">
+          <div className="header-ticket-event-col">
+            <span>Events</span>
           </div>
-          <div className="header-ticket-col">
-            <span>Sold</span>
+          <div className="header-ticket-id-col">
+            <span>Ticket ID</span>
           </div>
-          <div className="header-sales-col">
-            <span>Gross</span>
+          <div className="header-ticket-qr-code-col">
+            <span>QR Code</span>
           </div>
         </div>
-        <ul className="ul-event-list">{createdEventsList}</ul>
+        <ul className="ul-ticket-list">{purchasedTicketsList}</ul>
       </div>
     </>
   );
