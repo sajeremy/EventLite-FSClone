@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   # root "articles#index"
   post 'api/test', to: 'application#test' # for testing authentication
   get 'api/user_likes', to: 'api/likes#user_like_index'
-  get 'api/event_likes', to: 'api/likes#event_like_index'
+  get 'api/event_likes/:eventId', to: 'api/likes#event_like_index'
   
   namespace :api, defaults: { format: :json } do
     resource :session, only: [:create, :show, :destroy]

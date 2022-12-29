@@ -12,7 +12,7 @@ class Api::LikesController < ApplicationController
     end
 
     def event_like_index
-        @event_likes = Like.where(event_id: like_params[:event_id])
+        @event_likes = Like.where(event_id: params[:event_id])
         if @event_likes
             render :event_like_index
         else
