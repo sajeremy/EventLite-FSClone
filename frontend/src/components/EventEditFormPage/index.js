@@ -51,7 +51,6 @@ const EventEditFormPage = () => {
       // await setEvent({ ...fetchedEvent.event, photoUrl: undefined });
       let fetchedEvent = dispatch(fetchEvent(eventId));
       // delete fetchEvent.event.photoUrl;
-
       // setPhotoUrl(undefined);
     };
     fetchFormData();

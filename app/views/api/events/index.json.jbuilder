@@ -12,6 +12,7 @@ json.events do
             json.organizer_first_name event.organizer.first_name
             json.organizer_last_name event.organizer.last_name
             json.organizer_id event.organizer.id
+            json.tickets event.tickets
         end
         
     end

@@ -1,9 +1,3 @@
-// function App() {
-//   return <h1>Yo... Jimmy</h1>;
-// }
-
-// export default App;
-
 import React from "react";
 import { Route, Switch } from "react-router-dom";
 import LoginFormPage from "./components/LoginFormPage";
@@ -15,6 +9,7 @@ import HomePageBanner from "./components/HomePageBanner";
 import EventCreateFormPage from "./components/EventCreateFormPage";
 import CreatedEventsIndexPage from "./components/CreatedEventsIndexPage";
 import EventEditFormPage from "./components/EventEditFormPage";
+import PurchasedTicketsIndexPage from "./components/PurchasedTicketsIndexPage";
 
 function App() {
   return (
@@ -40,6 +35,10 @@ function App() {
         <Route path="/users/:userId/events">
           <Navigation />
           <CreatedEventsIndexPage />
+        </Route>
+        <Route path="/users/:userId/tickets">
+          <Navigation />
+          <PurchasedTicketsIndexPage />
         </Route>
         <Route path="/login">
           <LoginFormPage />

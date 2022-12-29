@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { NavLink, useParams } from "react-router-dom";
+import { NavLink, useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchEvent, getEvent } from "../../store/event";
+import { fetchEvent, fetchEvents, getEvent } from "../../store/event";
 import "./EventShowPage.css";
 import { BsSuitHeart, BsSuitHeartFill, BsClockHistory } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
@@ -11,17 +11,27 @@ import TicketModal from "./TicketModal";
 const EventShowPage = () => {
   const { eventId } = useParams();
   const dispatch = useDispatch();
+  const history = useHistory();
   const [likeStatus, setLikeStatus] = useState(false);
   let startDateObj, endDateObj;
+  const sessionUserId = useSelector((state) =>
+    state.session.user ? state.session.user.id : null
+  );
 
   useEffect(() => {
-    dispatch(fetchEvent(eventId));
-  }, [eventId, dispatch]);
+    window.scroll(0, 0);
+    dispatch(fetchEvents());
+  }, []);
+
+  // Narrows down to update state with only event from url params
+  // useEffect(() => {
+  //   dispatch(fetchEvent(eventId));
+  // }, [eventId, dispatch]);
 
   const event = useSelector(getEvent(eventId));
-  if (!event) {
-    return null;
-  }
+  // if (!event) {
+  //   return null;
+  // }
 
   startDateObj = new Date(event.startDatetime);
   endDateObj = new Date(event.endDatetime);
@@ -126,7 +136,12 @@ const EventShowPage = () => {
 
   const handleTicketModal = () => {
     // alert(`Redirect to ticket modal for Event ${event.id}`);
-    modalContainer.style.display = "block";
+    if (!sessionUserId) {
+      history.push("/login");
+    }
+    const test = document.getElementById("microMobilityModal");
+    // debugger;
+    test.style.display = "block";
   };
   window.addEventListener("click", function (event) {
     if (event.target === modalContainer) {

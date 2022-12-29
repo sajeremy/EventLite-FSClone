@@ -101,7 +101,7 @@ section.event-index-layout {
 
 }
 
-.event-card-container {
+/* .event-card-container {
     height: 100%;
     box-shadow: 0 40px 64px -16px rgb(46 55 77 / 10%);
     position: relative;
@@ -110,7 +110,7 @@ section.event-index-layout {
 
 .event-card-container:hover {
     box-shadow: 0 40px 64px -16px rgb(46 55 77 / 40%);
-}
+} */
 
 .event-card-info-container {
     padding: 24px 16px;

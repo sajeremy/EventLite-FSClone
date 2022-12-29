@@ -1,6 +1,11 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getEvents, getCreatedEvents, fetchEvents } from "../../store/event.js";
+import {
+  getEvents,
+  getSortedCreatedEvents,
+  getCreatedEvents,
+  fetchEvents,
+} from "../../store/event.js";
 import "./CreatedEventsIndexPage.css";
 import CreatedEventsListItem from "./CreatedEventsListItem.js";
 
@@ -12,12 +17,13 @@ const CreatedEventsIndexPage = () => {
   //   (event) => event.organizerId === sessionUser.id
   // );
   const organizedEvents = useSelector(getCreatedEvents);
+  const organizedSortedEvents = useSelector(getSortedCreatedEvents);
 
   useEffect(() => {
     dispatch(fetchEvents());
   }, []);
 
-  const createdEventsList = organizedEvents.map((event) => {
+  const createdEventsList = organizedSortedEvents.map((event) => {
     return <CreatedEventsListItem key={event.id} event={event} />;
   });
 

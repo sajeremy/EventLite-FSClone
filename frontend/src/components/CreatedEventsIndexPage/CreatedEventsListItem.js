@@ -54,6 +54,20 @@ const CreatedEventsListItem = (props) => {
     dispatch(deleteEvent(event.id));
   };
 
+  if (event.id) {
+    // console.log(`event ${event.id} exists`);
+    const progressBar = document.getElementById(
+      `progress-bar-fill-${event.id}`
+    );
+    if (progressBar) {
+      progressBar.style.width = `${
+        (event.tickets.length / event.capacity) * 100
+      }%`;
+      progressBar.style.backgroundColor = "#f05537";
+      progressBar.style.height = "10px";
+    }
+  }
+
   // debugger;
   return (
     <div className="event-list-item-container">
@@ -69,13 +83,20 @@ const CreatedEventsListItem = (props) => {
       </div>
 
       <div className="event-list-item-tickets-container">
-        <div className="event-list-item-ticket-number">4/12</div>
+        <div className="event-list-item-ticket-number">
+          {event.tickets.length}/{event.capacity}
+        </div>
         <div className="event-list-item-progress-border">
-          <div className="event-list-item-progress-fill"></div>
+          <div
+            className="event-list-item-progress-fill"
+            id={`progress-bar-fill-${event.id}`}
+          ></div>
         </div>
       </div>
 
-      <div className="event-list-item-sales-container">$200</div>
+      <div className="event-list-item-sales-container">
+        ${event.tickets.length * event.ticketPrice}
+      </div>
 
       <div className="event-list-item-button-container">
         <div>

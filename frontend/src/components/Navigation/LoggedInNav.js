@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { NavLink, Link, useHistory, Redirect } from "react-router-dom";
 import { getCreatedEvents, fetchEvents } from "../../store/event.js";
+import { fetchUserTickets } from "../../store/ticket.js";
 import "./Navigation.css";
 import { BsSearch, BsSuitHeart, BsChevronDown } from "react-icons/bs";
 import { TbTicket } from "react-icons/tb";
@@ -16,6 +17,9 @@ const LoggedInNav = () => {
   const history = useHistory();
   let numCreatedEvents;
   const organizedEvents = useSelector(getCreatedEvents);
+  const purcahsedTickets = useSelector(
+    (state) => Object.keys(state.tickets).length
+  );
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -39,6 +43,7 @@ const LoggedInNav = () => {
 
   useEffect(() => {
     dispatch(fetchEvents());
+    dispatch(fetchUserTickets());
   }, []);
 
   const logout = (e) => {
@@ -75,8 +80,11 @@ const LoggedInNav = () => {
           <div id="profile-dropdown-container">
             <ul className="profile-dropdown">
               <li>
-                <Link className="tickets-dropdown-button" to="#">
-                  Tickets (4)
+                <Link
+                  className="tickets-dropdown-button"
+                  to={`/users/${sessionUser.id}/tickets`}
+                >
+                  Tickets ({`${purcahsedTickets}`})
                 </Link>
               </li>
               <li>
@@ -101,7 +109,10 @@ const LoggedInNav = () => {
             </ul>
           </div>
         )}
-        <NavLink className="ticket-button" to="#">
+        <NavLink
+          className="ticket-button"
+          to={`/users/${sessionUser.id}/tickets`}
+        >
           <div>
             <TbTicket />
           </div>

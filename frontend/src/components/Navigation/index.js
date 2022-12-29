@@ -1,6 +1,7 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Link } from "react-router-dom";
+import { fetchEvents } from "../../store/event.js";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
 import { BsSearch, BsGithub, BsLinkedin } from "react-icons/bs";
@@ -8,6 +9,11 @@ import LoggedInNav from "./LoggedInNav";
 
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
+  const dispatch = useDispatch();
+
+  // useEffect(() => {
+  //   dispatch(fetchEvents());
+  // });
 
   let sessionLinks;
   if (sessionUser) {

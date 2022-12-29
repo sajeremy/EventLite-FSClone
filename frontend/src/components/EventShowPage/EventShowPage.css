@@ -303,6 +303,16 @@ button.increment {
     margin-right: 30px;
 }
 
+.ticket-count, 
+.ticket-price {
+    font-weight: 300;
+    font-size: 15px;
+}
+
+.ticket-price {
+    border-bottom: 1px solid #888;
+}
+
 .ticket-checkout {
     display: flex;
     justify-content: end;

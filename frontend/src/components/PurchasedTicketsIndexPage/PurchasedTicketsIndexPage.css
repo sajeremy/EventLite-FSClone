@@ -1,4 +1,4 @@
-.created-events-container {
+.purchased-tickets-container {
 
     width: 80vw;
     height: 100%;
@@ -7,7 +7,7 @@
     margin-top: 20px;
 }
 
-.created-events-list-header {
+.purchased-tickets-list-header {
 
     background-color: #f8f7fa;
     display: flex;
@@ -21,9 +21,9 @@
     align-items: center;
 }
 
-.header-event-col,
-.header-ticket-col,
-.header-sales-col {
+.header-ticket-event-col,
+.header-ticket-qr-code-col,
+.header-ticket-id-col {
     font-weight: 600;
     color: #39364f;
     font-size: .875rem;
@@ -31,35 +31,39 @@
     font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;   
 }
 
-.header-event-col {
-    width: 60%;
+.header-ticket-event-col {
+    width: 80%;
 
 }
 
-.header-ticket-col {
-    width: 19%;
-
-}
-
-.header-sales-col {
+.header-ticket-qr-code-col {
     width: 10%;
 
 }
 
-.event-list-item-container {
+.header-ticket-id-col {
+    width: 10%;
 
-    display: flex;
-
-    border-bottom: #d9d7dc 1.5px solid;
 }
 
-.ul-event-list {
+.ticket-list-item-container {
+
+    display: flex;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+
+.ticket-list-item-container:hover {
+    box-shadow: 0 10px 64px 16px rgb(46 55 77 / 20%);
+}
+
+.ul-ticket-list {
     padding: 0;
     list-style-type: none;
 }
 
-.event-list-item-info-container {
-    width: 60%;
+.ticket-item-info-container {
+    width: 80%;
 
     display: flex;
     height: 20vh;
@@ -71,31 +75,38 @@
 }
 
 
-.event-list-image img {
-    height: 100%;
-
-    width: 100%;
-}
-
-.event-list-image {
-
-    object-fit: cover;
+.ticket-list-image img {
+    /* height: 100%; */
+    /* width: 15vw; */
     width: 15vw;
+    height: 90%;
+    object-fit: cover;
+    margin-left:10px;
+}
+
+.ticket-list-image {
+    display: flex;
+    align-items: center;
+
+    /* object-fit: cover; */
+    /* width: 15vw; */
 
 }
 
-.event-list-info {
+.ticket-list-info {
 
-    margin-left: 10px;
+    margin-left: 20px;
     overflow-wrap: break-word;
+    /* width: 70%; */
 }
 
-.event-list-info h2 {
+.ticket-list-info h2 {
+    margin-top: 5px;
     margin-bottom: 10px;
     font-size: 16px;
 }
 
-.event-list-info p {
+.ticket-list-info p {
     color: #6f7287;
     margin-left: 5px;
     margin-right: 10px;
@@ -125,20 +136,17 @@
     margin-right: 5px;
 }
 
-/* .event-list-item-progress-fill {
+.event-list-item-progress-fill {
     background-color: #f05537;
     width: 25%;
     height: 10px;
-} */
-
-/* #progress-bar-fill-1 {
-    background-color: #f05537;
-    width: 50%;
-    height: 10px;
-} */
+}
 
 .event-list-item-sales-container {
     width: 10%;
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .event-list-item-button-container {
@@ -150,34 +158,13 @@
     width:15%;
 }
 
-.event-list-item-button-container button {
-    margin-top: 10px;
-    width: 120px;
-    height: 40px;
-    font-size: 15px;
-
-    cursor: pointer;
-    color: white;
-    font-weight: 500;
-    border:none;
-
-    filter: brightness(.95);  
+.event-list-item-button-container img {
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
 }
 
-.event-list-edit-button {
-    background-color: #3d64ff;
-    border-radius: 17px;
-}
-
-.event-list-delete-button {
-    background-color: rgb(235, 45, 45);
-    border-radius: 5px;
-}
-.event-list-item-button-container button:hover {
-    filter: brightness(1.05); 
-}
-
-.created-events-container > h1 {
+.purchased-tickets-container > h1 {
     margin-bottom: 10px;
 }
 

@@ -4,8 +4,8 @@ class Api::TicketsController < ApplicationController
     def index
         @current_user = current_user
         @tickets = Ticket.all
-
-        if @tickets
+        @user_tickets = Ticket.where(attendee_id: @current_user.id)
+        if @user_tickets
             render :index
         else
             render json: {errors: ['no tickets found']}, status:404
@@ -29,12 +29,12 @@ class Api::TicketsController < ApplicationController
         @ticket = Ticket.new(events_id: params[:event_id])
         @ticket.attendee_id = @current_user.id
         
-
         if event_tickets_count == @event.capacity
             render json: { errors: ['Sorry, tickets have sold out for this event'] }, status: :unprocessable_entity
         
         elsif (event_tickets_count < @event.capacity) && @ticket.save
-            render json: { message: 'Successfully purchased ticket!' }
+            # render json: { message: 'Successfully purchased ticket!' }
+            render :show
         
         else 
             render json: { errors: @ticket.errors.full_messages }, status: :unprocessable_entity
@@ -53,5 +53,11 @@ class Api::TicketsController < ApplicationController
         end
 
     end
+
+    # private
+  
+    # def ticket_params
+    #   params.require(:ticket).permit(:event_id, )
+    # end
 
 end

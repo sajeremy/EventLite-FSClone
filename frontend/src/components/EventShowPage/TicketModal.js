@@ -1,11 +1,26 @@
 import { React, useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { createTicket } from "../../store/ticket";
 
 const TicketModal = (props) => {
   const { event } = props;
+  const { eventId } = useParams();
+  const history = useHistory();
+  const dispatch = useDispatch();
   const [ticketCount, setTicketCount] = useState(0);
+  const sessionUserId = useSelector((state) =>
+    state.session.user ? state.session.user.id : null
+  );
 
   // useEffect(() => {}, []);
-  const handleTicketPurchase = () => {};
+  const handleTicketPurchase = () => {
+    for (let i = 0; i < ticketCount; i++) {
+      // console.log(`Purchased Ticket ${i + 1}`);
+      dispatch(createTicket(eventId));
+    }
+    if (ticketCount > 0) history.push(`/users/${sessionUserId}/tickets`);
+  };
 
   const handleDecClick = () => {
     if (ticketCount !== 0) setTicketCount((ticketCount) => ticketCount - 1);
@@ -59,7 +74,12 @@ const TicketModal = (props) => {
               </div>
             </div>
             <div className="ticket-checkout">
-              <button className="check-out-button">Check Out</button>
+              <button
+                className="check-out-button"
+                onClick={handleTicketPurchase}
+              >
+                Check Out
+              </button>
             </div>
           </div>
           <div className="left-modal">
