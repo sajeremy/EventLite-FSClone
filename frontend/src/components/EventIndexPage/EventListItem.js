@@ -1,9 +1,11 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useSelector } from "react-redux";
+import { NavLink, useHistory } from "react-router-dom";
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 
 const EventListItem = (props) => {
   const { event } = props;
+  const history = useHistory();
   const [likeStatus, setLikeStatus] = useState(false);
   const startDate = event.startDatetime;
   const dateObj = new Date(startDate);
@@ -23,6 +25,9 @@ const EventListItem = (props) => {
     "Nov",
     "Dec",
   ];
+  const sessionUserId = useSelector((state) =>
+    state.session.user ? state.session.user.id : null
+  );
 
   const tomorrowObj = () => {
     const tomorrowDate = new Date(Number(nowObj));
@@ -81,6 +86,7 @@ const EventListItem = (props) => {
   };
 
   const handleLikeClick = () => {
+    if (!sessionUserId) history.push("/login");
     let icon = document.getElementById(
       `event-card-like-button-icons-${event.id}`
     );

@@ -99,6 +99,7 @@ const EventShowPage = () => {
   renderBlurImg();
 
   const handleLikeClick = () => {
+    if (!sessionUserId) history.push("/login");
     let icon = document.getElementById(`show-page-like-icon-${event.id}`);
     if (likeStatus) {
       setLikeStatus(false);
