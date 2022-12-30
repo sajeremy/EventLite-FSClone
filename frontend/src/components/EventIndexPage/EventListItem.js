@@ -1,12 +1,17 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
+import { createLike, deleteLike, fetchUserLikes } from "../../store/like";
 
 const EventListItem = (props) => {
   const { event } = props;
   const history = useHistory();
-  const [likeStatus, setLikeStatus] = useState(false);
+  const dispatch = useDispatch();
+  const likesArr = useSelector((state) => (state.likes ? state.likes : []));
+  const [likeStatus, setLikeStatus] = useState(
+    likesArr.includes(event.id) ? true : false
+  );
   const startDate = event.startDatetime;
   const dateObj = new Date(startDate);
   const nowObj = new Date();
@@ -93,18 +98,24 @@ const EventListItem = (props) => {
     if (likeStatus) {
       setLikeStatus(false);
       icon.style.color = "#39364f";
+      dispatch(deleteLike(event.id));
     } else {
       setLikeStatus(true);
-      if (icon) {
-        icon.style.color = "#d1410c";
-      }
+      if (icon) icon.style.color = "#d1410c";
+      // debugger;
+      dispatch(createLike({ like: { event_id: event.id } }));
     }
   };
 
   const likeIcon = () => {
+    let icon = document.getElementById(
+      `event-card-like-button-icons-${event.id}`
+    );
     if (likeStatus) {
+      if (icon) icon.style.color = "#d1410c";
       return <BsSuitHeartFill />;
     } else {
+      if (icon) icon.style.color = "#39364f";
       return <BsSuitHeart id="like-icon-thickness" />;
     }
   };
@@ -138,7 +149,7 @@ const EventListItem = (props) => {
                 " " +
                 event.organizerLastName}
             </p>
-            <p># of Likes</p>
+            <p>{event.likes.length} Likes</p>
           </div>
           <div className="event-card-like-button-container">
             <button

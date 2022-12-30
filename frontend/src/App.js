@@ -10,6 +10,7 @@ import EventCreateFormPage from "./components/EventCreateFormPage";
 import CreatedEventsIndexPage from "./components/CreatedEventsIndexPage";
 import EventEditFormPage from "./components/EventEditFormPage";
 import PurchasedTicketsIndexPage from "./components/PurchasedTicketsIndexPage";
+import LikedEventsIndexPage from "./components/LikedEventsIndexPage";
 
 function App() {
   return (
@@ -39,6 +40,10 @@ function App() {
         <Route path="/users/:userId/tickets">
           <Navigation />
           <PurchasedTicketsIndexPage />
+        </Route>
+        <Route path="/users/:userId/likes">
+          <Navigation />
+          <LikedEventsIndexPage />
         </Route>
         <Route path="/login">
           <LoginFormPage />

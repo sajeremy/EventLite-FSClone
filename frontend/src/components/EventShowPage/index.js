@@ -7,12 +7,17 @@ import { BsSuitHeart, BsSuitHeartFill, BsClockHistory } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
 import { AiTwotoneCalendar } from "react-icons/ai";
 import TicketModal from "./TicketModal";
+import { deleteLike, createLike } from "../../store/like";
 
 const EventShowPage = () => {
   const { eventId } = useParams();
   const dispatch = useDispatch();
   const history = useHistory();
-  const [likeStatus, setLikeStatus] = useState(false);
+  // const [likeStatus, setLikeStatus] = useState(false);
+  const likesArr = useSelector((state) => (state.likes ? state.likes : []));
+  const [likeStatus, setLikeStatus] = useState(
+    likesArr.includes(parseInt(eventId)) ? true : false
+  );
   let startDateObj, endDateObj;
   const sessionUserId = useSelector((state) =>
     state.session.user ? state.session.user.id : null
@@ -29,9 +34,9 @@ const EventShowPage = () => {
   // }, [eventId, dispatch]);
 
   const event = useSelector(getEvent(eventId));
-  // if (!event) {
-  //   return null;
-  // }
+  if (!event) {
+    return null;
+  }
 
   startDateObj = new Date(event.startDatetime);
   endDateObj = new Date(event.endDatetime);
@@ -98,24 +103,50 @@ const EventShowPage = () => {
   };
   renderBlurImg();
 
+  // const handleLikeClick = () => {
+  //   if (!sessionUserId) history.push("/login");
+  //   let icon = document.getElementById(`show-page-like-icon-${event.id}`);
+  //   if (likeStatus) {
+  //     setLikeStatus(false);
+  //     icon.style.color = "#39364f";
+  //   } else {
+  //     setLikeStatus(true);
+  //     if (icon) {
+  //       icon.style.color = "#d1410c";
+  //     }
+  //   }
+  // };
+
+  // const likeIcon = () => {
+  //   if (likeStatus) {
+  //     return <BsSuitHeartFill />;
+  //   } else {
+  //     return <BsSuitHeart id="like-icon-thickness" />;
+  //   }
+  // };
+
   const handleLikeClick = () => {
     if (!sessionUserId) history.push("/login");
     let icon = document.getElementById(`show-page-like-icon-${event.id}`);
     if (likeStatus) {
       setLikeStatus(false);
       icon.style.color = "#39364f";
+      dispatch(deleteLike(event.id));
     } else {
       setLikeStatus(true);
-      if (icon) {
-        icon.style.color = "#d1410c";
-      }
+      if (icon) icon.style.color = "#d1410c";
+      dispatch(createLike({ like: { event_id: event.id } }));
     }
+    dispatch(fetchEvents());
   };
 
   const likeIcon = () => {
+    let icon = document.getElementById(`show-page-like-icon-${event.id}`);
     if (likeStatus) {
+      if (icon) icon.style.color = "#d1410c";
       return <BsSuitHeartFill />;
     } else {
+      if (icon) icon.style.color = "#39364f";
       return <BsSuitHeart id="like-icon-thickness" />;
     }
   };
@@ -141,7 +172,6 @@ const EventShowPage = () => {
       history.push("/login");
     }
     const test = document.getElementById("microMobilityModal");
-    // debugger;
     test.style.display = "block";
   };
   window.addEventListener("click", function (event) {
@@ -180,7 +210,7 @@ const EventShowPage = () => {
               </p>
             </div>
             <div className="show-page-likes">
-              <p className="show-page-likes-text"># likes</p>
+              <p className="show-page-likes-text">{event.likes.length} likes</p>
               <button
                 onClick={() => handleLikeClick()}
                 className="show-page-likes-button"

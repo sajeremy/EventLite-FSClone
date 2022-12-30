@@ -1,0 +1,171 @@
+.purchased-tickets-container {
+
+    width: 80vw;
+    height: 100%;
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-top: 20px;
+}
+
+.purchased-tickets-list-header {
+
+    background-color: #f8f7fa;
+    display: flex;
+    height: 100%;
+    font-size: .75rem;
+    line-height: 1rem;
+    flex: 1 1 auto;
+    padding-left: 1vw;
+    padding-right: 1vw;
+
+    align-items: center;
+}
+
+.header-ticket-event-col,
+.header-ticket-qr-code-col,
+.header-ticket-id-col {
+    font-weight: 600;
+    color: #39364f;
+    font-size: .875rem;
+    line-height: 1.25rem;
+    font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;   
+}
+
+.header-ticket-event-col {
+    width: 80%;
+
+}
+
+.header-ticket-qr-code-col {
+    width: 10%;
+
+}
+
+.header-ticket-id-col {
+    width: 10%;
+
+}
+
+.ticket-list-item-container {
+
+    display: flex;
+    margin-bottom: 5px;
+    border-radius: 10px;
+}
+
+.ticket-list-item-container:hover {
+    box-shadow: 0 10px 64px 16px rgb(46 55 77 / 20%);
+}
+
+.ul-ticket-list {
+    padding: 0;
+    list-style-type: none;
+}
+
+.ticket-item-info-container {
+    width: 80%;
+
+    display: flex;
+    height: 20vh;
+    text-decoration: none;
+
+    font-size: .75rem;
+    line-height: 1rem;
+    
+}
+
+
+.ticket-list-image img {
+    /* height: 100%; */
+    /* width: 15vw; */
+    width: 15vw;
+    height: 90%;
+    object-fit: cover;
+    margin-left:10px;
+}
+
+.ticket-list-image {
+    display: flex;
+    align-items: center;
+
+    /* object-fit: cover; */
+    /* width: 15vw; */
+
+}
+
+.ticket-list-info {
+
+    margin-left: 20px;
+    overflow-wrap: break-word;
+    /* width: 70%; */
+}
+
+.ticket-list-info h2 {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    font-size: 16px;
+}
+
+.ticket-list-info p {
+    color: #6f7287;
+    margin-left: 5px;
+    margin-right: 10px;
+    margin-top: 3px;
+}
+
+
+
+.event-list-item-tickets-container {
+    width: 15%;
+
+    display: flex;
+    flex-direction: column;
+
+}
+
+.event-list-item-ticket-number {
+    margin-bottom: 30%;
+    
+}
+
+.event-list-item-progress-border {
+    
+    height: 10px;
+    background-color: #ddd9d9;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.event-list-item-progress-fill {
+    background-color: #f05537;
+    width: 25%;
+    height: 10px;
+}
+
+.event-list-item-sales-container {
+    width: 10%;
+    display:flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.event-list-item-button-container {
+    display: flex;
+    align-items: center;
+
+    flex-direction: column;
+
+    width:15%;
+}
+
+.event-list-item-button-container img {
+    margin-top: 20px;
+    width: 100px;
+    height: 100px;
+}
+
+.purchased-tickets-container > h1 {
+    margin-bottom: 10px;
+}
+
+

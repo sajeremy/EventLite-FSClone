@@ -4,6 +4,10 @@ class Api::LikesController < ApplicationController
     def user_like_index
         @current_user = current_user
         @user_likes = Like.where(user_id: @current_user.id)
+        @user_like_arr = []
+        @user_likes.each do |like_obj|
+            @user_like_arr.push(like_obj.event_id)
+        end
         if @user_likes
             render :user_like_index
         else
@@ -22,11 +26,12 @@ class Api::LikesController < ApplicationController
 
 
     def create
+        # debugger
         @like = Like.new(like_params)
         @like.user_id = current_user.id
 
         if @like.save
-        
+            
         else 
             render json: { errors: @like.errors.full_messages }, status: :unprocessable_entity
         end
@@ -34,6 +39,7 @@ class Api::LikesController < ApplicationController
     end
 
     def destroy
+        # debugger
         @like = Like.find_by(event_id: params[:id], user_id: current_user.id)
         if @like
             @like.destroy

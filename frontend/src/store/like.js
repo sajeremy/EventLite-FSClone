@@ -2,6 +2,7 @@ import csrfFetch, { storeCSRFToken } from "./csrf";
 
 //Action constants
 export const RECEIVE_LIKES = "likes/RECEIVE_LIKES";
+export const RECEIVE_LIKE = "likes/RECEIVE_LIKE";
 export const REMOVE_LIKE = "likes/REMOVE_LIKE";
 
 //Actions
@@ -9,9 +10,13 @@ const receiveLikes = (likes) => ({
   type: RECEIVE_LIKES,
   likes,
 });
-const removeLike = (likeId) => ({
+const receiveLike = (like) => ({
+  type: RECEIVE_LIKE,
+  like,
+});
+const removeLike = (eventId) => ({
   type: REMOVE_LIKE,
-  likeId,
+  eventId,
 });
 
 //Selectors
@@ -25,46 +30,53 @@ export const fetchUserLikes = () => async (dispatch) => {
   const res = await fetch(`/api/user_likes`);
   if (res.ok) {
     const userLikesObj = await res.json();
+    // debugger;
     dispatch(receiveLikes(userLikesObj.likes));
   }
 };
-export const fetchEventLikes = (eventId) => async (dispatch) => {
-  const res = await fetch(`/api/event_likes/${eventId}`);
+// export const fetchEventLikes = (eventId) => async (dispatch) => {
+//   const res = await fetch(`/api/event_likes/${eventId}`);
+//   if (res.ok) {
+//     const eventLikesObj = await res.json();
+//     dispatch(receiveLikes(eventLikesObj.likes));
+//   }
+// };
+
+export const createLike = (like) => async (dispatch) => {
+  const res = await csrfFetch(`/api/likes`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(like),
+  });
   if (res.ok) {
-    const eventLikesObj = await res.json();
-    dispatch(receiveLikes(eventLikesObj.likes));
+    const newLike = await res.json();
+    // debugger;
+    dispatch(receiveLike(newLike));
   }
 };
 
-// export const createTicket = (eventId) => async (dispatch) => {
-//   const res = await csrfFetch(`/api/events/${eventId}/tickets`, {
-//     method: "POST",
-//     headers: { "Content-Type": "application/json" },
-//   });
-//   if (res.ok) {
-//     const newTicket = await res.json();
-//     dispatch(addNewTicket(newTicket));
-//   }
-// };
+export const deleteLike = (eventId) => async (dispatch) => {
+  await csrfFetch(`/api/likes/${eventId}`, { method: "DELETE" });
+  dispatch(removeLike(eventId));
+};
 
-// //Tickets Reducer
-// const ticketsReducer = (state = {}, action) => {
-//   const newState = { ...state };
+//Likes Reducer
+const likesReducer = (state = [], action) => {
+  const newState = [...state];
 
-//   switch (action.type) {
-//     case RECEIVE_TICKETS:
-//       return { ...action.tickets };
-//     case RECEIVE_TICKET:
-//       return { [action.ticket.id]: action.ticket };
-//     case ADD_NEW_TICKET:
-//       newState[action.ticket.id] = action.ticket;
-//       return newState;
-//     case REMOVE_TICKET:
-//       delete newState[action.ticketId];
-//       return newState;
-//     default:
-//       return state;
-//   }
-// };
+  switch (action.type) {
+    case RECEIVE_LIKES:
+      return action.likes;
+    case RECEIVE_LIKE:
+      newState.push(action.like.likes.event_id);
+      return newState;
+    case REMOVE_LIKE:
+      const index = newState.indexOf(action.eventId);
+      if (index > -1) newState.splice(index, 1);
+      return newState;
+    default:
+      return state;
+  }
+};
 
-// export default ticketsReducer;
+export default likesReducer;
