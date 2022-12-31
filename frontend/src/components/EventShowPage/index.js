@@ -1,7 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { NavLink, useParams, useHistory } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { fetchEvent, fetchEvents, getEvent } from "../../store/event";
+import {
+  fetchEvent,
+  fetchEvents,
+  getEvent,
+  likeEvent,
+  unlikeEvent,
+} from "../../store/event";
 import "./EventShowPage.css";
 import { BsSuitHeart, BsSuitHeartFill, BsClockHistory } from "react-icons/bs";
 import { FiMapPin } from "react-icons/fi";
@@ -132,12 +138,14 @@ const EventShowPage = () => {
       setLikeStatus(false);
       icon.style.color = "#39364f";
       dispatch(deleteLike(event.id));
+      dispatch(unlikeEvent(event.id, sessionUserId));
     } else {
       setLikeStatus(true);
       if (icon) icon.style.color = "#d1410c";
       dispatch(createLike({ like: { event_id: event.id } }));
+      dispatch(likeEvent(event.id, sessionUserId));
     }
-    dispatch(fetchEvents());
+    // dispatch(fetchEvents());
   };
 
   const likeIcon = () => {

@@ -24,13 +24,15 @@ const removeEvent = (eventId) => ({
   type: REMOVE_EVENT,
   eventId,
 });
-export const likeEvent = (eventId) => ({
+export const likeEvent = (eventId, userId) => ({
   type: LIKE_EVENT,
   eventId,
+  userId,
 });
-export const unlikeEvent = (eventId) => ({
+export const unlikeEvent = (eventId, userId) => ({
   type: UNLIKE_EVENT,
   eventId,
+  userId,
 });
 
 //Selectors
@@ -181,7 +183,6 @@ export const deleteEvent = (eventId) => async (dispatch) => {
 //Events Reducer
 const eventsReducer = (state = {}, action) => {
   const newState = { ...state };
-
   switch (action.type) {
     case RECEIVE_EVENTS:
       return { ...action.events };
@@ -191,11 +192,14 @@ const eventsReducer = (state = {}, action) => {
       delete newState[action.eventId];
       return newState;
     case LIKE_EVENT:
-      debugger;
-      //figure out how to import user Id
-      // const userId = sessionActions.currentUser.id;
-      // action.events[action.eventId].likes.push(userId);
-      return { ...action.events };
+      const userId = action.userId;
+      newState[action.eventId].likes.push(userId);
+      return newState;
+    case UNLIKE_EVENT:
+      const eventId = action.eventId;
+      const likeIndex = newState[eventId].likes.indexOf(action.userId);
+      if (likeIndex > -1) newState[eventId].likes.splice(likeIndex, 1);
+      return newState;
     default:
       return state;
   }

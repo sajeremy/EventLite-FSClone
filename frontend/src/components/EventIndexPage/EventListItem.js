@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 import { createLike, deleteLike, fetchUserLikes } from "../../store/like";
-import { likeEvent } from "../../store/event";
+import { likeEvent, unlikeEvent } from "../../store/event";
 
 const EventListItem = (props) => {
   const { event } = props;
@@ -33,6 +33,9 @@ const EventListItem = (props) => {
   ];
   const sessionUserId = useSelector((state) =>
     state.session.user ? state.session.user.id : null
+  );
+  const eventsObj = useSelector((state) =>
+    state.events ? state.events : null
   );
 
   const tomorrowObj = () => {
@@ -100,13 +103,13 @@ const EventListItem = (props) => {
       setLikeStatus(false);
       icon.style.color = "#39364f";
       dispatch(deleteLike(event.id));
+      if (eventsObj) dispatch(unlikeEvent(event.id, sessionUserId));
     } else {
       setLikeStatus(true);
       if (icon) icon.style.color = "#d1410c";
-      // debugger;
       dispatch(createLike({ like: { event_id: event.id } }));
       //Determine if this works or to refetch all events as an alternative
-      // dispatch(likeEvent(event.id));
+      if (eventsObj) dispatch(likeEvent(event.id, sessionUserId));
     }
   };
 
