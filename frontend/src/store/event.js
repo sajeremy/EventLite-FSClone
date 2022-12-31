@@ -1,5 +1,6 @@
 import csrfFetch, { storeCSRFToken } from "./csrf";
 import { useHistory } from "react-router-dom";
+// import * as sessionActions from "../../store/session";
 
 //
 
@@ -7,6 +8,8 @@ import { useHistory } from "react-router-dom";
 export const RECEIVE_EVENTS = "events/RECEIVE_EVENTS";
 export const RECEIVE_EVENT = "events/RECEIVE_EVENT";
 export const REMOVE_EVENT = "events/REMOVE_EVENT";
+export const LIKE_EVENT = "events/LIKE_EVENT";
+export const UNLIKE_EVENT = "events/UNLIKE_EVENT";
 
 //Actions
 const receiveEvents = (events) => ({
@@ -19,6 +22,14 @@ const receiveEvent = (event) => ({
 });
 const removeEvent = (eventId) => ({
   type: REMOVE_EVENT,
+  eventId,
+});
+export const likeEvent = (eventId) => ({
+  type: LIKE_EVENT,
+  eventId,
+});
+export const unlikeEvent = (eventId) => ({
+  type: UNLIKE_EVENT,
   eventId,
 });
 
@@ -179,6 +190,12 @@ const eventsReducer = (state = {}, action) => {
     case REMOVE_EVENT:
       delete newState[action.eventId];
       return newState;
+    case LIKE_EVENT:
+      debugger;
+      //figure out how to import user Id
+      // const userId = sessionActions.currentUser.id;
+      // action.events[action.eventId].likes.push(userId);
+      return { ...action.events };
     default:
       return state;
   }

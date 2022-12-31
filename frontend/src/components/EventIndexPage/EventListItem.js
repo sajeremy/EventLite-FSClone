@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { NavLink, useHistory } from "react-router-dom";
 import { BsSuitHeart, BsSuitHeartFill } from "react-icons/bs";
 import { createLike, deleteLike, fetchUserLikes } from "../../store/like";
+import { likeEvent } from "../../store/event";
 
 const EventListItem = (props) => {
   const { event } = props;
@@ -104,6 +105,8 @@ const EventListItem = (props) => {
       if (icon) icon.style.color = "#d1410c";
       // debugger;
       dispatch(createLike({ like: { event_id: event.id } }));
+      //Determine if this works or to refetch all events as an alternative
+      // dispatch(likeEvent(event.id));
     }
   };
 
