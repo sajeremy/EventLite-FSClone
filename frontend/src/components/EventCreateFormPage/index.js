@@ -62,13 +62,10 @@ const EventCreateFormPage = () => {
     dispatch(createFormEvent(formData, setPhotoFile)).catch(async (res) => {
       let data;
       try {
-        // .clone() essentially allows you to read the response body twice
         data = await res.clone().json();
       } catch {
-        // debugger;
-        data = await res.text(); // Will hit this case if the server is down
+        data = await res.text();
       }
-      // debugger;
       if (data?.errors) setErrors(data.errors);
       else if (data) setErrors([data]);
       else setErrors([res.statusText]);
@@ -77,9 +74,15 @@ const EventCreateFormPage = () => {
   const handleTitle = () => {
     let result;
     const elem = document.getElementById("create-event-title-input");
-    if (errors.includes("Title is required.")) {
+    if (errors.includes("Title can't be blank")) {
       result = "Must include a title";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
+      return result;
+    } else if (errors.includes("Title must be between 3 and 255 characters")) {
+      result = "Title must be between 3 and 255 characters";
+      elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -90,9 +93,10 @@ const EventCreateFormPage = () => {
   const handleCategory = () => {
     let result;
     const elem = document.getElementById("create-event-category-input");
-    if (errors.includes("Category is required.")) {
-      result = "Category is required.";
+    if (errors.includes("Category can't be blank")) {
+      result = "Please select a category";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -103,9 +107,10 @@ const EventCreateFormPage = () => {
   const handleAddress = () => {
     let result;
     const elem = document.getElementById("create-event-address-input");
-    if (errors.includes("Must include address.")) {
-      result = "Venue Location is required.";
+    if (errors.includes("Address can't be blank")) {
+      result = "Venue Location is required";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -116,9 +121,20 @@ const EventCreateFormPage = () => {
   const handleStartDatetime = () => {
     let result;
     const elem = document.getElementById("create-event-start-datetime-input");
-    if (errors.includes("Can't be blank")) {
-      result = "Must include start date and time.";
+    if (
+      errors.includes("Start datetime can't be blank") &&
+      startDatetime === ""
+    ) {
+      result = "Event Start and End Dates can't be blank";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
+      return result;
+    } else if (
+      errors.find((el) => el.includes("Start datetime must be less than "))
+    ) {
+      result = "Start date must occur before end date";
+      elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -129,9 +145,10 @@ const EventCreateFormPage = () => {
   const handleEndDatetime = () => {
     let result;
     const elem = document.getElementById("create-event-end-datetime-input");
-    if (errors.includes("Can't be blank")) {
-      result = "Must include end date and time.";
+    if (errors.includes("End datetime can't be blank") && endDatetime === "") {
+      result = "Event Start and End Dates can't be blank";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -142,9 +159,10 @@ const EventCreateFormPage = () => {
   const handleBody = () => {
     let result;
     const elem = document.getElementById("create-event-body-input");
-    if (errors.includes("Can't be blank")) {
+    if (errors.includes("Body can't be blank")) {
       result = "Must include a description";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -155,9 +173,10 @@ const EventCreateFormPage = () => {
   const handleCapacity = () => {
     let result;
     const elem = document.getElementById("create-event-capacity-input");
-    if (errors.includes("Can't be blank")) {
-      result = "Must enter capacity";
+    if (errors.includes("Capacity must be greater than 0")) {
+      result = "Please enter a capacity greater than 0";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 750);
       return result;
     } else {
       if (elem) {
@@ -168,9 +187,10 @@ const EventCreateFormPage = () => {
   const handleTicketPrice = () => {
     let result;
     const elem = document.getElementById("create-event-ticket-price-input");
-    if (errors.includes("Can't be blank")) {
-      result = "Must enter ticket price";
+    if (errors.includes("Ticket price must be greater than or equal to 0")) {
+      result = "Please enter a ticket price greater than 0";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 750);
       return result;
     } else {
       if (elem) {
