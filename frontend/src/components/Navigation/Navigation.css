@@ -90,6 +90,11 @@ a.tickets-dropdown-button:hover {
     width: 14px;
     height: 14px;
     margin-right: 5px;
+    transform: translateY(-15%);
+}
+
+.index-page-form {
+  transform: translateY(-15%);
 }
 
 .search-input {
@@ -103,7 +108,8 @@ a.tickets-dropdown-button:hover {
     border-bottom-style: hidden;
     width: 400px;
     position: relative;
-    transform: translateY(-15%);
+    /* transform: translateY(-15%); */
+    border: reed 1px solid;
 }
 
 .search-input:focus {
@@ -114,6 +120,10 @@ a.tickets-dropdown-button:hover {
    background-color: #f8f7fa;
    border-radius: 3px;
    margin-top: 15px;
+   padding-bottom: 4px;
+   /* display: flex; */
+   align-items: center;
+   display: none;
   
 }
 

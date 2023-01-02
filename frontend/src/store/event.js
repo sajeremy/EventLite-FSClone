@@ -115,6 +115,11 @@ export const getSortedAttendingEvents = (state) => {
   });
   return sortedAttendingEvents;
 };
+// export const getMusicEvents = (state) => {
+//   const events = state.events ? Object.values(state.events) : [];
+//   const musicEvents = events.filter((event) => event.category === "Music");
+//   return musicEvents;
+// };
 
 //Thunk Action Creators
 export const fetchEvents = () => async (dispatch) => {

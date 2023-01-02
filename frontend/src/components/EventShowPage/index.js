@@ -24,6 +24,7 @@ const EventShowPage = () => {
   const [likeStatus, setLikeStatus] = useState(
     likesArr.includes(parseInt(eventId)) ? true : false
   );
+
   let startDateObj, endDateObj;
   const sessionUserId = useSelector((state) =>
     state.session.user ? state.session.user.id : null

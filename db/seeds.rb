@@ -111,8 +111,8 @@ require 'open-uri'
         A jam session with your fellow Adventure Club Taiko orchestra members that incorporates your newly learned Taiko skills 
         Before the interactive lesson and jam session, we'll listen to a live musical demonstration by Taiko Masala Dojo's top students, some of which are in the Thunder Drumming Troupe — a professional Taiko drumming orchestra that travel the country performing at some of the nation's largest Japanese events and festivals.",
         address: 'The Old Stone House 336 3rd St. Meet on 5th Ave. side of historic house Brooklyn, NY 11215',
-        start_datetime: DateTime.parse("Sat, January 21, 2023, 2:15 PM EST"),
-        end_datetime: DateTime.parse("Sat, January 21, 2023, 3:30 PM EST"),
+        start_datetime: DateTime.parse("Sat, January 21, 2023, 02:15 PM EST"),
+        end_datetime: DateTime.parse("Sat, January 21, 2023, 03:30 PM EST"),
         capacity: 30,
         ticket_price: 43.69,
         category: 'Performing & Visual Arts',
@@ -131,7 +131,7 @@ require 'open-uri'
         Feel your own neon fantasy and go Neon Tribal, glowing attire, Nomad Fluorescent style, neon flowers, light-up Toys and accessories, glow headdresses, neon tutus, fluorescent wigs, tribal uv masks... sky is the limit!',
         address: 'I FEEL 260 meserole street Brooklyn, NY 11206',
         start_datetime: DateTime.parse("Fri, Jan 20, 2023, 10:00 PM EST"),
-        end_datetime: DateTime.parse("Sat, Jan 21, 2023, 5:00 AM EST"),
+        end_datetime: DateTime.parse("Sat, Jan 21, 2023, 05:00 AM EST"),
         capacity: 50,
         ticket_price: 28.79,
         category: 'Music',
@@ -159,8 +159,8 @@ require 'open-uri'
         
         Disclaimer: By attending the events of Startup+ or Dev.Talks, you agree that the photos/videos taken during the event will be used for promotion of future events.'",
         address: '627 Lexington Ave New York, NY 10022',
-        start_datetime: DateTime.parse("Thu, Jan 19, 2023, 5:00 PM EST"),
-        end_datetime: DateTime.parse("Thu, Jan 19, 2023, 9:00 PM EST"),
+        start_datetime: DateTime.parse("Thu, Jan 19, 2023, 05:00 PM EST"),
+        end_datetime: DateTime.parse("Thu, Jan 19, 2023, 09:00 PM EST"),
         capacity: 20,
         ticket_price: 0.00,
         category: 'Business',
@@ -190,7 +190,7 @@ require 'open-uri'
         After a two-year hiatus, the storied San Sebastian Street Festival (Fiestas de la Calle San Sebastián, or simply, La SanSe) returns with more art, more culture, music, food… more of everything that makes this one of the most exciting celebrations in the Caribbean. During the multi-day celebrations, the historic city of Old San Juan comes alive with a renewed sense of vibrancy for the entire family: by day, revelers are treated to take in the works of local artisans and vendors; at night, the energy is turned up to 11 with live musical performances and dancing, as well as impromptu parties at every corner. Register to stay up to date on the event's roster of entertainment.",
         address: '148 Calle de San Sebastián San Juan, San Juan 00901 Puerto Rico',
         start_datetime: DateTime.parse("Thu, Jan 19, 2023, 12:00 AM EST"),
-        end_datetime: DateTime.parse("Sun, Jan 23, 2023, 12:00AM EST"),
+        end_datetime: DateTime.parse("Sun, Jan 23, 2023, 12:00 AM EST"),
         capacity: 1000,
         ticket_price: 0.00,
         category: 'Holiday',
@@ -307,14 +307,41 @@ require 'open-uri'
         
         We encourage workshop participants to have some previous coding experience, but this is not required. The course will not spend much time on the basics of Python: rather, we will only do a brief review of basic Python commands before jumping in to specific neuroimaging packages.",
         address: 'Genspace 132 32nd Street #108 Brooklyn, NY 11232',
-        start_datetime: DateTime.parse("Sat, Jan 28, 2023, 02:00 PM EST"),
-        end_datetime: DateTime.parse("Sat, Jan 28, 2023, 05:00 PM EST"),
+        start_datetime: DateTime.parse("Sat, Jan 28, 2023 02:00 PM EST"),
+        end_datetime: DateTime.parse("Sat, Jan 28, 2023 05:00 PM EST"),
         capacity: 40,
         ticket_price: 115.00,
         category: 'Business',
         organizer_id: 8,
         file: "https://eventlite-22-seeds.s3.amazonaws.com/image14.jpg",
         filename: "image14.jpg"
+      },
+      {
+        title:'Bonsai Bar @ Industrial Arts Brewing Company - Beacon',
+        body: "Grab your friends, grab a drink and come make tiny trees with us! We're bringing the awesome art of bonsai out of the hedged in gardens and into the streets! Or at least into your favorite bars/breweries/pubs.
+        Bonsai Bar is a night of fun you don't want to miss. Learn the fundamental skills and techniques behind the art of bonsai while enjoying a night out with friends! Our teachers will introduce core concepts and guide your experience as you pot, prune, and design your very own bonsai tree! You'll get to choose a Dwarf Jade (Portulacaria Afra) tree and a beautiful glazed ceramic pot when you arrive, and we'll lend you the tools and materials you need to craft your own tiny tree. These trees are a perfect beginner bonsai species that are so hardy we guarantee you can keep it alive or we'll replace it. We even offer follow-up video consultations if you have more questions after the class.",
+        address: 'Industrial Arts Brewing Company 511 Fishkill Avenue Beacon, NY 12508',
+        start_datetime: DateTime.parse("Tue, Feb 14, 2023, 10:30 AM EST"),
+        end_datetime: DateTime.parse("Tue, Feb 14, 2023, 12:30 PM EST"),
+        capacity: 10,
+        ticket_price: 75.00,
+        category: 'Hobbies',
+        organizer_id: 4,
+        file: "https://eventlite-22-seeds.s3.amazonaws.com/image16.jpg",
+        filename: "image16.jpg"
+      },
+      {
+        title:'The Armory Hispanic Games',
+        body: "Watch the country's top high school track and field athletes compete at the world's premier indoor track and field facility. Fans are sure to see a number of the nation's top performances recorded at this classic Armory even, which is now in its 28th year. Reserved seating is only available for day two of the U.S. Air Force Hispanic Games.",
+        address: 'Nike Track & Field Center 216 Fort Washington Ave New York, NY 10032',
+        start_datetime: DateTime.parse("Sat, Feb 25, 2023, 09:00 AM EST"),
+        end_datetime: DateTime.parse("Sat, Feb 25, 2023, 09:00 PM EST"),
+        capacity: 100,
+        ticket_price: 26.63,
+        category: 'Sports & Fitness',
+        organizer_id: 2,
+        file: "https://eventlite-22-seeds.s3.amazonaws.com/image17.jpg",
+        filename: "image17.jpg"
       },
 
     ]
@@ -336,6 +363,9 @@ require 'open-uri'
     end
 
     Ticket.create!({events_id: 1, attendee_id: 1})
+    Ticket.create!({events_id: 1, attendee_id: 2})
+    Ticket.create!({events_id: 1, attendee_id: 3})
+    Ticket.create!({events_id: 1, attendee_id: 4})
     Ticket.create!({events_id: 2, attendee_id: 1})
     Ticket.create!({events_id: 2, attendee_id: 2})
     Ticket.create!({events_id: 2, attendee_id: 3})
@@ -360,18 +390,3 @@ require 'open-uri'
     puts "Done!"
   # end
   
-  
-
-  # {
-  #   title:'Restorative Yoga',
-  #   body: 'Restorative yoga is a form of yoga that works with the sympathetic and parasympathetic system to help you go from the fight and flight mode to the rest and digest mode. It seeks to achieve physical, mental and emotional relaxation with the aid of props. The use of props makes it easier for you to maintain balance while you are stimulating, stretching and relaxing your body.(Pillows, blocks and blankets) This type of Yoga is designed to restore, rejuvenate and relax. Whether you are stressed or suffering depletion of energy, or if you simply need a deep stretch and better health, this yoga is the right one for you.',
-  #   address: 'Absalom 223 Degraw Avenue Teaneck, NJ 07666',
-  #   start_datetime: DateTime.parse("Wed, Jan 18, 2023, 09:30 AM EST"),
-  #   end_datetime: DateTime.parse("Wed, Jan 18, 2023, 11:30 AM EST"),
-  #   capacity: 20,
-  #   ticket_price: 35.00,
-  #   category: 'Health',
-  #   organizer_id: rand(User.all.length),
-  #   file: "https://eventlite-22-seeds.s3.amazonaws.com/image12.jpg",
-  #   filename: "image12.jpg"
-  # },

@@ -119,7 +119,7 @@ const EventListItem = (props) => {
     );
     if (likeStatus && sessionUserId) {
       if (icon) icon.style.color = "#d1410c";
-      return <BsSuitHeartFill />;
+      return <BsSuitHeartFill color="#d1410c" />;
     } else {
       if (icon) icon.style.color = "#39364f";
       return <BsSuitHeart id="like-icon-thickness" />;

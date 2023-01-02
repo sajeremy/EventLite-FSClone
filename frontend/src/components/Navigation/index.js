@@ -15,6 +15,11 @@ const Navigation = () => {
   //   dispatch(fetchEvents());
   // });
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("action");
+  };
+
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = <LoggedInNav />;
@@ -22,16 +27,22 @@ const Navigation = () => {
     sessionLinks = (
       <>
         <div className="navbar">
-          <NavLink className="eventbrite-button" to={"/"}>
+          <NavLink
+            className="eventbrite-button"
+            onClick={() => window.location.reload()}
+            to={"/"}
+          >
             <h3 className="navbar-logo">eventlite</h3>
           </NavLink>
           <div className="search-bar">
-            <BsSearch className="icon" />
-            <input
-              className="search-input"
-              type="text"
-              placeholder="search events"
-            />
+            <BsSearch className="icon" onClick={() => alert("action")} />
+            <form className="index-page-form" onSubmit={(e) => handleSubmit(e)}>
+              <input
+                className="search-input"
+                type="text"
+                placeholder="search events"
+              />
+            </form>
           </div>
           <NavLink className="logged-out-signup-button" to="/signup">
             Sign Up
