@@ -22,7 +22,11 @@ const Navigation = () => {
     sessionLinks = (
       <>
         <div className="navbar">
-          <NavLink className="eventbrite-button" to={"/"}>
+          <NavLink
+            className="eventbrite-button"
+            onClick={() => window.location.reload()}
+            to={"/"}
+          >
             <h3 className="navbar-logo">eventlite</h3>
           </NavLink>
           <div className="search-bar">
