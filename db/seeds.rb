@@ -10,12 +10,14 @@ require 'open-uri'
     Event.destroy_all
     User.destroy_all
     Ticket.destroy_all
+    Like.destroy_all
   
     puts "Resetting primary keys..."
     # For easy testing, so that after seeding, the first `User` has `id` of 1
     ApplicationRecord.connection.reset_pk_sequence!('users')
     ApplicationRecord.connection.reset_pk_sequence!('events')
     ApplicationRecord.connection.reset_pk_sequence!('tickets')
+    ApplicationRecord.connection.reset_pk_sequence!('likes')
   
     puts "Creating users..."
     # Create one user with an easy to remember username, email, and password:
@@ -333,16 +335,32 @@ require 'open-uri'
 
     end
 
-    
+    Ticket.create!({events_id: 1, attendee_id: 1})
+    Ticket.create!({events_id: 2, attendee_id: 1})
+    Ticket.create!({events_id: 2, attendee_id: 2})
+    Ticket.create!({events_id: 2, attendee_id: 3})
+    Ticket.create!({events_id: 3, attendee_id: 3})
+
+    Like.create!({event_id: 1, user_id: 1})
+    Like.create!({event_id: 1, user_id: 2})
+    Like.create!({event_id: 1, user_id: 3})
+    Like.create!({event_id: 1, user_id: 4})
+    Like.create!({event_id: 1, user_id: 5})
+    Like.create!({event_id: 6, user_id: 2})
+    Like.create!({event_id: 6, user_id: 3})
+    Like.create!({event_id: 6, user_id: 4})
+    Like.create!({event_id: 6, user_id: 5})
+    Like.create!({event_id: 6, user_id: 7})
+    Like.create!({event_id: 3, user_id: 1})
+    Like.create!({event_id: 5, user_id: 1})
+    Like.create!({event_id: 2, user_id: 2})
+    Like.create!({event_id: 5, user_id: 2})
+    Like.create!({event_id: 9, user_id: 2})
+
     puts "Done!"
   # end
   
   
-  # Ticket.create!({events_id: 1, attendee_id: 1})
-  # Ticket.create!({events_id: 2, attendee_id: 1})
-  # Ticket.create!({events_id: 2, attendee_id: 2})
-  # Ticket.create!({events_id: 2, attendee_id: 3})
-  # Ticket.create!({events_id: 3, attendee_id: 3})
 
   # {
   #   title:'Restorative Yoga',

@@ -46,7 +46,8 @@ class Event < ApplicationRecord
     has_many :likes,
     primary_key: :id,
     foreign_key: :event_id,
-    class_name: :Like
+    class_name: :Like,
+    dependent: :destroy
 
     has_many :attendees,
     through: :tickets,
