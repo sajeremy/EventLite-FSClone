@@ -383,12 +383,14 @@ const EventCreateFormPage = () => {
               </p>
             </div>
             <div className="image-input-container">
-              <input
-                type="file"
-                className="create-event-input"
-                id="create-event-image-input"
-                onChange={handleFile}
-              ></input>
+              <label for="create-event-image-input">
+                <input
+                  type="file"
+                  className="create-event-input"
+                  id="create-event-image-input"
+                  onChange={handleFile}
+                ></input>
+              </label>
               {/* <div className="create-event-error-handling-text">
                 {handleImage()}
               </div> */}
