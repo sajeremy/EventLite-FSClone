@@ -1,171 +1,144 @@
-.purchased-tickets-container {
-
+.liked-events-container {
+    /* border: 1px green solid; */
     width: 80vw;
     height: 100%;
     margin-left: 10vw;
     margin-right: 10vw;
     margin-top: 20px;
+    max-width: 1200px;
 }
 
-.purchased-tickets-list-header {
-
-    background-color: #f8f7fa;
-    display: flex;
-    height: 100%;
-    font-size: .75rem;
-    line-height: 1rem;
-    flex: 1 1 auto;
-    padding-left: 1vw;
-    padding-right: 1vw;
-
-    align-items: center;
+.liked-events-container > h1 {
+    margin-bottom: 10px;
 }
 
-.header-ticket-event-col,
-.header-ticket-qr-code-col,
-.header-ticket-id-col {
-    font-weight: 600;
-    color: #39364f;
-    font-size: .875rem;
-    line-height: 1.25rem;
-    font-family: Neue Plak,-apple-system,BlinkMacSystemFont,Roboto,Helvetica Neue,Helvetica,Tahoma,Arial,sans-serif;   
-}
-
-.header-ticket-event-col {
-    width: 80%;
-
-}
-
-.header-ticket-qr-code-col {
-    width: 10%;
-
-}
-
-.header-ticket-id-col {
-    width: 10%;
-
-}
-
-.ticket-list-item-container {
-
-    display: flex;
-    margin-bottom: 5px;
-    border-radius: 10px;
-}
-
-.ticket-list-item-container:hover {
-    box-shadow: 0 10px 64px 16px rgb(46 55 77 / 20%);
-}
-
-.ul-ticket-list {
+.ul-liked-event-list {
     padding: 0;
     list-style-type: none;
 }
 
-.ticket-item-info-container {
-    width: 80%;
+.like-list-item-container {
+    display: flex;
+    margin-bottom: 5px;
+    /* border: 1px red solid; */
+}
+
+.like-list-item-container:hover {
+    box-shadow: 0 10px 64px 16px rgb(46 55 77 / 20%);
+}
+
+.liked-event-info-container {
+    width: 70%;
 
     display: flex;
     height: 20vh;
     text-decoration: none;
-
-    font-size: .75rem;
+    font-size: .95rem;
     line-height: 1rem;
-    
+    font-weight: 350;
+    /* border: 5px green solid; */
+}
+
+.liked-event-info-container a {
+    text-decoration: none;
+    color: #39364f;
+}
+
+.liked-event-right-container {
+    width: 30%;
+    /* border: 5px brown solid; */
+    display: flex;
+    flex-direction: column;
+}
+
+.liked-event-like-button-container {
+    /* border: green 5px solid; */
+    display: flex;
+    justify-content: right;
+    align-items: center;
+    padding-right: 10px;
+    margin-bottom: 10px;
 }
 
 
-.ticket-list-image img {
-    /* height: 100%; */
-    /* width: 15vw; */
-    width: 15vw;
+.liked-event-image img {
     height: 90%;
     object-fit: cover;
-    margin-left:10px;
+    padding-right:10px;
 }
 
-.ticket-list-image {
+.liked-event-image {
     display: flex;
     align-items: center;
-
-    /* object-fit: cover; */
-    /* width: 15vw; */
-
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    /* border: 5px purple solid; */
+    /* height: 75%; */
+    /* width: 100%;
+    height: 75%; */
 }
 
-.ticket-list-info {
-
+.liked-event-info {
     margin-left: 20px;
     overflow-wrap: break-word;
-    /* width: 70%; */
 }
 
-.ticket-list-info h2 {
-    margin-top: 5px;
+.liked-event-info h2 {
+    margin-top: 15px;
     margin-bottom: 10px;
-    font-size: 16px;
+    font-size: 19px;
+    font-weight: 500;
 }
 
-.ticket-list-info p {
+.liked-event-info p {
     color: #6f7287;
     margin-left: 5px;
     margin-right: 10px;
     margin-top: 3px;
+    margin-bottom: 5px;
+}
+
+p.liked-event-info-date {
+    color: #d1410c;
+    font-weight: 600;
+    font-size: .925rem;
+    line-height: 1.55rem;
+    margin-top: 10px;
 }
 
 
-
-.event-list-item-tickets-container {
-    width: 15%;
-
+.liked-event-like-button-border {
+    width: 44px;
+    height: 44px;
+    border-radius: 22px;
+    /* background-color: #f8f7fa; */
+    border: .05rem rgba(57, 54, 79, .3) solid;
+    /* top: -24px; */
+    /* position: absolute; */
+    right: 8px;
     display: flex;
-    flex-direction: column;
-
+    /* border: 1px orange solid; */
 }
 
-.event-list-item-ticket-number {
-    margin-bottom: 30%;
-    
-}
-
-.event-list-item-progress-border {
-    
-    height: 10px;
-    background-color: #ddd9d9;
-    margin-left: 5px;
-    margin-right: 5px;
-}
-
-.event-list-item-progress-fill {
-    background-color: #f05537;
-    width: 25%;
-    height: 10px;
-}
-
-.event-list-item-sales-container {
-    width: 10%;
-    display:flex;
-    justify-content: center;
-    margin-top: 20px;
-}
-
-.event-list-item-button-container {
-    display: flex;
+.liked-event-like-button-border {
     align-items: center;
-
-    flex-direction: column;
-
-    width:15%;
+    justify-content: center;
+    z-index: 1;
+    
 }
 
-.event-list-item-button-container img {
-    margin-top: 20px;
-    width: 100px;
-    height: 100px;
+.liked-event-like-button {
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
 }
 
-.purchased-tickets-container > h1 {
-    margin-bottom: 10px;
+#like-icon-thickness {
+    stroke-width:.05rem;
 }
 
+[id^="liked-event-button-icons"] {
+    color: #d1410c;
+}
 

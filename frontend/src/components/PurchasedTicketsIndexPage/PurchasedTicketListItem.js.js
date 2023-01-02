@@ -50,7 +50,6 @@ const PurchasedTicketListItem = (props) => {
     );
   };
 
-  // debugger;
   return (
     <div className="ticket-list-item-container">
       <div className="ticket-item-info-container">

@@ -126,6 +126,15 @@ const EventListItem = (props) => {
     }
   };
 
+  const likeText = () => {
+    const numLikes = event.likes.length;
+    if (numLikes === 1) {
+      return `${numLikes} Like`;
+    } else {
+      return `${numLikes} Likes`;
+    }
+  };
+
   return (
     <div className="event-card-container-outer-edge">
       <div className="event-card-container">
@@ -155,7 +164,7 @@ const EventListItem = (props) => {
                 " " +
                 event.organizerLastName}
             </p>
-            <p>{event.likes.length} Likes</p>
+            <p>{likeText()}</p>
           </div>
           <div className="event-card-like-button-container">
             <button

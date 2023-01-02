@@ -108,7 +108,6 @@ export const getSortedAttendingEvents = (state) => {
     ? tickets.map((ticket) => ticket.eventsId)
     : [];
   const attendingEvents = eventTicketArr.map((eventId) => {
-    // console.log(eventId);
     return events[eventId - 1];
   });
   const sortedAttendingEvents = attendingEvents.sort((a, b) => {

@@ -23,6 +23,14 @@ const removeLike = (eventId) => ({
 export const getLikes = (state) => {
   return state.likes ? Object.values(state.likes) : [];
 };
+export const getLikedEvents = (state) => {
+  const events = state.events ? Object.values(state.events) : [];
+  const likedEventsArr = state.likes;
+  const likedEvents = events.filter((event) =>
+    likedEventsArr.includes(event.id)
+  );
+  return likedEvents;
+};
 
 //Thunk Action Creators
 
@@ -50,7 +58,6 @@ export const createLike = (like) => async (dispatch) => {
   });
   if (res.ok) {
     const newLike = await res.json();
-    // debugger;
     dispatch(receiveLike(newLike));
   }
 };

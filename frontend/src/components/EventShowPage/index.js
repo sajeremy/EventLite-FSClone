@@ -171,6 +171,15 @@ const EventShowPage = () => {
     return formattedPrice;
   };
 
+  const likeText = () => {
+    const numLikes = event.likes.length;
+    if (numLikes === 1) {
+      return `${numLikes} Like`;
+    } else {
+      return `${numLikes} Likes`;
+    }
+  };
+
   //Ticket Modal
   const modalContainer = document.getElementById("microMobilityModal");
 
@@ -218,7 +227,7 @@ const EventShowPage = () => {
               </p>
             </div>
             <div className="show-page-likes">
-              <p className="show-page-likes-text">{event.likes.length} likes</p>
+              <p className="show-page-likes-text">{likeText()}</p>
               <button
                 onClick={() => handleLikeClick()}
                 className="show-page-likes-button"

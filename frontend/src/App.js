@@ -11,6 +11,7 @@ import CreatedEventsIndexPage from "./components/CreatedEventsIndexPage";
 import EventEditFormPage from "./components/EventEditFormPage";
 import PurchasedTicketsIndexPage from "./components/PurchasedTicketsIndexPage";
 import LikedEventsIndexPage from "./components/LikedEventsIndexPage";
+import LikedEventItem from "./components/LikedEventsIndexPage/LikedEventItem";
 
 function App() {
   return (

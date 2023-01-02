@@ -8,52 +8,37 @@ import {
   getSortedAttendingEvents,
 } from "../../store/event.js";
 import { getTickets } from "../../store/ticket.js";
+import { getLikedEvents } from "../../store/like.js";
 import "./LikedEventsIndexPage.css";
 import LikedEventItem from "./LikedEventItem.js";
 
 const LikedEventsIndexPage = () => {
   const dispatch = useDispatch();
-  // const events = useSelector(getEvents);
-  // const sessionUser = useSelector((state) => state.session.user);
-  // const organizedEvents = events.filter(
-  //   (event) => event.organizerId === sessionUser.id
+  // const sortedAttendingEvents = useSelector(getSortedAttendingEvents);
+  const likedEvents = useSelector(getLikedEvents);
+  // const sortedEventIds = likedEvents[0]
+  //   ? likedEvents.map((event) => event.id)
+  //   : [];
+  // const purchasedTickets = useSelector(getTickets);
+  // likedEvents.sort(
+  //   (a, b) =>
+  //     sortedEventIds.indexOf(a.eventsId) - sortedEventIds.indexOf(b.eventsId)
   // );
-
-  const sortedAttendingEvents = useSelector(getSortedAttendingEvents);
-  const sortedEventIds = sortedAttendingEvents[0]
-    ? sortedAttendingEvents.map((event) => event.id)
-    : [];
-  const purchasedTickets = useSelector(getTickets);
-  purchasedTickets.sort(
-    (a, b) =>
-      sortedEventIds.indexOf(a.eventsId) - sortedEventIds.indexOf(b.eventsId)
-  );
 
   // useEffect(() => {
   //   // dispatch(fetchEvents());
 
   // }, []);
 
-  const purchasedTicketsList = purchasedTickets.map((ticket) => {
-    return <LikedEventItem key={ticket.id} ticket={ticket} />;
+  const likedEventsList = likedEvents.map((event) => {
+    return <LikedEventItem key={event.id} event={event} />;
   });
 
   return (
     <>
-      <div className="purchased-tickets-container">
+      <div className="liked-events-container">
         <h1>Likes</h1>
-        {/* <div className="purchased-tickets-list-header">
-          <div className="header-ticket-event-col">
-            <span>Events</span>
-          </div>
-          <div className="header-ticket-id-col">
-            <span>Ticket ID</span>
-          </div>
-          <div className="header-ticket-qr-code-col">
-            <span>QR Code</span>
-          </div>
-        </div> */}
-        <ul className="ul-ticket-list">{purchasedTicketsList}</ul>
+        <ul className="ul-liked-event-list">{likedEventsList}</ul>
       </div>
     </>
   );
