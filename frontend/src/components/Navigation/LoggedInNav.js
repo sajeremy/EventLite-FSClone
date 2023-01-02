@@ -55,6 +55,12 @@ const LoggedInNav = () => {
     history.push("/login");
     // <Redirect to="/login" />;
   };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    alert("action");
+  };
+
   return (
     <>
       <div className="navbar">
@@ -64,15 +70,16 @@ const LoggedInNav = () => {
           to={"/"}
         >
           <h3 className="navbar-logo">eventlite</h3>
-          {/* <button></button> */}
         </NavLink>
         <div className="search-bar">
           <BsSearch className="icon" />
-          <input
-            className="search-input"
-            type="text"
-            placeholder="search events"
-          />
+          <form className="index-page-form" onSubmit={(e) => handleSubmit(e)}>
+            <input
+              className="search-input"
+              type="text"
+              placeholder="search events"
+            />
+          </form>
         </div>
         <button id="user-drop-down" onClick={openMenu}>
           <div>
