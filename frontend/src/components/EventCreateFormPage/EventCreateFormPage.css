@@ -67,6 +67,11 @@
     /* overflow-wrap: break-word; */
 }
 
+.location-section,
+.event-form-date-time-section {
+    margin-top: 25px;
+}
+
 .basic-info-header-container h1,
 .location-header-container h1,
 .date-time-header-container h1,
@@ -122,24 +127,24 @@
     border-style: solid;
     border-width: 1.75px;
     width:40vw;
-  }
-
-  .event-form-category-container select,
-  .event-form-category-container option {
-    font-size: 14px;
-    line-height: 22px;
-    min-height: 22px;
-    padding: 8px;
-    border-radius: 2px;
-    border-color: rgb(238, 237, 242);
-    border-style: solid;
-    border-width: 1.75px;
-    margin-bottom: 25px;
-  }
-
-.event-form-location-container input {
-    margin-bottom: 25px;
 }
+
+.event-form-category-container select,
+.event-form-category-container option {
+font-size: 14px;
+line-height: 22px;
+min-height: 22px;
+padding: 8px;
+border-radius: 2px;
+border-color: rgb(238, 237, 242);
+border-style: solid;
+border-width: 1.75px;
+/* margin-bottom: 25px; */
+}
+
+/* .event-form-location-container input {
+    margin-bottom: 25px;
+} */
 
 .event-form-date-time-input-container {
     display: inline-flex;
@@ -206,6 +211,10 @@
 
 }
 
+input[type='file'] {
+    color: transparent;
+  }
+
 .create-event-input::before {
     content: 'Upload Your Event Image';
     display: inline-block;
@@ -237,6 +246,10 @@
     border-width: 1.75px;
   }
 
+/* #create-event-category-input {
+    margin-bottom: 0;
+} */
+
 .ticket-input-container > input{
     border-style: solid;
     border: none;
@@ -249,7 +262,11 @@
     border-color: rgb(238, 237, 242);
     border-style: solid;
     border-width: 1.75px;
-    margin-bottom: 25px;
+    /* margin-bottom: 25px; */
+}
+
+.ticket-price-label-container {
+    margin-top: 25px;
 }
 
 #create-event-ticket-price-input,
@@ -258,7 +275,7 @@
 }
 
 .form-submit-button-container button {
-    margin-top: 10px;
+    margin-top: 35px;
     width: 120px;
     width: 43vw;
     height: 40px;
@@ -284,4 +301,11 @@
 }
 .form-submit-button-container button:hover {
     filter: brightness(1.05); 
+}
+
+.create-event-error-handling-text {
+    color: #c5162e;
+    font-size: .8rem;
+    line-height: 1rem;
+    margin-top: 5px;
 }
