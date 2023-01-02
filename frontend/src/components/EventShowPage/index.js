@@ -134,7 +134,7 @@ const EventShowPage = () => {
   const handleLikeClick = () => {
     if (!sessionUserId) history.push("/login");
     let icon = document.getElementById(`show-page-like-icon-${event.id}`);
-    if (likeStatus) {
+    if (likeStatus && sessionUserId) {
       setLikeStatus(false);
       icon.style.color = "#39364f";
       dispatch(deleteLike(event.id));
@@ -150,7 +150,7 @@ const EventShowPage = () => {
 
   const likeIcon = () => {
     let icon = document.getElementById(`show-page-like-icon-${event.id}`);
-    if (likeStatus) {
+    if (likeStatus && sessionUserId) {
       if (icon) icon.style.color = "#d1410c";
       return <BsSuitHeartFill />;
     } else {

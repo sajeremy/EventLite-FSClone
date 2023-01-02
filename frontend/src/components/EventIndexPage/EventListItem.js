@@ -99,7 +99,7 @@ const EventListItem = (props) => {
     let icon = document.getElementById(
       `event-card-like-button-icons-${event.id}`
     );
-    if (likeStatus) {
+    if (likeStatus && sessionUserId) {
       setLikeStatus(false);
       icon.style.color = "#39364f";
       dispatch(deleteLike(event.id));
@@ -117,7 +117,7 @@ const EventListItem = (props) => {
     let icon = document.getElementById(
       `event-card-like-button-icons-${event.id}`
     );
-    if (likeStatus) {
+    if (likeStatus && sessionUserId) {
       if (icon) icon.style.color = "#d1410c";
       return <BsSuitHeartFill />;
     } else {

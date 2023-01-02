@@ -52,7 +52,7 @@ const LoggedInNav = () => {
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
-    history.push(`/signup`);
+    history.push("/login");
     // <Redirect to="/login" />;
   };
   return (
@@ -108,7 +108,11 @@ const LoggedInNav = () => {
                 </Link>
               </li>
               <li>
-                <Link className="log-out-button" to="#" onClick={logout}>
+                <Link
+                  className="log-out-button"
+                  to={`/signup`}
+                  onClick={logout}
+                >
                   Log Out
                 </Link>
               </li>
