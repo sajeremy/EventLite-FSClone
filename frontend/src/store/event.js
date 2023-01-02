@@ -1,5 +1,6 @@
 import csrfFetch, { storeCSRFToken } from "./csrf";
 import { useHistory } from "react-router-dom";
+// import * as sessionActions from "../../store/session";
 
 //
 
@@ -7,6 +8,8 @@ import { useHistory } from "react-router-dom";
 export const RECEIVE_EVENTS = "events/RECEIVE_EVENTS";
 export const RECEIVE_EVENT = "events/RECEIVE_EVENT";
 export const REMOVE_EVENT = "events/REMOVE_EVENT";
+export const LIKE_EVENT = "events/LIKE_EVENT";
+export const UNLIKE_EVENT = "events/UNLIKE_EVENT";
 
 //Actions
 const receiveEvents = (events) => ({
@@ -20,6 +23,16 @@ const receiveEvent = (event) => ({
 const removeEvent = (eventId) => ({
   type: REMOVE_EVENT,
   eventId,
+});
+export const likeEvent = (eventId, userId) => ({
+  type: LIKE_EVENT,
+  eventId,
+  userId,
+});
+export const unlikeEvent = (eventId, userId) => ({
+  type: UNLIKE_EVENT,
+  eventId,
+  userId,
 });
 
 //Selectors
@@ -95,7 +108,6 @@ export const getSortedAttendingEvents = (state) => {
     ? tickets.map((ticket) => ticket.eventsId)
     : [];
   const attendingEvents = eventTicketArr.map((eventId) => {
-    // console.log(eventId);
     return events[eventId - 1];
   });
   const sortedAttendingEvents = attendingEvents.sort((a, b) => {
@@ -170,7 +182,6 @@ export const deleteEvent = (eventId) => async (dispatch) => {
 //Events Reducer
 const eventsReducer = (state = {}, action) => {
   const newState = { ...state };
-
   switch (action.type) {
     case RECEIVE_EVENTS:
       return { ...action.events };
@@ -178,6 +189,15 @@ const eventsReducer = (state = {}, action) => {
       return { [action.event.id]: action.event };
     case REMOVE_EVENT:
       delete newState[action.eventId];
+      return newState;
+    case LIKE_EVENT:
+      const userId = action.userId;
+      newState[action.eventId].likes.push(userId);
+      return newState;
+    case UNLIKE_EVENT:
+      const eventId = action.eventId;
+      const likeIndex = newState[eventId].likes.indexOf(action.userId);
+      if (likeIndex > -1) newState[eventId].likes.splice(likeIndex, 1);
       return newState;
     default:
       return state;

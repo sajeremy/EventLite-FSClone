@@ -5,6 +5,14 @@ class Api::EventsController < ApplicationController
     def index
         @current_user = current_user
         @events = Event.all
+        @events_likes = {}
+        @events.each do |event|
+            event_like_arr = []
+            event.likes.each do |like|
+                event_like_arr.push(like.user_id)
+            end
+            @events_likes[event.id] = event_like_arr
+        end
         if @events
             render :index
         else

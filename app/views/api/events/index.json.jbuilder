@@ -13,6 +13,7 @@ json.events do
             json.organizer_last_name event.organizer.last_name
             json.organizer_id event.organizer.id
             json.tickets event.tickets
+            json.likes @events_likes[event.id]
         end
         
     end

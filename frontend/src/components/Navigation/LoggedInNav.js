@@ -10,6 +10,7 @@ import { BiUserCircle } from "react-icons/bi";
 import { AiOutlinePlus } from "react-icons/ai";
 import { HiOutlineUserCircle } from "react-icons/hi";
 import * as sessionActions from "../../store/session";
+import { fetchUserLikes, getLikes } from "../../store/like.js";
 
 const LoggedInNav = () => {
   const sessionUser = useSelector((state) => state.session.user);
@@ -20,6 +21,7 @@ const LoggedInNav = () => {
   const purcahsedTickets = useSelector(
     (state) => Object.keys(state.tickets).length
   );
+  const userLikes = useSelector((state) => state.likes.length);
   const [showMenu, setShowMenu] = useState(false);
 
   const openMenu = () => {
@@ -44,12 +46,13 @@ const LoggedInNav = () => {
   useEffect(() => {
     dispatch(fetchEvents());
     dispatch(fetchUserTickets());
+    dispatch(fetchUserLikes());
   }, []);
 
   const logout = (e) => {
     e.preventDefault();
     dispatch(sessionActions.logout());
-    history.push(`/signup`);
+    history.push("/login");
     // <Redirect to="/login" />;
   };
   return (
@@ -84,12 +87,15 @@ const LoggedInNav = () => {
                   className="tickets-dropdown-button"
                   to={`/users/${sessionUser.id}/tickets`}
                 >
-                  Tickets ({`${purcahsedTickets}`})
+                  Tickets ({purcahsedTickets})
                 </Link>
               </li>
               <li>
-                <Link className="likes-dropdown-button" to="#">
-                  Liked (5)
+                <Link
+                  className="likes-dropdown-button"
+                  to={`/users/${sessionUser.id}/likes`}
+                >
+                  Liked ({userLikes})
                 </Link>
               </li>
               <li>
@@ -98,11 +104,15 @@ const LoggedInNav = () => {
                   to={`/users/${sessionUser.id}/events`}
                 >
                   {/* Created Events ({numCreatedEvents}) */}
-                  Created Events ({`${organizedEvents.length}`})
+                  Created Events ({organizedEvents.length})
                 </Link>
               </li>
               <li>
-                <Link className="log-out-button" to="#" onClick={logout}>
+                <Link
+                  className="log-out-button"
+                  to={`/signup`}
+                  onClick={logout}
+                >
                   Log Out
                 </Link>
               </li>
@@ -118,7 +128,7 @@ const LoggedInNav = () => {
           </div>
           <p>Tickets</p>
         </NavLink>
-        <NavLink className="likes-button" to="#">
+        <NavLink className="likes-button" to={`/users/${sessionUser.id}/likes`}>
           <div>
             <BsSuitHeart />
           </div>

@@ -43,6 +43,11 @@ class Event < ApplicationRecord
     class_name: :Ticket,
     dependent: :destroy
 
+    has_many :likes,
+    primary_key: :id,
+    foreign_key: :event_id,
+    class_name: :Like
+
     has_many :attendees,
     through: :tickets,
     source: :attendees
