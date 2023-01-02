@@ -18,21 +18,6 @@ const EventEditFormPage = () => {
   const { eventId } = useParams();
   const organizerId = useSelector((state) => state.session.user.id);
   const currEvent = useSelector(getEvent(eventId));
-  const [title, setTitle] = useState(currEvent.title);
-  const [category, setCategory] = useState(currEvent.category);
-  const [address, setAddress] = useState(currEvent.address);
-  const [startDatetime, setStartDatetime] = useState(currEvent.startDatetime);
-  const [endDatetime, setEndDatetime] = useState(currEvent.endDatetime);
-  const [body, setBody] = useState(currEvent.body);
-  const [capacity, setCapacity] = useState(currEvent.capacity);
-  const [ticketPrice, setTicketPrice] = useState(currEvent.ticketPrice);
-  const [photoUrl, setPhotoUrl] = useState(currEvent.photoUrl);
-  const [errors, setErrors] = useState([]);
-  const [photoFile, setPhotoFile] = useState(null);
-  // debugger;
-  // const [event, setEvent] = useState(eventId ? currEvent : {});
-  // const [event, setEvent] = useState(currEvent);
-  // debugger;
 
   const updateFormEvent = (formData) => async (dispatch) => {
     const res = await csrfFetch(`/api/events/${eventId}`, {
@@ -44,24 +29,45 @@ const EventEditFormPage = () => {
     }
   };
 
-  useEffect(() => {
-    const fetchFormData = async () => {
-      // let fetchedEvent = await fetchEvent(eventId);
-      // // delete fetchEvent.event.photoUrl;
-      // await setEvent({ ...fetchedEvent.event, photoUrl: undefined });
-      let fetchedEvent = dispatch(fetchEvent(eventId));
-      // delete fetchEvent.event.photoUrl;
-      // setPhotoUrl(undefined);
-    };
-    fetchFormData();
-  }, []);
+  // useEffect(() => {
+  //   const fetchFormData = async () => {
+  //     let fetchedEvent = dispatch(fetchEvent(eventId));
+  //   };
+  //   fetchFormData();
+  // }, []);
   // if (!currEvent) return null;
+
+  // useEffect(() => {
+  //   dispatch(fetchEvent(eventId));
+  // }, []);
+
+  const [title, setTitle] = useState(currEvent ? currEvent.title : null);
+  const [category, setCategory] = useState(
+    currEvent ? currEvent.category : null
+  );
+  const [address, setAddress] = useState(currEvent ? currEvent.address : null);
+  const [startDatetime, setStartDatetime] = useState(
+    currEvent ? currEvent.startDatetime : null
+  );
+  const [endDatetime, setEndDatetime] = useState(
+    currEvent ? currEvent.endDatetime : null
+  );
+  const [body, setBody] = useState(currEvent ? currEvent.body : null);
+  const [capacity, setCapacity] = useState(
+    currEvent ? currEvent.capacity : null
+  );
+  const [ticketPrice, setTicketPrice] = useState(
+    currEvent ? currEvent.ticketPrice : null
+  );
+  const [photoUrl, setPhotoUrl] = useState(
+    currEvent ? currEvent.photoUrl : null
+  );
+  const [errors, setErrors] = useState([]);
+  const [photoFile, setPhotoFile] = useState(null);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors([]);
-    // setLoading(true);
-    // debugger;
     const formData = new FormData();
     formData.append("event[title]", title);
     formData.append("event[category]", category);
@@ -75,17 +81,14 @@ const EventEditFormPage = () => {
     if (photoFile) {
       formData.append("event[photo]", photoFile);
     }
-    // debugger;
+
     dispatch(updateFormEvent(formData)).catch(async (res) => {
       let data;
       try {
-        // .clone() essentially allows you to read the response body twice
         data = await res.clone().json();
       } catch {
-        // debugger;
-        data = await res.text(); // Will hit this case if the server is down
+        data = await res.text();
       }
-      // debugger;
       if (data?.errors) setErrors(data.errors);
       else if (data) setErrors([data]);
       else setErrors([res.statusText]);
@@ -95,9 +98,15 @@ const EventEditFormPage = () => {
   const handleTitle = () => {
     let result;
     const elem = document.getElementById("create-event-title-input");
-    if (errors.includes("Title is required.")) {
+    if (errors.includes("Title can't be blank")) {
       result = "Must include a title";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
+      return result;
+    } else if (errors.includes("Title must be between 3 and 255 characters")) {
+      result = "Title must be between 3 and 255 characters";
+      elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -108,9 +117,10 @@ const EventEditFormPage = () => {
   const handleCategory = () => {
     let result;
     const elem = document.getElementById("create-event-category-input");
-    if (errors.includes("Category is required.")) {
-      result = "Category is required.";
+    if (errors.includes("Category can't be blank")) {
+      result = "Please select a category";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -121,9 +131,10 @@ const EventEditFormPage = () => {
   const handleAddress = () => {
     let result;
     const elem = document.getElementById("create-event-address-input");
-    if (errors.includes("Must include address.")) {
-      result = "Venue Location is required.";
+    if (errors.includes("Address can't be blank")) {
+      result = "Venue Location is required";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -148,25 +159,31 @@ const EventEditFormPage = () => {
     } else {
       newMo = mo + 1;
     }
-
     if (day < 10) {
       newDay = `0${day}`;
     } else {
       newDay = day;
     }
-    //Too many re-renders error
-    // setEvent({ ...event, startDatetime: `${yr}-${newMo}-${day}T${time}` });
-    // setEndDatetime(`${yr}-${mo}-${day}T${time}`);
-    // setEndDatetime(`${yr}-${mo}-${day}T${time}`);
-    // debugger;
     return `${yr}-${newMo}-${newDay}T${time}`;
   };
+
   const handleStartDatetime = () => {
     let result;
     const elem = document.getElementById("create-event-start-datetime-input");
-    if (errors.includes("Can't be blank")) {
-      result = "Must include start date and time.";
+    if (
+      errors.includes("Start datetime can't be blank") &&
+      startDatetime === ""
+    ) {
+      result = "Event Start and End Dates can't be blank";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
+      return result;
+    } else if (
+      errors.find((el) => el.includes("Start datetime must be less than "))
+    ) {
+      result = "Start date must occur before end date";
+      elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -177,9 +194,10 @@ const EventEditFormPage = () => {
   const handleEndDatetime = () => {
     let result;
     const elem = document.getElementById("create-event-end-datetime-input");
-    if (errors.includes("Can't be blank")) {
-      result = "Must include end date and time.";
+    if (errors.includes("End datetime can't be blank") && endDatetime === "") {
+      result = "Event Start and End Dates can't be blank";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -190,9 +208,10 @@ const EventEditFormPage = () => {
   const handleBody = () => {
     let result;
     const elem = document.getElementById("create-event-body-input");
-    if (errors.includes("Can't be blank")) {
+    if (errors.includes("Body can't be blank")) {
       result = "Must include a description";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -203,9 +222,15 @@ const EventEditFormPage = () => {
   const handleCapacity = () => {
     let result;
     const elem = document.getElementById("create-event-capacity-input");
-    if (errors.includes("Can't be blank")) {
-      result = "Must enter capacity";
+    if (errors.includes("Capacity must be greater than 0")) {
+      result = "Please enter a capacity greater than 0";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 750);
+      return result;
+    } else if (errors.includes("Capacity can't be blank")) {
+      result = "Please enter the capacity for your event";
+      elem.style = "border-color:#c5162e";
+      window.scroll(0, 750);
       return result;
     } else {
       if (elem) {
@@ -216,9 +241,15 @@ const EventEditFormPage = () => {
   const handleTicketPrice = () => {
     let result;
     const elem = document.getElementById("create-event-ticket-price-input");
-    if (errors.includes("Can't be blank")) {
-      result = "Must enter ticket price";
+    if (errors.includes("Ticket price must be greater than or equal to 0")) {
+      result = "Please enter a ticket price greater than 0";
       elem.style = "border-color:#c5162e";
+      window.scroll(0, 750);
+      return result;
+    } else if (errors.includes("Ticket price can't be blank")) {
+      result = "Please enter the ticket price for your event";
+      elem.style = "border-color:#c5162e";
+      window.scroll(0, 750);
       return result;
     } else {
       if (elem) {
@@ -230,9 +261,9 @@ const EventEditFormPage = () => {
   //   return currEvent.photoUrl ? currEvent.photoUrl : "";
   // };
 
-  if (!currEvent) {
-    return null;
-  }
+  // if (!currEvent) {
+  //   return null;
+  // }
 
   // const handleFile = (e) => {
   //   const file = e.currentTarget.files[0];

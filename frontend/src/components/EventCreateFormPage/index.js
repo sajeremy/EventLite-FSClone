@@ -174,7 +174,7 @@ const EventCreateFormPage = () => {
     let result;
     const elem = document.getElementById("create-event-capacity-input");
     if (errors.includes("Capacity must be greater than 0")) {
-      result = "Please enter a capacity greater than 0";
+      result = "Please enter a valid capacity greater than 0";
       elem.style = "border-color:#c5162e";
       window.scroll(0, 750);
       return result;
@@ -188,7 +188,7 @@ const EventCreateFormPage = () => {
     let result;
     const elem = document.getElementById("create-event-ticket-price-input");
     if (errors.includes("Ticket price must be greater than or equal to 0")) {
-      result = "Please enter a ticket price greater than 0";
+      result = "Please enter a valid ticket price greater than 0";
       elem.style = "border-color:#c5162e";
       window.scroll(0, 750);
       return result;
