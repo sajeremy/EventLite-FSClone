@@ -66,7 +66,10 @@ const LoggedInNav = () => {
       <div className="navbar">
         <NavLink
           className="eventbrite-button"
-          onClick={() => window.location.reload()}
+          onClick={() => {
+            history.push("/");
+            // if (window.location.href === "/") window.location.reload();
+          }}
           to={"/"}
         >
           <h3 className="navbar-logo">eventlite</h3>

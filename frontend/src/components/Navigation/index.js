@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { NavLink, Link } from "react-router-dom";
+import { NavLink, Link, useHistory } from "react-router-dom";
 import { fetchEvents } from "../../store/event.js";
 import ProfileButton from "./ProfileButton";
 import "./Navigation.css";
@@ -10,6 +10,7 @@ import LoggedInNav from "./LoggedInNav";
 const Navigation = () => {
   const sessionUser = useSelector((state) => state.session.user);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   // useEffect(() => {
   //   dispatch(fetchEvents());
@@ -29,7 +30,10 @@ const Navigation = () => {
         <div className="navbar">
           <NavLink
             className="eventbrite-button"
-            onClick={() => window.location.reload()}
+            onClick={() => {
+              history.push("/");
+              // window.location.reload();
+            }}
             to={"/"}
           >
             <h3 className="navbar-logo">eventlite</h3>
