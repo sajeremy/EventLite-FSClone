@@ -41,7 +41,7 @@ const CreatedEventsListItem = (props) => {
   const placeHolderImg = () => {
     return (
       event.photoUrl ||
-      `https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png`
+      `https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/main_image_star-forming_region_carina_nircam_final-1280.jpg`
     );
   };
 
@@ -68,7 +68,6 @@ const CreatedEventsListItem = (props) => {
     }
   }
 
-  // debugger;
   return (
     <div className="event-list-item-container">
       <div className="event-list-item-info-container">

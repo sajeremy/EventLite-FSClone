@@ -18,7 +18,6 @@ const CreatedEventsIndexPage = () => {
   // );
   const organizedEvents = useSelector(getCreatedEvents);
   const organizedSortedEvents = useSelector(getSortedCreatedEvents);
-
   useEffect(() => {
     dispatch(fetchEvents());
   }, []);

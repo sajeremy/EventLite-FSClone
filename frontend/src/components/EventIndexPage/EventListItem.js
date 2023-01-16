@@ -135,12 +135,19 @@ const EventListItem = (props) => {
     }
   };
 
+  const placeHolderImg = () => {
+    return (
+      event.photoUrl ||
+      `https://www.nasa.gov/sites/default/files/styles/full_width/public/thumbnails/image/main_image_star-forming_region_carina_nircam_final-1280.jpg`
+    );
+  };
+
   return (
     <div className="event-card-container-outer-edge">
       <div className="event-card-container">
         <div className="event-card-img-container">
           <NavLink to={`/events/${event.id}`}>
-            <img src={event.photoUrl} alt=""></img>
+            <img src={placeHolderImg()} alt=""></img>
           </NavLink>
         </div>
         <div className="event-card-info-container">

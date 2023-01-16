@@ -25,6 +25,18 @@ const EventCreateFormPage = () => {
   const [errors, setErrors] = useState([]);
   const [photoFile, setPhotoFile] = useState(null);
   const [photoUrl, setPhotoUrl] = useState(null);
+  const topSectionErrors = [
+    "Title can't be blank",
+    "Title must be between 3 and 255 characters",
+    "Address can't be blank",
+    "Start datetime can't be blank",
+    "End datetime can't be blank",
+    "Body can't be blank",
+  ];
+  const bottomSectionErrors = [
+    "create-event-capacity-input",
+    "Ticket price must be greater than or equal to 0",
+  ];
 
   // const [uploaded, setUploaded] = useState("");
   // const [redirect, setRedirect] = useState(false);
@@ -71,18 +83,30 @@ const EventCreateFormPage = () => {
       else setErrors([res.statusText]);
     });
   };
+
+  useEffect(() => {
+    if (errors.some((error) => bottomSectionErrors.includes(error))) {
+      window.scroll(0, 750);
+    } else if (
+      errors.some((error) => topSectionErrors.includes(error)) ||
+      handleStartDatetime() === "Start date must occur before end date"
+    ) {
+      window.scroll(0, 250);
+    }
+  }, [errors]);
+
   const handleTitle = () => {
     let result;
     const elem = document.getElementById("create-event-title-input");
     if (errors.includes("Title can't be blank")) {
       result = "Must include a title";
       elem.style = "border-color:#c5162e";
-      window.scroll(0, 250);
+      // window.scroll(0, 250);
       return result;
     } else if (errors.includes("Title must be between 3 and 255 characters")) {
       result = "Title must be between 3 and 255 characters";
       elem.style = "border-color:#c5162e";
-      window.scroll(0, 250);
+      // window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -96,7 +120,7 @@ const EventCreateFormPage = () => {
     if (errors.includes("Category can't be blank")) {
       result = "Please select a category";
       elem.style = "border-color:#c5162e";
-      window.scroll(0, 250);
+      // window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -110,7 +134,7 @@ const EventCreateFormPage = () => {
     if (errors.includes("Address can't be blank")) {
       result = "Venue Location is required";
       elem.style = "border-color:#c5162e";
-      window.scroll(0, 250);
+      // window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -127,14 +151,14 @@ const EventCreateFormPage = () => {
     ) {
       result = "Event Start and End Dates can't be blank";
       elem.style = "border-color:#c5162e";
-      window.scroll(0, 250);
+      // window.scroll(0, 250);
       return result;
     } else if (
       errors.find((el) => el.includes("Start datetime must be less than "))
     ) {
       result = "Start date must occur before end date";
       elem.style = "border-color:#c5162e";
-      window.scroll(0, 250);
+      // window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -148,7 +172,7 @@ const EventCreateFormPage = () => {
     if (errors.includes("End datetime can't be blank") && endDatetime === "") {
       result = "Event Start and End Dates can't be blank";
       elem.style = "border-color:#c5162e";
-      window.scroll(0, 250);
+      // window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -162,7 +186,7 @@ const EventCreateFormPage = () => {
     if (errors.includes("Body can't be blank")) {
       result = "Must include a description";
       elem.style = "border-color:#c5162e";
-      window.scroll(0, 250);
+      // window.scroll(0, 250);
       return result;
     } else {
       if (elem) {
@@ -176,7 +200,7 @@ const EventCreateFormPage = () => {
     if (errors.includes("Capacity must be greater than 0")) {
       result = "Please enter a valid capacity greater than 0";
       elem.style = "border-color:#c5162e";
-      window.scroll(0, 750);
+      // window.scroll(0, 750);
       return result;
     } else {
       if (elem) {
@@ -190,7 +214,7 @@ const EventCreateFormPage = () => {
     if (errors.includes("Ticket price must be greater than or equal to 0")) {
       result = "Please enter a valid ticket price greater than 0";
       elem.style = "border-color:#c5162e";
-      window.scroll(0, 750);
+      // window.scroll(0, 750);
       return result;
     } else {
       if (elem) {

@@ -68,7 +68,7 @@ class Api::EventsController < ApplicationController
 
         if @event
             @event.destroy
-            render :index
+            # render :index
         else 
             render json: {errors: ['No event was found to delete']}, status:404
         end
