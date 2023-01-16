@@ -71,11 +71,15 @@ const CreatedEventsListItem = (props) => {
   return (
     <div className="event-list-item-container">
       <div className="event-list-item-info-container">
-        <div className="event-list-image">
-          <img src={placeHolderImg()} alt=""></img>
-        </div>
+        <NavLink to={`/events/${event.id}`}>
+          <div className="event-list-image">
+            <img src={placeHolderImg()} alt=""></img>
+          </div>
+        </NavLink>
         <div className="event-list-info">
-          <h2>{event.title}</h2>
+          <NavLink to={`/events/${event.id}`}>
+            <h2>{event.title}</h2>
+          </NavLink>
           <p>{event.address}</p>
           <p>{parseDate()}</p>
         </div>

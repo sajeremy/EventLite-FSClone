@@ -53,11 +53,15 @@ const PurchasedTicketListItem = (props) => {
   return (
     <div className="ticket-list-item-container">
       <div className="ticket-item-info-container">
-        <div className="ticket-list-image">
-          <img src={placeHolderImg()} alt=""></img>
-        </div>
+        <NavLink to={`/events/${event.id}`}>
+          <div className="ticket-list-image">
+            <img src={placeHolderImg()} alt=""></img>
+          </div>
+        </NavLink>
         <div className="ticket-list-info">
-          <h2>{event.title}</h2>
+          <NavLink to={`/events/${event.id}`}>
+            <h2>{event.title}</h2>
+          </NavLink>
           <p>{event.address}</p>
           <p>{parseDate()}</p>
         </div>
