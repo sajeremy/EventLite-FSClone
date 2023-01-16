@@ -206,8 +206,8 @@ section.event-index-layout {
     stroke-width:.05rem;
 }
 
-/* .event-card-img-container  {
+.event-card-img-container > a > img {
     height: 150px;
-} */
+}
 
 
