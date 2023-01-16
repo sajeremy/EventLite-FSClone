@@ -24,11 +24,11 @@
     /* display: flex;
     justify-content: center; */
     border-radius: 40px;
-    filter: contrast(100) blur(15px) brightness(.7);
+    filter: contrast(100) blur(10px) brightness(.9);
     position: absolute;
     margin-left: 15vw;
     margin-right: 15vw;
-    overflow: hidden;
+    /* overflow: hidden; */
     transform: scale(.99);
    
 
@@ -39,25 +39,25 @@
     /* width: 940px; */
     width: 56vw;
     z-index: 1;
-    filter:   brightness(.9);
+    /* filter:   brightness(.7); */
     object-fit: cover;
     margin-left: 22%;
     margin-right: 22%;
     position: absolute;
     top:  32px; 
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 #border-show-page-blurred-img {
-    border: 1px rgba(57, 54, 79, .2) solid;
-    height: 470px;
-    margin-top: 32px;
+    /* border: 1px rgba(57, 54, 79, .2) solid; */
+    height: 460px;
+    margin-top: 42px;
     /* width: 1200px; */
-    width: 70vw;
+    width: 68vw;
     position: absolute;
     border-radius: 40px;
-    margin-left:15%;
-    margin-right:15%;
+    margin-left:16%;
+    margin-right:16%;
     z-index:3;   
     /* transform: scale(1.03); */
 }

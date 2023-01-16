@@ -180,8 +180,10 @@ export const updateEvent = (event) => async (dispatch) => {
 };
 
 export const deleteEvent = (eventId) => async (dispatch) => {
-  await csrfFetch(`/api/events/${eventId}`, { method: "DELETE" });
-  dispatch(removeEvent(eventId));
+  const res = await csrfFetch(`/api/events/${eventId}`, { method: "DELETE" });
+  if (res.ok) {
+    dispatch(removeEvent(eventId));
+  }
 };
 
 //Events Reducer
