@@ -91,6 +91,7 @@ const handleSubmit = async (e) => {
 
 ## Future Features
 
-- Tickets
-- Likes (registering to backend)
-- Searching & Category Filtering
+- [x] Tickets
+- [x] Likes (registering to backend)
+- [x] Category Filtering
+- [ ] Searching

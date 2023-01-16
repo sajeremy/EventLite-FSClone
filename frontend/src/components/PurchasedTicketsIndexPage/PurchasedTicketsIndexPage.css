@@ -87,6 +87,7 @@
 .ticket-list-image {
     display: flex;
     align-items: center;
+    height: 90%;
 
     /* object-fit: cover; */
     /* width: 15vw; */
@@ -98,6 +99,11 @@
     margin-left: 20px;
     overflow-wrap: break-word;
     /* width: 70%; */
+}
+
+.ticket-list-info > a {
+    text-decoration: none;
+    color: #39364f;
 }
 
 .ticket-list-info h2 {

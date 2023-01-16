@@ -79,22 +79,29 @@
 }
 
 .event-list-image {
-
     object-fit: cover;
     width: 15vw;
     display:flex;
+    height: 100%;
 
 }
 
 .event-list-info {
-
     margin-left: 10px;
     overflow-wrap: break-word;
+   
 }
 
-.event-list-info h2 {
+.event-list-info > a {
+    text-decoration: none;
+    color: #39364f;
+}
+
+.event-list-info > a > h2 {
     margin-bottom: 10px;
     font-size: 16px;
+    text-decoration: none;
+    color: #39364f;
 }
 
 .event-list-info p {

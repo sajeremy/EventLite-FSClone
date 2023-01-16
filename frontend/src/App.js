@@ -12,6 +12,7 @@ import EventEditFormPage from "./components/EventEditFormPage";
 import PurchasedTicketsIndexPage from "./components/PurchasedTicketsIndexPage";
 import LikedEventsIndexPage from "./components/LikedEventsIndexPage";
 import LikedEventItem from "./components/LikedEventsIndexPage/LikedEventItem";
+import Footer from "./components/Footer/index";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Navigation />
           <HomePageBanner />
           <EventIndexPage />
+          <Footer />
         </Route>
         <Route exact path="/events/create">
           <Navigation />
@@ -33,6 +35,7 @@ function App() {
         <Route path="/events/:eventId">
           <Navigation />
           <EventShowPage />
+          <Footer />
         </Route>
         <Route path="/users/:userId/events">
           <Navigation />
@@ -48,9 +51,11 @@ function App() {
         </Route>
         <Route path="/login">
           <LoginFormPage />
+          <Footer />
         </Route>
         <Route path="/signup">
           <SignupFormPage />
+          <Footer />
         </Route>
       </Switch>
     </>

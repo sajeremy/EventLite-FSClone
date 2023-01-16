@@ -91,6 +91,7 @@ body {
 
 section.event-index-layout {
     display: block;
+    margin-bottom: 100px;
 
 }
 
@@ -209,5 +210,71 @@ section.event-index-layout {
 .event-card-img-container > a > img {
     height: 150px;
 }
+
+.event-index-footer {
+    background-color: #1e0a3c;
+    height: 150px;
+}
+
+.footer-title {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: white;
+}
+
+.footer-title > h4 {
+    margin-top: 40px;
+}
+
+.footer-content {
+    color: white;
+    font-size: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-top: 15px;
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.footer-linkedin-link,
+.footer-github-link {
+    color: white;
+}
+.footer-linkedin-link {
+    margin-right: 7.5px;
+}
+.footer-github-link {
+    margin-left: 7.5px;
+}
+
+span.symbol {
+    font-size: 4px;
+    justify-content: center;
+    margin-top: 5px;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.footer-technologies {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    text-align: center;
+}
+
+.use-eventlite {
+    margin-left: 25px;
+}
+
+.footer-technologies {
+    margin-right: 25px;
+}
+.footer-contact {
+    margin-right: 30px;
+}
+
+
 
 
