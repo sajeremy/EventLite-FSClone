@@ -20,7 +20,9 @@ const PurchasedTicketsIndexPage = () => {
   // );
 
   const sortedAttendingEvents = useSelector(getSortedAttendingEvents);
-  const sortedEventIds = sortedAttendingEvents[0]
+  const sortedEventIds = sortedAttendingEvents.every(
+    (event) => event !== undefined
+  )
     ? sortedAttendingEvents.map((event) => event.id)
     : [];
   const purchasedTickets = useSelector(getTickets);

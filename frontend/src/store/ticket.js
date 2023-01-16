@@ -58,6 +58,8 @@ export const createTicket = (eventId) => async (dispatch) => {
   if (res.ok) {
     const newTicket = await res.json();
     dispatch(addNewTicket(newTicket));
+  } else {
+    return;
   }
 };
 
