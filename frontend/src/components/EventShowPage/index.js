@@ -20,6 +20,7 @@ const EventShowPage = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   // const [likeStatus, setLikeStatus] = useState(false);
+
   const likesArr = useSelector((state) => (state.likes ? state.likes : []));
   const [likeStatus, setLikeStatus] = useState(
     likesArr.includes(parseInt(eventId)) ? true : false
@@ -41,6 +42,9 @@ const EventShowPage = () => {
   // }, [eventId, dispatch]);
 
   const event = useSelector(getEvent(eventId));
+  const [disablePurchase, setDisablePurchase] = useState(
+    event ? (event.tickets.length <= event.capacity ? false : true) : false
+  );
   if (!event) {
     return null;
   }
@@ -181,6 +185,20 @@ const EventShowPage = () => {
     }
   };
 
+  if (
+    event &&
+    event.tickets.length >= event.capacity &&
+    disablePurchase !== true
+  )
+    setDisablePurchase(true);
+  const ticketButtonText = () => {
+    if (disablePurchase) {
+      return <strong>SOLD OUT !</strong>;
+    } else {
+      return "Get Tickets";
+    }
+  };
+
   //Ticket Modal
   const modalContainer = document.getElementById("microMobilityModal");
 
@@ -284,8 +302,9 @@ const EventShowPage = () => {
             <button
               className="show-page-ticket-button"
               onClick={() => handleTicketModal()}
+              disabled={disablePurchase}
             >
-              Get Tickets
+              {ticketButtonText()}
             </button>
           </div>
         </div>

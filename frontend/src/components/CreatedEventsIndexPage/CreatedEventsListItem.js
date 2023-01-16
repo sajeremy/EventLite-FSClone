@@ -95,7 +95,7 @@ const CreatedEventsListItem = (props) => {
       </div>
 
       <div className="event-list-item-sales-container">
-        ${event.tickets.length * event.ticketPrice}
+        ${(event.tickets.length * event.ticketPrice).toFixed(2)}
       </div>
 
       <div className="event-list-item-button-container">
