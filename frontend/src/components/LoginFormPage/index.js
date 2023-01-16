@@ -83,11 +83,8 @@ function LoginFormPage() {
       "border-color:rgb(238, 237, 242)";
     document.getElementById("login-password-input").style =
       "border-color:rgb(238, 237, 242)";
-    // debugger;
     setTimeout(typeEmail, 50);
-    // debugger;
     setTimeout(typePassword, 1000);
-    // debugger;
     setTimeout(loginDemoUser, 1500);
   };
 

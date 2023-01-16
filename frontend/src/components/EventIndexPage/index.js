@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
 import { getEvents, fetchEvents, getMusicEvents } from "../../store/event.js";
 import EventListItem from "./EventListItem.js";
 import EventCategories from "./EventCategories";
+import { BsGithub, BsLinkedin } from "react-icons/bs";
 import "./EventIndexPage.css";
 
 const EventIndexPage = () => {
@@ -123,7 +125,7 @@ const EventIndexPage = () => {
           <EventCategories categories={categories} />
           <div className="index-section-container">
             <div className="index-card-header">
-              <h3 className="events-index-title">Events Nearby</h3>
+              <h4 className="events-index-title">Events Nearby</h4>
             </div>
             <div className="index-feed-container">{eventsList(events)}</div>
           </div>
