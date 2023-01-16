@@ -42,7 +42,7 @@ const EventShowPage = () => {
   // }, [eventId, dispatch]);
 
   const event = useSelector(getEvent(eventId));
-  const [disable, setDisable] = useState(
+  const [disablePurchase, setDisablePurchase] = useState(
     event ? (event.tickets.length <= event.capacity ? false : true) : false
   );
   if (!event) {
@@ -185,10 +185,14 @@ const EventShowPage = () => {
     }
   };
 
-  if (event && event.tickets.length >= event.capacity && disable !== true)
-    setDisable(true);
+  if (
+    event &&
+    event.tickets.length >= event.capacity &&
+    disablePurchase !== true
+  )
+    setDisablePurchase(true);
   const ticketButtonText = () => {
-    if (disable) {
+    if (disablePurchase) {
       return <strong>SOLD OUT !</strong>;
     } else {
       return "Get Tickets";
@@ -298,7 +302,7 @@ const EventShowPage = () => {
             <button
               className="show-page-ticket-button"
               onClick={() => handleTicketModal()}
-              disabled={disable}
+              disabled={disablePurchase}
             >
               {ticketButtonText()}
             </button>

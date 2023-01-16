@@ -258,6 +258,24 @@
   position:relative;
 }
 
+.ticket-count-max-container {
+    display: flex;
+    
+}
+
+.max-ticket-text-container {
+    display: flex;
+    justify-content: center;
+
+}
+
+#max-ticket-text-message {
+    margin-top: 30px;
+    margin-left: 20px;
+    color: red;
+    display: none;
+}
+
 .ticket-counter-container {
     display: flex;
     margin-top: 20px;
