@@ -28,7 +28,6 @@ class Api::TicketsController < ApplicationController
         @event = Event.find_by(id: params[:event_id])
         @ticket = Ticket.new(events_id: params[:event_id])
         @ticket.attendee_id = @current_user.id
-        byebug
 
         if event_tickets_count == @event.capacity
             render json: { errors: ['Sorry, tickets have sold out for this event'] }, status: :unprocessable_entity

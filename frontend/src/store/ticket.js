@@ -51,14 +51,17 @@ export const fetchUserTickets = () => async (dispatch) => {
 //   }
 // };
 export const createTicket = (eventId) => async (dispatch) => {
-  const res = await csrfFetch(`/api/events/${eventId}/tickets`, {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-  });
-  if (res.ok) {
-    const newTicket = await res.json();
-    dispatch(addNewTicket(newTicket));
-  } else {
+  try {
+    const res = await csrfFetch(`/api/events/${eventId}/tickets`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+    });
+    if (res.ok) {
+      const newTicket = await res.json();
+      dispatch(addNewTicket(newTicket));
+    }
+  } catch {
+    alert("Apologies but tickets have sold out for that event");
     return;
   }
 };
