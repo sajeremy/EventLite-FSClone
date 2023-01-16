@@ -46,7 +46,7 @@ const PurchasedTicketListItem = (props) => {
   const placeHolderImg = () => {
     return (
       event.photoUrl ||
-      `https://developers.elementor.com/docs/assets/img/elementor-placeholder-image.png`
+      "https://eventlite-22-seeds.s3.amazonaws.com/NASA_placeholder.png"
     );
   };
 
