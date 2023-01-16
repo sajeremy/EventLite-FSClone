@@ -61,6 +61,16 @@ const TicketModal = (props) => {
       document.getElementById("max-ticket-text-message").style.display = "none";
   }
 
+  const currentImg = () => {
+    const defaultImg =
+      "https://eventlite-22-seeds.s3.amazonaws.com/NASA_placeholder.png";
+    if (!event.photoUrl) {
+      return defaultImg;
+    } else {
+      return event.photoUrl;
+    }
+  };
+
   return (
     <div id="microMobilityModal" className="modal">
       <div id="appear" className="modal-content">
@@ -119,7 +129,7 @@ const TicketModal = (props) => {
             </div>
           </div>
           <div className="left-modal">
-            <img src={event.photoUrl}></img>
+            <img src={currentImg()}></img>
           </div>
         </div>
         {/* <div className="modal-bottom">
