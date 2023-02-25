@@ -2,7 +2,7 @@
 
 Eventlite is a full stack clone of [Eventbrite](https://www.eventbrite.com/) that allows users to find events as well as create their own events.
 
-[Live link for Eventlite](https://event-lite.onrender.com/)
+[Live link for Eventlite](https://eventlite-s.onrender.com)
 
 ## Core Technologies
 
